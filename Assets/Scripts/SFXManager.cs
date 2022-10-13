@@ -80,7 +80,9 @@ public class SFXManager : MonoBehaviour {
             return sourcePool.Dequeue ();
         } else 
         {
-            return new GameObject ("Audio Source", components: typeof (AudioSource)).GetComponent<AudioSource> ();
+            GameObject obj = new GameObject ("SFX Source", components: typeof (AudioSource));
+            obj.transform.parent = Instance.transform;
+            return obj.GetComponent<AudioSource> ();
         }
     }
 }
