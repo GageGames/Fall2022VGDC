@@ -8,7 +8,10 @@ public class SFXManager : MonoBehaviour {
     public static SFXManager Instance {
         get
         {
-            EnsureInit ();
+            if (!instance)
+            {
+                Init ();
+            }
             return instance;
         }
         private set
@@ -16,20 +19,25 @@ public class SFXManager : MonoBehaviour {
             instance = value;
         }
     }
-    public static Transform ClipHolder;
 
     // TODO: Genericize object pooling system
     public static Queue<AudioSource> sourcePool = new Queue<AudioSource> ();
 
 
-    static SFXManager instance;
+    static SFXManager instance = null;
 
     // TODO: Manage singletons from a more central source?
     private void Awake () 
     {
-        if (Instance != this) {
+        if (instance && instance != this) {
             Destroy (gameObject);
         }
+    }
+
+    static void Init ()
+    {
+        instance = new GameObject ("SFX Manager").AddComponent<SFXManager> ();
+        DontDestroyOnLoad (instance.gameObject);
     }
 
     public static void PlaySound (AudioClip clip) 
@@ -52,6 +60,17 @@ public class SFXManager : MonoBehaviour {
         source.Play ();
         
         Instance.StartCoroutine (RequeueSource (source, clip.length));
+    }
+
+    public static void PlayLoopedSound (AudioClip clip, Func<bool> loopEndCondition)
+    {
+        AudioSource source = GetSource ();
+
+        source.clip = clip;
+        source.loop = true;
+        source.Play ();
+
+        Instance.StartCoroutine (RequeueLoopedSource (source, loopEndCondition));
     }
 
     public static void PlayLoopedSound (AudioClip clip, float volume, float pitch, Func<bool> loopEndCondition) 
@@ -82,14 +101,6 @@ public class SFXManager : MonoBehaviour {
 
         source.loop = false;
         sourcePool.Enqueue (source);
-    }
-
-    static void EnsureInit () {
-        if (!Instance) 
-        {
-            Instance = new GameObject ("SFX Manager").AddComponent<SFXManager>();
-            DontDestroyOnLoad (Instance.gameObject);
-        }
     }
 
     static AudioSource GetSource () {
