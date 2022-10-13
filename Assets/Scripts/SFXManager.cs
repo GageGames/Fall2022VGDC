@@ -5,19 +5,29 @@ using UnityEngine;
 
 public class SFXManager : MonoBehaviour {
 
-    public static SFXManager Instance;
+    public static SFXManager Instance {
+        get
+        {
+            EnsureInit ();
+            return instance;
+        }
+        private set
+        {
+            instance = value;
+        }
+    }
     public static Transform ClipHolder;
 
     // TODO: Genericize object pooling system
     public static Queue<AudioSource> sourcePool = new Queue<AudioSource> ();
 
+
+    static SFXManager instance;
+
     // TODO: Manage singletons from a more central source?
     private void Awake () 
     {
-        if (!Instance) {
-            Instance = this;
-            DontDestroyOnLoad (gameObject);
-        } else {
+        if (Instance != this) {
             Destroy (gameObject);
         }
     }
@@ -74,11 +84,20 @@ public class SFXManager : MonoBehaviour {
         sourcePool.Enqueue (source);
     }
 
+    static void EnsureInit () {
+        if (!Instance) 
+        {
+            Instance = new GameObject ("SFX Manager").AddComponent<SFXManager>();
+            DontDestroyOnLoad (Instance.gameObject);
+        }
+    }
+
     static AudioSource GetSource () {
         if (sourcePool.Count > 0) 
         {
             return sourcePool.Dequeue ();
-        } else 
+        } 
+        else 
         {
             GameObject obj = new GameObject ("SFX Source", components: typeof (AudioSource));
             obj.transform.parent = Instance.transform;
