@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+    branches:
+      - Staging
+jobs:
+  Auto_Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Cache
+        uses: actions/cache@v2
+        with:
+          path: Library
+          key: Library-Fal2022VGDC-TargetPlatform
+          restore-keys: |
+            Library-Fal2022VGDC-
+            Library-
+      - name: Build WebGL
+        uses: game-ci/unity-builder@v2
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: 
+          buildsPath: Build
+          targetPlatform: WebGL
+      - name: Zip Web Build
+        uses: vimtor/action-zip@v1
+        with:
+          files: 'Build/WebGL/WebGL'
+          dest: 'Build/WebGL/WebGL.zip'
+      - name: Upload WebGL Zip Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: webgl-artifact
+          path: 'Build/WebGL/WebGL.zip'

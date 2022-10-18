@@ -42,7 +42,8 @@ public class PointMagneticEntity : MagneticEntity
 			Vector3 pos = tether.GetOpposite(curAnchor).Position;
 			float strength = tether.Strength * Time.deltaTime;
 			Vector3 dir = pos - curAnchor.Position;
-			physEntity.ApplyImpulse(dir, strength);
+			// TODO: Don't create a new ImpulseSourceType every frame for every tether lmao
+			physEntity.ApplyImpulse(dir, strength, new ImpulseSourceType(ImpulseSourceTag.Magnetic));
 		}
 	}
 }

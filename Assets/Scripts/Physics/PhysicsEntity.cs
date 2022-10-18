@@ -3,12 +3,12 @@ using UnityEngine;
 // Handles moving an object that reacts to physics. Interfaces with data component and other physics-related classes
 
 [RequireComponent(typeof(PhysicsData))]
-public class PhysicsEntity : MonoBehaviour
+public class PhysicsEntity : MonoBehaviour, IImpulseReceiver
 {
 	[SerializeField]
 	protected PhysicsData data;
 
-	public void ApplyImpulse(Vector3 direction, float strength)
+	public void ApplyImpulse(Vector3 direction, float strength, ImpulseSourceType type)
 	{
 		print($"physics impulse applied! Direction: {direction} Strength: {strength}");
 
