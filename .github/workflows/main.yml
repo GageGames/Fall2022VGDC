@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - Staging
+      - main
 env:
   ITCH_USERNAME: GAGEUSERNAME
   ITCH_GAME_ID: GAMENAMEHERELOL
@@ -46,7 +46,7 @@ jobs:
         with:
           butlerApiKey: ${{ secrets.ITCH_API_KEY }}
           gameData: ${{ env.WEBGL_BUILD_PATH }}.zip
-          itchUsername: ${{env.ITCH_USERNAME}}
+          itchUsername: ${{ env.ITCH_USERNAME }}
           itchGameId: ${{ env.ITCH_GAME_ID }}
           buildChannel: 'webgl'
           
