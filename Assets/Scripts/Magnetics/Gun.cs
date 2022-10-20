@@ -8,13 +8,16 @@ public class Gun : MonoBehaviour
 
 	protected MagneticEntity magEntity;
 
+	// TODO: Move into GameplayTuningData ScriptableObject
+	public float Strength;
+
 	private void Awake()
 	{
 		magEntity = GetComponent<MagneticEntity>();
 	}
 
 	// Find an anchor and create a tether
-	public void Fire(Vector3 targetPos)
+	public void Fire(Vector3 targetPos, bool pull)
 	{
 		//print("Firing Gun");
 
@@ -34,6 +37,7 @@ public class Gun : MonoBehaviour
 		}
 
 		ActiveTether = Tether.CreateTether(self, target);
+		ActiveTether.Strength = Strength * (pull ? 1f : -1f);
 	}
 
 	public void Detach ()

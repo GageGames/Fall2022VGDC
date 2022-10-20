@@ -12,7 +12,7 @@ public class PointMagneticEntity : MagneticEntity
 	private PhysicsEntity physEntity;
 	private ImpulseSourceType impulseSourceType = new ImpulseSourceType(ImpulseSourceTag.Magnetic);
 
-	private void Awake()
+	private void Start()
 	{
 		physEntity = GetComponent<PhysicsEntity>();
 		curAnchor = new Anchor(physEntity.GetPosition());
@@ -20,6 +20,7 @@ public class PointMagneticEntity : MagneticEntity
 
 	public override Anchor GetAnchor(Vector3 targetPosition)
 	{
+		//print("Anchor requested");
 		return curAnchor;
 	}
 

@@ -10,7 +10,7 @@ public class Tether : MonoBehaviour
 	public Anchor Sender { get; private set; }
 	public Anchor Recipient { get; private set; }
 
-	// Current cached strength according to tether state
+	// Current cached strength according to tether data
 	public float Strength
 	{
 		get
@@ -24,12 +24,11 @@ public class Tether : MonoBehaviour
 				return 0f;
 			}
 		}
-		private set
+		set
 		{
 			strength = value;
 		}
 	}
-
 	public bool Paused { get; private set; } = false;
 
 	private float strength = 0;
@@ -42,8 +41,6 @@ public class Tether : MonoBehaviour
 		Tether newTether = obj.AddComponent<Tether>();
 		newTether.Attach(source, destination);
 
-		newTether.CalculateStrength();
-
 		return newTether;
 	}
 
@@ -54,12 +51,6 @@ public class Tether : MonoBehaviour
 
 		source.AddTether(this);
 		destination.AddTether(this);
-	}
-
-	public void CalculateStrength()
-	{
-		// TODO: Actually calculate this knavlkjsbaflkj
-		strength = 20;
 	}
 
 	public void Pause()
