@@ -36,7 +36,7 @@ public class Tether : MonoBehaviour
 
 	public static Tether CreateTether(Anchor source, Anchor destination)
 	{
-		print("Creating Tether");
+		//print("Creating Tether");
 
 		GameObject obj = new GameObject("Tether");
 		Tether newTether = obj.AddComponent<Tether>();

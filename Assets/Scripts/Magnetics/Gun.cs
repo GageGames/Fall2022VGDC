@@ -16,7 +16,7 @@ public class Gun : MonoBehaviour
 	// Find an anchor and create a tether
 	public void Fire(Vector3 targetPos)
 	{
-		print("Firing Gun");
+		//print("Firing Gun");
 
 		Anchor target = FindClosestAnchorInRadius(targetPos);
 
@@ -38,7 +38,7 @@ public class Gun : MonoBehaviour
 
 	public void Detach ()
 	{
-		print("Detaching Gun");
+		//print("Detaching Gun");
 
 		if (ActiveTether != null)
 		{
