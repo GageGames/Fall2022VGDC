@@ -14,6 +14,7 @@ public class PhysicsData : MonoBehaviour
 	public float Resistance = 0;
 
 	public Rigidbody rb { get; private set; }
+	public Vector3 Position => rb.position;
 
 	private void Awake()
 	{
