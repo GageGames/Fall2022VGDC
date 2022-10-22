@@ -12,6 +12,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 	private Collider col;
 	private PhysicsEntity physEntity;
 	private List<Anchor> curAnchors;
+	private ImpulseSourceType impulseSourceType = new ImpulseSourceType(ImpulseSourceTag.Magnetic);
 
 	private void Awake()
 	{
@@ -68,8 +69,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 				Vector3 pos = tether.GetOpposite(anchor).Position;
 				float strength = tether.Strength * Time.deltaTime;
 				Vector3 dir = pos - anchor.Position;
-				// TODO: Don't create a new ImpulseSourceType every frame for every tether lmao
-				physEntity.ApplyImpulse(dir, strength, new ImpulseSourceType(ImpulseSourceTag.Magnetic));
+				physEntity.ApplyImpulse(dir, strength, impulseSourceType);
 			}
 		}
 	}
