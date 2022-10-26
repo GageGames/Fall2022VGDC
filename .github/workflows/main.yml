@@ -6,7 +6,7 @@ on:
 env:
   ITCH_USERNAME: GAGEUSERNAME
   ITCH_GAME_ID: GAMENAMEHERELOL
-  WEBGL_BUILD_PATH: 'Build/WebGL/WebGL'
+  WEBGL_BUILD_PATH: 'Build/WebGL'
 jobs:
   Auto_Build:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
       - name: Zip Web Build
         uses: vimtor/action-zip@v1
         with:
-          files: ${{ env.WEBGL_BUILD_PATH }}
+          files: ${{ env.WEBGL_BUILD_PATH }}/WebGL
           dest: ${{ env.WEBGL_BUILD_PATH }}.zip
       - name: Upload WebGL Zip Artifact
         uses: actions/upload-artifact@v1
