@@ -23,7 +23,7 @@ jobs:
             Library-
       - name: Create folder
         run: |
-          mkdir -p ${{ env.WEBGL_BUILD_PATH }} && cp -R dist ${{ env.WEBGL_BUILD_PATH }}
+          mkdir -p ${{ env.WEBGL_BUILD_PATH }}
           ls ${{ env.WEBGL_BUILD_PATH }}
       - uses: finnp/create-file-action@master
         env:
