@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConfigData: {fileID: 11400000, guid: 5e1a49df50662f14fab70c4cebde89dd, type: 2}
+  ConfigData: {fileID: 11400000, guid: dd88e5402ac62d945af817f48c929c1c, type: 2}
   Resistance: 0.658
 --- !u!114 &959706302
 MonoBehaviour:
