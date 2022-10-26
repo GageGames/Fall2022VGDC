@@ -7,12 +7,9 @@ using UnityEngine;
 public class PhysicsData : MonoBehaviour
 {
 	[SerializeField]
-	protected bool UseConfigData = true;
-	[ConditionalField("UseConfigData")]
-	[SerializeField]
 	protected PhysicsDataConfig ConfigData;
 
-	[ConditionalField("UseConfigData", true)]
+	[HideInInspector]
 	public float Resistance;
 
 	[HideInInspector]
@@ -23,9 +20,7 @@ public class PhysicsData : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 
-		if (UseConfigData)
-		{
-			Resistance = ConfigData.Resistance;
-		}
+		Resistance = ConfigData.Resistance;
+		rb.mass = ConfigData.Mass;
 	}
 }

@@ -8,7 +8,9 @@ public class Gun : MonoBehaviour
 
 	protected MagneticEntity magEntity;
 
+	[HideInInspector]
 	public float Strength = 80f;
+	[HideInInspector]
 	public float DetectionRadius = 5f;
 
 	private void Awake()

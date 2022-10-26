@@ -7,7 +7,7 @@ public abstract class MagneticEntity : MonoBehaviour
 {
 	public abstract Anchor GetAnchor(Vector3 targetPosition);
 
-	protected List<Tether> tethers;
+	protected List<Tether> tethers = new List<Tether> ();
 
 	protected void Update()
 	{

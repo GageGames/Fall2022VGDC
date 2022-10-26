@@ -5,8 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(PhysicsData))]
 public class PhysicsEntity : MonoBehaviour, IImpulseReceiver
 {
-	[SerializeField]
-	protected PhysicsData data;
+	
+	private PhysicsData data;
+
+	private void Awake()
+	{
+		data = GetComponent<PhysicsData>();
+	}
 
 	public Vector3 GetPosition ()
 	{

@@ -6,4 +6,6 @@ public class GameplayTuningValues : ScriptableObject
 {
 	public float PlayerGunStrength = 80f;
 	public float PlayerGunDetectionRadius = 5f;
+
+	[Expandable] public PhysicsDataConfig PlayerPhysicsDataConfig;
 }

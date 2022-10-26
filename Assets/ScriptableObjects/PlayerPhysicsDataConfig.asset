@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PlayerPhysicsDataConfig
   m_EditorClassIdentifier: 
   Resistance: 0.658
+  Mass: 1
