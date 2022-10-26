@@ -40,11 +40,6 @@ jobs:
         with:
           files: ${{ env.WEBGL_BUILD_PATH }}
           dest: ${{ env.WEBGL_BUILD_PATH }}.zip
-      - name: Upload WebGL Zip Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: webgl-artifact
-          path: ${{ env.WEBGL_BUILD_PATH }}.zip
       - name: Upload WebGL to Itch
         uses: KikimoraGames/itch-publish@v0.0.3
         with:
