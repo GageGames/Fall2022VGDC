@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerGunStrength: 80
   PlayerGunDetectionRadius: 5
-  PlayerPhysicsDataConfig: {fileID: 11400000, guid: 5e1a49df50662f14fab70c4cebde89dd, type: 2}
+  PlayerPhysicsDataConfig: {fileID: 11400000, guid: dd88e5402ac62d945af817f48c929c1c, type: 2}
