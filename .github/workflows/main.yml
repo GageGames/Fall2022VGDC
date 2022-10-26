@@ -4,8 +4,8 @@ on:
     branches:
       - main
 env:
-  ITCH_USERNAME: GAGEUSERNAME
-  ITCH_GAME_ID: GAMENAMEHERELOL
+  ITCH_USERNAME: gagejohnson
+  ITCH_GAME_ID: sling-and-fling
   WEBGL_BUILD_PATH: 'Build/WebGL'
 jobs:
   Auto_Build:
