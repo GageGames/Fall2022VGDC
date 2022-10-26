@@ -17,8 +17,8 @@ public class PhysicsEntity : MonoBehaviour, IImpulseReceiver
 	{
 		//print($"physics impulse applied! Direction: {direction} Strength: {strength}");
 
-		Debug.DrawRay(transform.position, direction, Color.blue, 0);
+		Debug.DrawRay(transform.position, direction.normalized, Color.blue, 0);
 
-		data.rb.AddForce(direction * strength * (1 - data.Resistance), ForceMode.Impulse);
+		data.rb.AddForce(direction.normalized * strength * (1 - data.Resistance), ForceMode.Impulse);
 	}
 }
