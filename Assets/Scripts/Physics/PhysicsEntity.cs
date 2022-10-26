@@ -15,7 +15,7 @@ public class PhysicsEntity : MonoBehaviour, IImpulseReceiver
 
 	public void ApplyImpulse(Vector3 direction, float strength, ImpulseSourceType type)
 	{
-		//print($"physics impulse applied! Direction: {direction} Strength: {strength}");
+		//print($"physics impulse applied! Direction: {direction.normalized} Strength: {strength}");
 
 		Debug.DrawRay(transform.position, direction.normalized, Color.blue, 0);
 

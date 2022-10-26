@@ -8,8 +8,8 @@ public class Gun : MonoBehaviour
 
 	protected MagneticEntity magEntity;
 
-	// TODO: Move into GameplayTuningData ScriptableObject
-	public float Strength;
+	public float Strength = 80f;
+	public float DetectionRadius = 5f;
 
 	private void Awake()
 	{
@@ -54,9 +54,8 @@ public class Gun : MonoBehaviour
 	// Finds the closest Anchor to the target position within range
 	Anchor FindClosestAnchorInRadius(Vector3 targetPos)
 	{
-		// TODO: Get radius from gameplay tuning data scriptableobject
 		// First, find all potential targets by checking for physics objects
-		Collider[] potentialTargets = Physics.OverlapSphere(targetPos, 5);
+		Collider[] potentialTargets = Physics.OverlapSphere(targetPos, DetectionRadius);
 		if (potentialTargets.Length == 0)
 		{
 			return null;
@@ -67,13 +66,16 @@ public class Gun : MonoBehaviour
 		float closestDist = Mathf.Infinity;
 		foreach (Collider potentialTarget in potentialTargets)
 		{
+			// Check if the potential target is a magnetic entity that *isn't* the entity attached to this gun
 			MagneticEntity targetEntity = potentialTarget.GetComponent<MagneticEntity>();
-			if (targetEntity != null)
+			if (targetEntity != null && targetEntity != magEntity)
 			{
+				// Check to see if the target entity's given anchor is the closest entity found so far
 				Anchor targetAnchor = targetEntity.GetAnchor(targetPos);
 				float dist = Vector3.Distance(targetAnchor.Position, targetPos);
 				if (dist < closestDist)
 				{
+					// Target is closer, store its anchor and distance
 					closestTarget = targetAnchor;
 					closestDist = dist;
 				}

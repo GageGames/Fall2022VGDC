@@ -199,6 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseConfigData: 0
+  ConfigData: {fileID: 0}
   Resistance: 0.779
 --- !u!65 &62734243
 BoxCollider:
@@ -354,6 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseConfigData: 0
+  ConfigData: {fileID: 0}
   Resistance: 0.779
 --- !u!65 &487717262
 BoxCollider:
@@ -509,6 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseConfigData: 0
+  ConfigData: {fileID: 0}
   Resistance: 0.779
 --- !u!65 &531245167
 BoxCollider:
@@ -756,6 +762,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseConfigData: 1
+  ConfigData: {fileID: 11400000, guid: 5e1a49df50662f14fab70c4cebde89dd, type: 2}
   Resistance: 0.658
 --- !u!114 &959706302
 MonoBehaviour:
@@ -795,6 +803,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Strength: 80
+  DetectionRadius: 5
 --- !u!114 &959706305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,6 +910,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseConfigData: 0
+  ConfigData: {fileID: 0}
   Resistance: 0.779
 --- !u!65 &1261475282
 BoxCollider:
@@ -1056,6 +1067,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseConfigData: 0
+  ConfigData: {fileID: 0}
   Resistance: 0.95
 --- !u!65 &1270282360
 BoxCollider:
@@ -1520,6 +1533,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UseConfigData: 0
+  ConfigData: {fileID: 0}
   Resistance: 0.779
 --- !u!65 &2128005115
 BoxCollider:
