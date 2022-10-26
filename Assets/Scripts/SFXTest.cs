@@ -12,7 +12,7 @@ public class SFXTest : MonoBehaviour
 		}
 		if (Input.GetMouseButtonDown(1))
 		{
-			SFXManager.PlayLoopedSound(audioClip, () => Input.GetMouseButtonUp(1));
+			SFXManager.PlayLoopedSound(audioClip, () => Input.GetMouseButtonUp(1), transform.position, transform);
 		}
 	}
 }

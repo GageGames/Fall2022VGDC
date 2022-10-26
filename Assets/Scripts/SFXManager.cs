@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 // A static, lazy-loaded sound effects manager
 // Plays sound effects clips either on loop or instantaneously
@@ -26,7 +27,7 @@ public class SFXManager : MonoBehaviour
 	}
 
 	// TODO: Genericize object pooling system
-	public static Queue<AudioSource> sourcePool = new Queue<AudioSource>();
+	public static Queue<GameObject> sourcePool = new Queue<GameObject>();
 
 
 	static SFXManager instance = null;
@@ -46,19 +47,9 @@ public class SFXManager : MonoBehaviour
 		DontDestroyOnLoad(instance.gameObject);
 	}
 
-	public static void PlaySound(AudioClip clip)
+	public static void PlaySound(AudioClip clip, float volume = 1, float pitch = 1)
 	{
-		AudioSource source = GetSource();
-
-		source.clip = clip;
-		source.Play();
-
-		Instance.StartCoroutine(RequeueSource(source, clip.length));
-	}
-
-	public static void PlaySound(AudioClip clip, float volume, float pitch)
-	{
-		AudioSource source = GetSource();
+		AudioSource source = GetSource(Vector3.zero, null);
 
 		source.clip = clip;
 		source.volume = volume;
@@ -68,22 +59,38 @@ public class SFXManager : MonoBehaviour
 		Instance.StartCoroutine(RequeueSource(source, clip.length));
 	}
 
-	public static void PlayLoopedSound(AudioClip clip, Func<bool> loopEndCondition)
+	public static void PlaySound(AudioClip clip, Vector3 pos, Transform attachedTo, float spatialBlend = 1, float volume = 1, float pitch = 1)
 	{
-		AudioSource source = GetSource();
+		AudioSource source = GetSource(pos, attachedTo);
 
 		source.clip = clip;
+		source.spatialBlend = spatialBlend;
+		source.volume = volume;
+		source.pitch = pitch;
+		source.Play();
+
+		Instance.StartCoroutine(RequeueSource(source, clip.length));
+	}
+
+	public static void PlayLoopedSound(AudioClip clip, Func<bool> loopEndCondition, float volume = 1, float pitch = 1)
+	{
+		AudioSource source = GetSource(Vector3.zero, null);
+
+		source.clip = clip;
+		source.volume = volume;
+		source.pitch = pitch;
 		source.loop = true;
 		source.Play();
 
 		Instance.StartCoroutine(RequeueLoopedSource(source, loopEndCondition));
 	}
 
-	public static void PlayLoopedSound(AudioClip clip, float volume, float pitch, Func<bool> loopEndCondition)
+	public static void PlayLoopedSound(AudioClip clip, Func<bool> loopEndCondition, Vector3 pos, Transform attachedTo, float spatialBlend = 1, float volume = 1, float pitch = 1)
 	{
-		AudioSource source = GetSource();
+		AudioSource source = GetSource(pos, attachedTo);
 
 		source.clip = clip;
+		source.spatialBlend = spatialBlend;
 		source.volume = volume;
 		source.pitch = pitch;
 		source.loop = true;
@@ -95,7 +102,7 @@ public class SFXManager : MonoBehaviour
 	public static IEnumerator RequeueSource(AudioSource source, float clipLength)
 	{
 		yield return new WaitForSeconds(clipLength);
-		sourcePool.Enqueue(source);
+		sourcePool.Enqueue(source.gameObject);
 	}
 
 	public static IEnumerator RequeueLoopedSource(AudioSource source, Func<bool> loopEndCondition)
@@ -106,20 +113,25 @@ public class SFXManager : MonoBehaviour
 		}
 
 		source.loop = false;
-		sourcePool.Enqueue(source);
+		sourcePool.Enqueue(source.gameObject);
 	}
 
-	static AudioSource GetSource()
+	static AudioSource GetSource(Vector3 pos, Transform attachedTo = null)
 	{
+		GameObject obj;
+
 		if (sourcePool.Count > 0)
 		{
-			return sourcePool.Dequeue();
+			obj = sourcePool.Dequeue();
 		}
 		else
 		{
-			GameObject obj = new GameObject("SFX Source", components: typeof(AudioSource));
-			obj.transform.parent = Instance.transform;
-			return obj.GetComponent<AudioSource>();
+			obj = new GameObject("SFX Source", components: typeof(AudioSource));		
 		}
+
+		obj.transform.position = pos;
+		obj.transform.parent = attachedTo == null ? Instance.transform : attachedTo;
+
+		return obj.GetComponent<AudioSource>();
 	}
 }
