@@ -756,7 +756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Resistance: 0.837
+  Resistance: 0.658
 --- !u!114 &959706302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ef73394c6cc1254b9f06a08abc75f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Strength: 20
+  Strength: 80
 --- !u!114 &959706305
 MonoBehaviour:
   m_ObjectHideFlags: 0
