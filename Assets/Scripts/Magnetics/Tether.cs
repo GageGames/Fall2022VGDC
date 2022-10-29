@@ -1,13 +1,18 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 // Connects two anchor points with a physics force and allows those anchor points to refer to each other
 
 public class Tether : MonoBehaviour
 {
-	protected static Tether TetherPrefab;
+	// TODO: Move this to a separate script and actually spawn it
+	protected static GameObject TetherEffectsPrefab;
 
 	public Anchor Sender { get; private set; }
 	public Anchor Recipient { get; private set; }
+
+	public UnityEvent OnAttach = new UnityEvent();
+	public UnityEvent OnDetach = new UnityEvent();
 
 	// Current cached strength according to tether data
 	public float Strength

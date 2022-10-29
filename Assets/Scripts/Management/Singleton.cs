@@ -1,20 +1,21 @@
 using UnityEngine;
 
-public class Singleton<T> where T : MonoBehaviour
+public static class Singleton<T> where T : MonoBehaviour
 {
+	private static readonly object padlock = new object();
+
 	public static T Instance
 	{
 		get
 		{
-			if (instance == null)
+			lock (padlock)
 			{
-				Init();
+				if (instance == null || instance == default(T))
+				{
+					Init();
+				}
+				return instance;
 			}
-			return instance;
-		}
-		private set
-		{
-			instance = value;
 		}
 	}
 
@@ -22,6 +23,6 @@ public class Singleton<T> where T : MonoBehaviour
 
 	static void Init()
 	{
-		instance = new GameObject("SFX Manager").AddComponent<T>();
+		instance = new GameObject(typeof(T).Name).AddComponent<T>();
 	}
 }

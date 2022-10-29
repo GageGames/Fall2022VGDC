@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,5 +22,11 @@ public class GameManager : MonoBehaviour
 	public void UnPause()
 	{
 		IsPaused = false;
+	}
+
+	public void InitiateSceneLoad(string sceneName)
+	{
+		// TODO: Loading screens, asynch loading for non-web versions
+		SceneManager.LoadScene(sceneName);
 	}
 }
