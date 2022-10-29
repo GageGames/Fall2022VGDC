@@ -27,8 +27,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 		curAnchors.Add(output);
 
 		// Prep anchor to be recycled when detached from
-		print(output);
-		output.OnDetachTether.AddListener((tether) => RemoveTetheredAnchor(tether));
+		output.OnDetachTether.AddListener(RemoveTetheredAnchor);
 
 		return output;
 	}
@@ -70,6 +69,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 				Vector3 pos = tether.GetOpposite(anchor).Position;
 				float strength = tether.Strength * Time.deltaTime;
 				Vector3 dir = pos - anchor.Position;
+				dir.y = 0;
 				physEntity.ApplyImpulse(dir, strength, impulseSourceType);
 			}
 		}

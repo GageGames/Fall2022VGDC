@@ -8,8 +8,8 @@ public class Anchor
 {
 	public Vector3 Position { get; private set; }
 
-	public UnityEvent<Tether> OnAttachTether;
-	public UnityEvent<Tether> OnDetachTether;
+	public UnityEvent<Tether> OnAttachTether = new UnityEvent<Tether>();
+	public UnityEvent<Tether> OnDetachTether = new UnityEvent<Tether>();
 
 	protected List<Tether> attachedTethers = new List<Tether>();
 
