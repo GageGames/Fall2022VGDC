@@ -10,11 +10,6 @@ public class SFXManager : MonoBehaviour
 {
 	// TODO: Genericize object pooling system
 	public static Queue<GameObject> sourcePool = new Queue<GameObject>();
-	
-	private void Awake()
-	{
-		print(Singleton<SFXManager>.Instance.gameObject.GetInstanceID());
-	}
 
 	public static void PlaySound(AudioClip clip, float volume = 1, float pitch = 1)
 	{
