@@ -1,5 +1,4 @@
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 // Connects two anchor points with a physics force and allows those anchor points to refer to each other
 

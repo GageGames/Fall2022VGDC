@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 // A static, lazy-loaded sound effects manager
 // Plays sound effects clips either on loop or instantaneously
@@ -126,7 +125,7 @@ public class SFXManager : MonoBehaviour
 		}
 		else
 		{
-			obj = new GameObject("SFX Source", components: typeof(AudioSource));		
+			obj = new GameObject("SFX Source", components: typeof(AudioSource));
 		}
 
 		obj.transform.position = pos;

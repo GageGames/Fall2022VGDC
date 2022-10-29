@@ -13,7 +13,7 @@ public struct ImpulseSourceType
 {
 	public ImpulseSourceTag impulseSourceTag;
 
-	public ImpulseSourceType (ImpulseSourceTag istg)
+	public ImpulseSourceType(ImpulseSourceTag istg)
 	{
 		impulseSourceTag = istg;
 	}

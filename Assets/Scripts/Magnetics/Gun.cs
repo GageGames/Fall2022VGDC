@@ -42,7 +42,7 @@ public class Gun : MonoBehaviour
 		ActiveTether.Strength = Strength * (pull ? 1f : -1f);
 	}
 
-	public void Detach ()
+	public void Detach()
 	{
 		//print("Detaching Gun");
 
