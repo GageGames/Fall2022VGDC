@@ -29,4 +29,9 @@ public class GameManager : MonoBehaviour
 		// TODO: Loading screens, asynch loading for non-web versions
 		SceneManager.LoadScene(sceneName);
 	}
+	
+	public void QuitGame()
+	{
+		Application.Quit();
+	}
 }

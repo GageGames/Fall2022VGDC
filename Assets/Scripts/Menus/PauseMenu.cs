@@ -9,27 +9,26 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private AudioClip buttonSound;
     [SerializeField] private float soundVolume = 1;
     
-    void PlayButtonSound()
+    private void PlayButtonSound()
     {
-        // Singleton<SFXManager>.Instance.PlaySound(buttonSound,soundVolume,1);
+        SFXManager.PlaySound(buttonSound,soundVolume,1);
     }
 
-	void Unpause()
+	public void Unpause()
 	{
         PlayButtonSound();
-        // callback shit
+        GetComponent<PauseMenuCallback>().ResumeGame();
 	}
     
-    void ToMainMenu()
+    public void ToMainMenu()
     {
         PlayButtonSound();
-        // GameManager.LoadScene("MainMenu");
+        Singleton<GameManager>.Instance.InitiateSceneLoad("MainMenu");
     }
     
-    void QuitGame()
+    public void QuitGame()
     {
         PlayButtonSound();
-        Application.Quit();
-        // GameManager.Quit();
+        Singleton<GameManager>.Instance.QuitGame();
     }
 }
