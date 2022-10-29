@@ -1,4 +1,3 @@
-using MyBox;
 using UnityEngine;
 
 // Stores pure data on the state of an object that interacts with physics systems

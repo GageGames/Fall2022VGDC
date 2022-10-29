@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Gun))]
@@ -23,7 +21,7 @@ public class TestPlayer : MonoBehaviour
 	}
 
 	void Update()
-    {
+	{
 		if (Input.GetMouseButtonDown(0) && !pulling && !pushing)
 		{
 			// TODO: REFACTOR
