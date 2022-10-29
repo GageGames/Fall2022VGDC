@@ -10,7 +10,7 @@ public static class Singleton<T> where T : MonoBehaviour
 		{
 			lock (padlock)
 			{
-				if (instance == null || instance == default(T))
+				if (instance == null)
 				{
 					Init();
 				}
@@ -19,7 +19,7 @@ public static class Singleton<T> where T : MonoBehaviour
 		}
 	}
 
-	static T instance = default(T);
+	static T instance = null;
 
 	static void Init()
 	{
