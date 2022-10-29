@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewPhysicsDataConfig", menuName = "Gameplay Config/Physics Data Config")]
+[CreateAssetMenu(fileName = "NewPhysicsDataConfig", menuName = "Configs/Physics Data Config")]
 [System.Serializable]
 public class PhysicsDataConfig : ScriptableObject
 {

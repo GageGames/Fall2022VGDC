@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PhysicsData))]
 public class PhysicsEntity : MonoBehaviour, IImpulseReceiver
 {
-	
+
 	private PhysicsData data;
 
 	private void Awake()
@@ -13,7 +13,7 @@ public class PhysicsEntity : MonoBehaviour, IImpulseReceiver
 		data = GetComponent<PhysicsData>();
 	}
 
-	public Vector3 GetPosition ()
+	public Vector3 GetPosition()
 	{
 		return data.Position;
 	}
