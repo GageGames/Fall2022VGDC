@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - production
 env:
   ITCH_USERNAME: gagejohnson
   ITCH_GAME_ID: sling-and-fling
