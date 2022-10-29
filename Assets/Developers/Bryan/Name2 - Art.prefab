@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5112559672559100267}
   m_Layer: 0
-  m_Name: Stage [1] [Art]
+  m_Name: Name2 - Art
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -319,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: c5ad7574332932e4c82165948dc4f6ee, type: 2}
     - target: {fileID: 8325556237423930393, guid: 36a4a85ad0db8174ca13a2059c8cbbf2, type: 3}
       propertyPath: m_Name
-      value: Stage [Design]
+      value: Name1 - Design
       objectReference: {fileID: 0}
     - target: {fileID: 8420728476603264594, guid: 36a4a85ad0db8174ca13a2059c8cbbf2, type: 3}
       propertyPath: m_IsActive

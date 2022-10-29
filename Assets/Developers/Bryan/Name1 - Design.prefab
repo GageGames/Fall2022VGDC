@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4032585336459639633}
   m_Layer: 0
-  m_Name: Stage [0] [Design]
+  m_Name: Name1 - Design
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

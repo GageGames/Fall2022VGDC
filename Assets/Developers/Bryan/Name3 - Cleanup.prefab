@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2437020427955985017}
   m_Layer: 0
-  m_Name: Stage [2] [Cleanup]
+  m_Name: Name3 - Cleanup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -195,11 +195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6501420065927135881, guid: d89a54fcba81c9046aca54d36fd7c0b1, type: 3}
       propertyPath: m_Name
-      value: Stage [1] [Art]
+      value: Name2 - Art
       objectReference: {fileID: 0}
     - target: {fileID: 6851297097637074402, guid: d89a54fcba81c9046aca54d36fd7c0b1, type: 3}
       propertyPath: m_Name
-      value: Stage [0] [Design]
+      value: Name1 - Design
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89a54fcba81c9046aca54d36fd7c0b1, type: 3}
