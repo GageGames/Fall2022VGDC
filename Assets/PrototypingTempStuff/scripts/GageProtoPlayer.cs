@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Pathfinding;
 
-public class shittyAITest : MonoBehaviour
+public class GageProtoPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -14,5 +13,6 @@ public class shittyAITest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 }
