@@ -5,6 +5,6 @@ public class PauseMenuCallback : MonoBehaviour
 	public void ResumeGame()
 	{
 		Destroy(gameObject);
-		Singleton<GameManager>.Instance.UnPause();
+		Singleton<GameManager>.Instance.Unpause();
 	}
 }
