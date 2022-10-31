@@ -10,6 +10,16 @@ public static class Singleton<T> where T : MonoBehaviour
 		{
 			lock (padlock)
 			{
+				Debug.Log(instance);
+				if (instance != null)
+				{
+					Debug.Log(instance.gameObject);
+					if (instance.gameObject != null)
+					{
+						Debug.Log(instance.gameObject.GetInstanceID());
+					}
+				}
+				
 				if (instance == null)
 				{
 					Init();
