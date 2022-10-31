@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GageProtoInteractsWithDamage : MonoBehaviour
 {
     public Rigidbody rb;
-    public Renderer renderer;
+    public Renderer thisRenderer;
     Vector3 velocityBeforePhysicsUpdate;
     public bool invincible;
     public bool player;
@@ -24,9 +24,9 @@ public class GageProtoInteractsWithDamage : MonoBehaviour
         {
             rb = gameObject.GetComponent<Rigidbody>();
         }
-        if(renderer == null)
+        if(thisRenderer == null)
         {
-            renderer = gameObject.GetComponent<Renderer>();
+            thisRenderer = gameObject.GetComponent<Renderer>();
         }
     }
 
@@ -45,7 +45,7 @@ public class GageProtoInteractsWithDamage : MonoBehaviour
             }
             else
             {
-                renderer.material.color = Color.red;
+                thisRenderer.material.color = Color.red;
             }
         }
     }

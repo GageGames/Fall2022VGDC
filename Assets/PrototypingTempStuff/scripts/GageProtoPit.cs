@@ -33,7 +33,7 @@ public class GageProtoPit : MonoBehaviour
             foreach(var obj in stuffInPit){
                 if(obj != null){
                     obj.GetComponent<GageProtoInteractsWithDamage>().health -= tickTime * pitDamagePerSecond;
-                    obj.GetComponent<GageProtoInteractsWithDamage>().renderer.material.DOColor(Color.black, tickTime/2.1f).SetLoops(2, LoopType.Yoyo);
+                    obj.GetComponent<GageProtoInteractsWithDamage>().thisRenderer.material.DOColor(Color.black, tickTime/2.1f).SetLoops(2, LoopType.Yoyo);
                 }
             }
             
@@ -47,8 +47,19 @@ public class GageProtoPit : MonoBehaviour
         {
             stuffInPit.Add(other.gameObject);
         }
+        else if(other.gameObject.layer == 26)//if it is the player
+        {
+            stuffInPit.Add(other.transform.parent.gameObject);
+        }   
     }
     void OnTriggerExit(Collider other) {
-        stuffInPit.Remove(other.gameObject);
+        if (other.gameObject.GetComponent<GageProtoInteractsWithDamage>() != null)
+        {
+            stuffInPit.Remove(other.gameObject);
+        }
+        else if(other.gameObject.layer == 26)//if it is the player
+        {
+            stuffInPit.Remove(other.transform.parent.gameObject);
+        } 
     }
 }

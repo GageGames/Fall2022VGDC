@@ -6,6 +6,8 @@ TagManager:
   tags:
   - wall
   - floor
+  - tag
+  - key
   layers:
   - Default
   - TransparentFX
