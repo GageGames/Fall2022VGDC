@@ -19,23 +19,47 @@ public class Gun : MonoBehaviour
 		magEntity = GetComponent<MagneticEntity>();
 	}
 
-	public MagneticEntity[] GetTargets(Vector3 targetPos)
+	[Tooltip("Get anchors near target position")]
+	public FireResult GetFireData(Vector3 targetPos)
 	{
-		MagneticEntity[] magneticEntities = FindAvailableTargetsInRadius(targetPos);
+		FireResult output = new FireResult();
+		output.CursorOrigin = targetPos;
+		output.AvailableTargets = new List<Anchor>();
 
-		return magneticEntities;
+		// Find all magnetic entities within range
+		MagneticEntity[] magneticTargets = FindAvailableTargetsInRadius(targetPos);
+
+		// Get the anchors from the target entities
+		float closestDist = Mathf.Infinity;
+		foreach (MagneticEntity potentialTarget in magneticTargets)
+		{
+			// Grab an anchor from the target
+			Anchor targetAnchor = potentialTarget.GetAnchor(targetPos);
+			output.AvailableTargets.Add(targetAnchor);
+
+			// Check to find closest anchor
+			float dist = Vector3.Distance(targetAnchor.Position, targetPos);
+			if (dist < closestDist)
+			{
+				// Target is closer, store its anchor and distance
+				output.AvailableTargets.Add(targetAnchor);
+				closestDist = dist;
+			}
+		}
+
+		return output;
 	}
 
-	// Find an anchor and create a tether
-	public Anchor Fire(Vector3 targetPos, bool pull)
+	[Tooltip("Get ideal anchor and create a tether")]
+	public FireResult Fire(Vector3 targetPos, bool pull)
 	{
 		//print("Firing Gun");
 
-		Anchor target = FindClosestAnchorInRadius(targetPos);
+		FireResult fireData = GetFireData(targetPos);
 
-		if (target == null)
+		if (fireData.SelectedTarget == null)
 		{
-			return null;
+			return fireData;
 		}
 
 		Anchor self = magEntity.GetAnchor(transform.position);
@@ -46,12 +70,13 @@ public class Gun : MonoBehaviour
 			ActiveTether = null;
 		}
 
-		ActiveTether = Tether.CreateTether(self, target);
+		ActiveTether = Tether.CreateTether(self, fireData.SelectedTarget);
 		ActiveTether.Strength = Strength * (pull ? 1f : -1f);
 
-		return target;
+		return fireData;
 	}
 
+	[Tooltip("Detach fired tether")]
 	public void Detach()
 	{
 		//print("Detaching Gun");
@@ -63,7 +88,7 @@ public class Gun : MonoBehaviour
 		}
 	}
 
-	// Finds all magnetic entities within range of the target position
+	[Tooltip("Finds all magnetic entities within range of the target position")]
 	MagneticEntity[] FindAvailableTargetsInRadius(Vector3 targetPos)
 	{
 		// First, find all potential targets by checking for physics objects
@@ -86,39 +111,5 @@ public class Gun : MonoBehaviour
 		}
 
 		return targets.ToArray();
-	}
-
-	// Finds the closest Anchor to the target position within range
-	Anchor FindClosestAnchorInRadius(Vector3 targetPos)
-	{
-		// First, find all potential targets by checking for physics objects
-		Collider[] potentialTargets = Physics.OverlapSphere(targetPos, DetectionRadius);
-		if (potentialTargets.Length == 0)
-		{
-			return null;
-		}
-
-		// Trim potential targets down to objects with Anchors and find the closest
-		Anchor closestTarget = null;
-		float closestDist = Mathf.Infinity;
-		foreach (Collider potentialTarget in potentialTargets)
-		{
-			// Check if the potential target is a magnetic entity that *isn't* the entity attached to this gun
-			MagneticEntity targetEntity = potentialTarget.GetComponent<MagneticEntity>();
-			if (targetEntity != null && targetEntity != magEntity)
-			{
-				// Check to see if the target entity's given anchor is the closest entity found so far
-				Anchor targetAnchor = targetEntity.GetAnchor(targetPos);
-				float dist = Vector3.Distance(targetAnchor.Position, targetPos);
-				if (dist < closestDist)
-				{
-					// Target is closer, store its anchor and distance
-					closestTarget = targetAnchor;
-					closestDist = dist;
-				}
-			}
-		}
-
-		return closestTarget;
 	}
 }
