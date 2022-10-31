@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct FireResult
+public class FireResult
 {
 	public List<Anchor> AvailableTargets;
 	public Anchor SelectedTarget;
