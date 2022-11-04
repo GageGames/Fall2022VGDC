@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public static class Singleton<T> where T : MonoBehaviour
+public class Singleton<T> where T : MonoBehaviour
 {
 	private static readonly object padlock = new object();
 
@@ -9,7 +9,7 @@ public static class Singleton<T> where T : MonoBehaviour
 		get
 		{
 			lock (padlock)
-			{
+			{				
 				if (instance == null)
 				{
 					Init();
@@ -24,11 +24,5 @@ public static class Singleton<T> where T : MonoBehaviour
 	static void Init()
 	{
 		instance = new GameObject(typeof(T).Name).AddComponent<T>();
-
-		// DO NOT REMOVE
-		// If you remove this, it will cause a stack overflow when attaching 
-		// a coroutine to the new instance immediately after this init
-		// I have literally no fucking clue
-		Debug.Log(instance.gameObject.GetInstanceID());
 	}
 }
