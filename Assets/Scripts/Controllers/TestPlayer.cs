@@ -12,6 +12,8 @@ public class TestPlayer : MonoBehaviour
 	[SerializeField]
 	private GameplayTuningValues val;
 
+	Bounds viewBounds = new Bounds(new Vector2 (0.5f, 0.5f), Vector3.one * 1.2f);
+
 	private void Awake()
 	{
 		gun = GetComponent<Gun>();
@@ -64,6 +66,19 @@ public class TestPlayer : MonoBehaviour
 		{
 			gun.Detach();
 			pushing = false;
+		}
+	
+		if (gun.ActiveTether != null)
+		{
+			Vector3 pos = gun.ActiveTether.Recipient.Position;
+
+			Vector2 projectedPos = Camera.main.WorldToViewportPoint(pos);
+
+			if (!viewBounds.Contains(projectedPos))
+			{
+				print($"{projectedPos} is outside view bounds {viewBounds}!");
+				gun.Detach();
+			}
 		}
 	}
 }
