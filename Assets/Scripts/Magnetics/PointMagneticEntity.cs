@@ -35,7 +35,7 @@ public class PointMagneticEntity : MagneticEntity
 		tethers = curAnchor.GetTethers();
 	}
 
-	protected override void ReadTethers()
+	protected override void ApplyImpulses()
 	{
 		foreach (Tether tether in tethers)
 		{
