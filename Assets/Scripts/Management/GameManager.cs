@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
 	public void Pause()
 	{
+		if (IsPaused) return;
+
 		Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.PauseMenuPrefab);
 		IsPaused = true;
 		BroadcastAll("OnGamePause", null);
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour
 
 	public void Unpause()
 	{
+		if (!IsPaused) return;
+
 		IsPaused = false;
 		BroadcastAll("OnGameUnpause", null);
 	}
