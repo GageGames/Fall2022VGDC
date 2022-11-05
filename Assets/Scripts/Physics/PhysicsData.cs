@@ -5,19 +5,21 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PhysicsData : MonoBehaviour
 {
-	// TODO: Read start values from PhysicsDataConfig 
-	//[SerializeField]
-	//protected PhysicsDataConfig ConfigData;
+	[SerializeField]
+	protected PhysicsDataConfig ConfigData;
 
-	[Tooltip("The percentage of incoming force that is ignored, on a scale from 0 to 1")]
-	[Range(0f, 1f)]
-	public float Resistance = 0;
+	[HideInInspector]
+	public float Resistance;
 
+	[HideInInspector]
 	public Rigidbody rb { get; private set; }
 	public Vector3 Position => rb.position;
 
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody>();
+
+		Resistance = ConfigData.Resistance;
+		rb.mass = ConfigData.Mass;
 	}
 }

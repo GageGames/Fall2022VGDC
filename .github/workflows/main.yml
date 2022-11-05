@@ -2,11 +2,11 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - production
 env:
-  ITCH_USERNAME: GAGEUSERNAME
-  ITCH_GAME_ID: GAMENAMEHERELOL
-  WEBGL_BUILD_PATH: 'Build/WebGL/WebGL'
+  ITCH_USERNAME: gagejohnson
+  ITCH_GAME_ID: sling-and-fling
+  WEBGL_BUILD_PATH: 'Build/WebGL'
 jobs:
   Auto_Build:
     runs-on: ubuntu-latest
@@ -21,6 +21,10 @@ jobs:
           restore-keys: |
             Library-Fal2022VGDC-
             Library-
+      - name: Create folder
+        run: |
+          mkdir -p ${{ env.WEBGL_BUILD_PATH }}
+          ls ${{ env.WEBGL_BUILD_PATH }}
       - name: Build WebGL
         uses: game-ci/unity-builder@v2
         env:
@@ -36,11 +40,6 @@ jobs:
         with:
           files: ${{ env.WEBGL_BUILD_PATH }}
           dest: ${{ env.WEBGL_BUILD_PATH }}.zip
-      - name: Upload WebGL Zip Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: webgl-artifact
-          path: ${{ env.WEBGL_BUILD_PATH }}.zip
       - name: Upload WebGL to Itch
         uses: KikimoraGames/itch-publish@v0.0.3
         with:

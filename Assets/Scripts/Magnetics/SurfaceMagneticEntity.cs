@@ -11,7 +11,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 {
 	private Collider col;
 	private PhysicsEntity physEntity;
-	private List<Anchor> curAnchors;
+	private List<Anchor> curAnchors = new List<Anchor>();
 	private ImpulseSourceType impulseSourceType = new ImpulseSourceType(ImpulseSourceTag.Magnetic);
 
 	private void Awake()
@@ -27,7 +27,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 		curAnchors.Add(output);
 
 		// Prep anchor to be recycled when detached from
-		output.OnDetachTether.AddListener((tether) => RemoveTetheredAnchor(tether));
+		output.OnDetachTether.AddListener(RemoveTetheredAnchor);
 
 		return output;
 	}
@@ -69,6 +69,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 				Vector3 pos = tether.GetOpposite(anchor).Position;
 				float strength = tether.Strength * Time.deltaTime;
 				Vector3 dir = pos - anchor.Position;
+				dir.y = 0;
 				physEntity.ApplyImpulse(dir, strength, impulseSourceType);
 			}
 		}

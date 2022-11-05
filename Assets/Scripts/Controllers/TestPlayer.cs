@@ -1,22 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 [RequireComponent(typeof(Gun))]
 public class TestPlayer : MonoBehaviour
 {
-
-	[SerializeField]
 	Gun gun;
-
 
 	// TODO: State machine this :P
 	bool pulling = false;
 	bool pushing = false;
 
+	[SerializeField]
+	private GameplayTuningValues val;
+
+	private void Awake()
+	{
+		gun = GetComponent<Gun>();
+
+		gun.Strength = val.PlayerGunStrength;
+		gun.DetectionRadius = val.PlayerGunDetectionRadius;
+	}
+
 	void Update()
-    {
+	{
 		if (Input.GetMouseButtonDown(0) && !pulling && !pushing)
 		{
 			// TODO: REFACTOR
