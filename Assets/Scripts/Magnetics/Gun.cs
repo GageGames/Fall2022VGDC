@@ -43,7 +43,7 @@ public class Gun : MonoBehaviour
 			if (dist < closestDist)
 			{
 				// Target is closer, store its anchor and distance
-				output.AvailableTargets.Add(targetAnchor);
+				output.SelectedTarget = targetAnchor;
 				closestDist = dist;
 			}
 		}
