@@ -2,11 +2,12 @@ using UnityEngine;
 
 public enum ImpulseSourceTag
 {
-	Generic = 0,
-	Magnetic = 1,
-	PhysicalKnockback = 2,
-	DangerousKnockback = 3,
-	Explosive = 4,
+	Generic,
+	Magnetic,
+	PhysicalKnockback,
+	DangerousKnockback,
+	Explosive,
+	Field,
 }
 
 public struct ImpulseSourceType
