@@ -4,7 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameplayTuningValues : ScriptableObject
 {
-	public float PlayerGunStrength = 80f;
+	public float PlayerGunPullStrength = 80f;
+	public float PlayerGunPushStrength = 50f;
 	public float PlayerGunDetectionRadius = 5f;
 
 	[Expandable] public PhysicsDataConfig PlayerPhysicsDataConfig;
