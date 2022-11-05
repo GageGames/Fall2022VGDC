@@ -16,7 +16,7 @@ public class TestPlayer : MonoBehaviour
 	{
 		gun = GetComponent<Gun>();
 
-		gun.Strength = val.PlayerGunStrength;
+		gun.Strength = val.PlayerGunPullStrength;
 		gun.DetectionRadius = val.PlayerGunDetectionRadius;
 	}
 
@@ -24,6 +24,8 @@ public class TestPlayer : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0) && !pulling && !pushing)
 		{
+			gun.Strength = val.PlayerGunPullStrength;
+
 			// TODO: REFACTOR
 			// Replace with InputHandler.GetMouseWorldPos
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -38,6 +40,8 @@ public class TestPlayer : MonoBehaviour
 
 		else if (Input.GetMouseButtonDown(1) && !pushing && !pulling)
 		{
+			gun.Strength = val.PlayerGunPushStrength;
+
 			// TODO: REFACTOR
 			// Replace with InputHandler.GetMouseWorldPos
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
