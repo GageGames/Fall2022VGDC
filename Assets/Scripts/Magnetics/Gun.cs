@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // Creates and manages a tether
 
@@ -15,6 +16,8 @@ public class Gun : MonoBehaviour
 	[HideInInspector]
 	public float DetectionRadius = 5f;
 
+	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
+	
 	private void Awake()
 	{
 		magEntity = GetComponent<MagneticEntity>();
@@ -73,6 +76,8 @@ public class Gun : MonoBehaviour
 
 		ActiveTether = Tether.CreateTether(self, fireData.SelectedTarget);
 		ActiveTether.Strength = Strength * (pull ? 1f : -1f);
+
+		OnFire.Invoke(fireData);
 
 		return fireData;
 	}
