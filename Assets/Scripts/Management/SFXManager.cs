@@ -9,7 +9,7 @@ using UnityEngine;
 public class SFXManager : MonoBehaviour
 {
 	// TODO: Genericize object pooling system
-	public static Queue<GameObject> sourcePool = new Queue<GameObject>();
+	static Queue<GameObject> sourcePool = new Queue<GameObject>();
 
 	public static void PlaySound(AudioClip clip, float volume = 1, float pitch = 1)
 	{
@@ -23,9 +23,9 @@ public class SFXManager : MonoBehaviour
 		Singleton<SFXManager>.Instance.StartCoroutine(RequeueSource(source, clip.length));
 	}
 
-	public static void PlaySound(AudioClip clip, Vector3 pos, Transform attachedTo, float spatialBlend = 1, float volume = 1, float pitch = 1)
+	public static void PlaySound(AudioClip clip, Vector3 pos, Transform parent, float spatialBlend = 1, float volume = 1, float pitch = 1)
 	{
-		AudioSource source = GetSource(pos, attachedTo);
+		AudioSource source = GetSource(pos, parent);
 
 		source.clip = clip;
 		source.spatialBlend = spatialBlend;
@@ -49,9 +49,9 @@ public class SFXManager : MonoBehaviour
 		Singleton<SFXManager>.Instance.StartCoroutine(RequeueLoopedSource(source, loopEndCondition));
 	}
 
-	public static void PlayLoopedSound(AudioClip clip, Func<bool> loopEndCondition, Vector3 pos, Transform attachedTo, float spatialBlend = 1, float volume = 1, float pitch = 1)
+	public static void PlayLoopedSound(AudioClip clip, Func<bool> loopEndCondition, Vector3 pos, Transform parent, float spatialBlend = 1, float volume = 1, float pitch = 1)
 	{
-		AudioSource source = GetSource(pos, attachedTo);
+		AudioSource source = GetSource(pos, parent);
 
 		source.clip = clip;
 		source.spatialBlend = spatialBlend;
@@ -63,13 +63,13 @@ public class SFXManager : MonoBehaviour
 		Singleton<SFXManager>.Instance.StartCoroutine(RequeueLoopedSource(source, loopEndCondition));
 	}
 
-	public static IEnumerator RequeueSource(AudioSource source, float clipLength)
+	static IEnumerator RequeueSource(AudioSource source, float clipLength)
 	{
 		yield return new WaitForSeconds(clipLength);
 		sourcePool.Enqueue(source.gameObject);
 	}
 
-	public static IEnumerator RequeueLoopedSource(AudioSource source, Func<bool> loopEndCondition)
+	static IEnumerator RequeueLoopedSource(AudioSource source, Func<bool> loopEndCondition)
 	{
 		while (!loopEndCondition())
 		{
@@ -80,7 +80,7 @@ public class SFXManager : MonoBehaviour
 		sourcePool.Enqueue(source.gameObject);
 	}
 
-	static AudioSource GetSource(Vector3 pos, Transform attachedTo = null)
+	static AudioSource GetSource(Vector3 pos, Transform parent = null)
 	{
 		GameObject obj;
 
@@ -94,7 +94,7 @@ public class SFXManager : MonoBehaviour
 		}
 
 		obj.transform.position = pos;
-		obj.transform.parent = attachedTo == null ? Singleton<SFXManager>.Instance.transform : attachedTo;
+		obj.transform.parent = parent == null ? Singleton<SFXManager>.Instance.transform : parent;
 
 		return obj.GetComponent<AudioSource>();
 	}

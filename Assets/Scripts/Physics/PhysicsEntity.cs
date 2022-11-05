@@ -18,6 +18,11 @@ public class PhysicsEntity : MonoBehaviour, IImpulseReceiver
 		return data.Position;
 	}
 
+	public void ApplyImpulse(Vector3 direction, float strength)
+	{
+		ApplyImpulse(direction, strength, ImpulseSourceType.defaultType);
+	}
+
 	public void ApplyImpulse(Vector3 direction, float strength, ImpulseSourceType type)
 	{
 		//print($"physics impulse applied! Direction: {direction.normalized} Strength: {strength}");
