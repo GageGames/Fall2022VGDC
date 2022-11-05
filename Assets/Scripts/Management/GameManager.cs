@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -10,13 +9,15 @@ public class GameManager : MonoBehaviour
 
 	public void Pause()
 	{
-		Instantiate(GlobalData.GlobalConfigInstance.PauseMenuPrefab);
+		Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.PauseMenuPrefab);
 		IsPaused = true;
+		BroadcastAll("OnGamePause", null);
 	}
 
 	public void Unpause()
 	{
 		IsPaused = false;
+		BroadcastAll("OnGameUnpause", null);
 	}
 
 	public void InitiateSceneLoad(string sceneName)
@@ -24,7 +25,7 @@ public class GameManager : MonoBehaviour
 		// TODO: Loading screens, asynch loading for non-web versions
 		SceneManager.LoadScene(sceneName);
 	}
-	
+
 	public void QuitGame()
 	{
 		Application.Quit();
@@ -40,23 +41,13 @@ public class GameManager : MonoBehaviour
 		BroadcastAll("OnGameEnd", null);
 	}
 
-	void PauseGame()
-	{
-		BroadcastAll("OnGamePause", null);
-	}
-
-	void UnpauseGame()
-	{
-		BroadcastAll("OnGameUnpause", null);
-	}
-
-	public static void BroadcastAll(string methodName, System.Object parameter)
+	public static void BroadcastAll(string methodName, object parameter)
 	{
 		// Get... every gameobject
 		// Yes, every
 		// this_is_fine.jpg
 		// (no really it's fine just don't abuse this)
-		GameObject[] allGameObjects = (GameObject[]) FindObjectsOfType(typeof(GameObject));
+		GameObject[] allGameObjects = (GameObject[])FindObjectsOfType(typeof(GameObject));
 
 		// Ensure that each gameobject exists and has no parent
 		// Note that BroadcastMessage gets sent to all child objects in a heirarchy
