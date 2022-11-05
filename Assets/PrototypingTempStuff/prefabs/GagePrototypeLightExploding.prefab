@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  thisRenderer: {fileID: 0}
   invincible: 0
   player: 0
   maxHealth: 5
@@ -259,6 +260,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  explosionEffectPrefab: {fileID: 7570614128005124301, guid: 54330ac6acb3f7744b3fe236b2821481, type: 3}
 --- !u!1001 &649036681088649500
 PrefabInstance:
   m_ObjectHideFlags: 0

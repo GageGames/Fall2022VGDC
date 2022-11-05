@@ -881,6 +881,11 @@ PrefabInstance:
       objectReference: {fileID: 7670180126584211718}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e3548126c41851f4197d9f2d6c9474f4, type: 3}
+--- !u!1 &1157458480 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6178496350333243880, guid: 6f08c227066ea594cab0524bea1b63d7, type: 3}
+  m_PrefabInstance: {fileID: 6178496351776555847}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193425589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,6 +1264,34 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6178496350333243895, guid: 6f08c227066ea594cab0524bea1b63d7, type: 3}
   m_PrefabInstance: {fileID: 6178496351776555847}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1780044471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6178496350333243889, guid: 6f08c227066ea594cab0524bea1b63d7, type: 3}
+  m_PrefabInstance: {fileID: 6178496351776555847}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157458480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ef73394c6cc1254b9f06a08abc75f64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1780044473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1157458480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bb891edc09b9a4094817f348562c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gun: {fileID: 1780044471}
+  tetherBeamPullEffectPrefab: {fileID: 892984419396705350, guid: 86c74c226b43b6742bf9cb0ad51bf426, type: 3}
+  tetherBeamPushEffectPrefab: {fileID: 1824584983990579323, guid: cec33863a61a43a459c6a2e42d01744b, type: 3}
+  tetherHitPullEffectPrefab: {fileID: 6652571451325675485, guid: 7e3b952d4d71b2a4291f67713e68707a, type: 3}
+  currentTetherBeamEffect: {fileID: 0}
 --- !u!1 &2013569825
 GameObject:
   m_ObjectHideFlags: 0

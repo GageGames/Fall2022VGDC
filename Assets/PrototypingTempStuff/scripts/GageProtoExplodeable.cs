@@ -8,6 +8,7 @@ public class GageProtoExplodeable : MonoBehaviour
     [SerializeField] float explosionMaxDamage;
     [SerializeField] float explosionMaxForce;
     [SerializeField] AnimationCurve explosionForceFallOffGraph;
+    [SerializeField] GameObject explosionEffectPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class GageProtoExplodeable : MonoBehaviour
 
     public void Explode()
     {
+        Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
         //does not need to handle destruction of itself just the blast
         Collider[] colls = Physics.OverlapSphere(transform.position, explosionSize);
         foreach(var coll in colls)
