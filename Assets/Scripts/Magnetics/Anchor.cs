@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// An object that can be tethered onto
+// A point that can be tethered onto
 
 public class Anchor
 {

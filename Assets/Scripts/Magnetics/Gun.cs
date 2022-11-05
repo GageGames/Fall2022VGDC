@@ -3,6 +3,7 @@ using UnityEngine;
 
 // Creates and manages a tether
 
+[RequireComponent(typeof(MagneticEntity))]
 public class Gun : MonoBehaviour
 {
 	public Tether ActiveTether { get; private set; }

@@ -55,6 +55,8 @@ public class Tether : MonoBehaviour
 
 		source.AddTether(this);
 		destination.AddTether(this);
+
+		OnAttach.Invoke();
 	}
 
 	public void Pause()
@@ -74,6 +76,8 @@ public class Tether : MonoBehaviour
 
 		Sender = null;
 		Recipient = null;
+
+		OnDetach.Invoke();
 
 		// TODO: Recycle with object pooling
 		Destroy(gameObject);
