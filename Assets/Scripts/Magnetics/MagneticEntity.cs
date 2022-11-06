@@ -27,7 +27,8 @@ public abstract class MagneticEntity : MonoBehaviour
 
 	protected void OnDisable()
 	{
-		foreach (Tether tether in tethers)
+		Tether[] tetherCache = tethers.ToArray();
+		foreach (Tether tether in tetherCache)
 		{
 			tether.Detach();
 		}

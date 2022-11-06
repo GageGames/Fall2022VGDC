@@ -19,6 +19,13 @@ public class PhysicsData : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 
+		if (!ConfigData)
+		{
+			Debug.LogError("PhysicsData must have config data assigned!");
+			Resistance = 0;
+			return;
+		}
+
 		Resistance = ConfigData.Resistance;
 		rb.mass = ConfigData.Mass;
 	}
