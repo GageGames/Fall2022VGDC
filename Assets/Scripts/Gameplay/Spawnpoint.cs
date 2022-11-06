@@ -27,11 +27,11 @@ public class Spawnpoint : MonoBehaviour
     {
         if (spawnpointType != SpawnpointType.Custom)
         {
-            editorPreviewData = Resources.Load ($"ScriptableObjects/Spawnpoints/{spawnpointType.ToString ()}") as SpawnpointEditorPreviewData;
+            editorPreviewData = Resources.Load ($"Data/Spawnpoints/{spawnpointType.ToString ()}") as SpawnpointEditorPreviewData;
         }
         else
         {
-            editorPreviewData = Instantiate(Resources.Load ($"ScriptableObjects/Spawnpoints/Neutral") as SpawnpointEditorPreviewData);
+            editorPreviewData = Instantiate(Resources.Load ($"Data/Spawnpoints/Neutral") as SpawnpointEditorPreviewData);
         }
 
         customDiscColor = editorPreviewData.discColor;
