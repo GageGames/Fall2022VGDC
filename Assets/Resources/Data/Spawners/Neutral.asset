@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b6e7e1c1902ab44e979d44d5e386e6c, type: 3}
-  m_Name: Enemy
+  m_Name: Neutral
   m_EditorClassIdentifier: 
-  discThickness: 4
-  discColor: {r: 0.9339623, g: 0.4008989, b: 0.6986556, a: 1}
+  discThickness: 2
+  discColor: {r: 0.88712317, g: 0.5729352, b: 0.9716981, a: 1}

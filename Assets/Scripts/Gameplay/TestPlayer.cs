@@ -9,14 +9,18 @@ public class TestPlayer : MonoBehaviour
 	bool pulling = false;
 	bool pushing = false;
 
-	[SerializeField]
-	private GameplayTuningValues val;
-
 	Bounds viewBounds = new Bounds(new Vector2 (0.5f, 0.5f), Vector3.one * 1.2f);
+
+	GameplayTuningValues val;
 
 	private void Awake()
 	{
 		gun = GetComponent<Gun>();
+	}
+
+	private void Start()
+	{
+		val = Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues;
 
 		gun.Strength = val.PlayerGunPullStrength;
 		gun.DetectionRadius = val.PlayerGunDetectionRadius;

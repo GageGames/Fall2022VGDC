@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SpawnpointType
+public enum SpawnType
 {
     Enemy,
     Friendly,
@@ -13,7 +13,7 @@ public enum SpawnpointType
 
 [CreateAssetMenu (menuName = "EditorPreviewData/Spawnpoint")]
 [System.Serializable]
-public class SpawnpointEditorPreviewData : ScriptableObject
+public class SpawnerEditorPreviewData : ScriptableObject
 {
     public float discThickness = 0.5f;
     public Color discColor = Color.white;

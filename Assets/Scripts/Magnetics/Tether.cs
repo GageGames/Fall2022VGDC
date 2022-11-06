@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class Tether : MonoBehaviour
 {
-	// TODO: Move this to a separate script and actually spawn it
-	protected static GameObject TetherEffectsPrefab;
-
 	public Anchor Sender { get; private set; }
 	public Anchor Recipient { get; private set; }
 

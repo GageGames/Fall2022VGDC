@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
 	public float DetectionRadius = 5f;
 
 	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
-	
+
 	private void Awake()
 	{
 		magEntity = GetComponent<MagneticEntity>();
