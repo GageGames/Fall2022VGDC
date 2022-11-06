@@ -9,7 +9,7 @@ public class Forcefield : MonoBehaviour
     [SerializeField] Vector3 direction;
     static ImpulseSourceType type = new ImpulseSourceType(ImpulseSourceTag.Field);
 
-    private void OnTriggerEnter(Collider other) {
+    private void OnTriggerStay(Collider other) {
         Transform Othert = other.transform;
         while (Othert.parent != null)
         {
@@ -17,7 +17,7 @@ public class Forcefield : MonoBehaviour
         }
         IImpulseReceiver receiver = Othert.GetComponent<IImpulseReceiver>();
         if (receiver != null) {
-            receiver.ApplyImpulse(direction, strength, type);
+            receiver.ApplyImpulse(direction, strength * Time.deltaTime, type);
         }    
     }
 }
