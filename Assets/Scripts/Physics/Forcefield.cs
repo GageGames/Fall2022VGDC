@@ -1,26 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
 //Pushes movable objects in a direction. (Functions like a fan)
-public class ForceField : MonoBehaviour
+public class Forcefield : MonoBehaviour
 {
-    public float strength;
-    public Vector3 direction;
-    static ImpulseSourceType type = new ImpulseSourceType(ImpulseSourceTag.Field);
+	public float strength;
+	public Vector3 direction;
+	static ImpulseSourceType type = new ImpulseSourceType(ImpulseSourceTag.Field);
 
-    private void OnTriggerStay(Collider other) {
-        Transform Othert = other.transform;
-        while (Othert.parent != null)
-        {
-            Othert = Othert.parent;
-        }
-        IImpulseReceiver receiver = Othert.GetComponent<IImpulseReceiver>();
-        if (receiver != null) {
-            receiver.ApplyImpulse(direction, strength * Time.deltaTime, type);
-        }    
-    }
+	private void OnTriggerStay(Collider other)
+	{
+		Transform Othert = other.transform;
+		while (Othert.parent != null)
+		{
+			Othert = Othert.parent;
+		}
+		IImpulseReceiver receiver = Othert.GetComponent<IImpulseReceiver>();
+		if (receiver != null)
+		{
+			receiver.ApplyImpulse(direction, strength * Time.deltaTime, type);
+		}
+	}
 
 #if UNITY_EDITOR
 	private void OnDrawGizmosSelected()

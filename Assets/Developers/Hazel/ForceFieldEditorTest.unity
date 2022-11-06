@@ -155,8 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716106597793be1488f5db43180820bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strength: 0
-  direction: {x: 20, y: 0, z: 0}
+  strength: 6.59
+  direction: {x: 0.9941267, y: 0, z: -0.10822282}
 --- !u!65 &8674588
 BoxCollider:
   m_ObjectHideFlags: 0
