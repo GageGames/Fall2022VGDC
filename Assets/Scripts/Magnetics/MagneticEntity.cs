@@ -24,4 +24,12 @@ public abstract class MagneticEntity : MonoBehaviour
 
 	// Applies force to self based on attached tethers
 	protected abstract void ApplyImpulses();
+
+	protected void OnDisable()
+	{
+		foreach (Tether tether in tethers)
+		{
+			tether.Detach();
+		}
+	}
 }

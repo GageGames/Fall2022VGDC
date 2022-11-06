@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // Creates and manages a tether
 
@@ -14,6 +15,8 @@ public class Gun : MonoBehaviour
 	public float Strength = 80f;
 	[HideInInspector]
 	public float DetectionRadius = 5f;
+
+	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
 
 	private void Awake()
 	{
@@ -43,7 +46,7 @@ public class Gun : MonoBehaviour
 			if (dist < closestDist)
 			{
 				// Target is closer, store its anchor and distance
-				output.AvailableTargets.Add(targetAnchor);
+				output.SelectedTarget = targetAnchor;
 				closestDist = dist;
 			}
 		}
@@ -73,6 +76,8 @@ public class Gun : MonoBehaviour
 
 		ActiveTether = Tether.CreateTether(self, fireData.SelectedTarget);
 		ActiveTether.Strength = Strength * (pull ? 1f : -1f);
+
+		OnFire.Invoke(fireData);
 
 		return fireData;
 	}
