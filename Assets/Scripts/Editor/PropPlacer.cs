@@ -44,7 +44,7 @@ public class PropPlacer : EditorWindow
     }
     private void OnDisable () => SceneView.duringSceneGui -= DuringSceneGUI;
 
-    private void OnGUI ()
+	private void OnGUI ()
     {
         so.Update ();
 
@@ -53,10 +53,16 @@ public class PropPlacer : EditorWindow
         {
             case PlacerShape.Sphere:
                 EditorGUILayout.PropertyField (propPlacerDiameter);
-                break;
+				propPlacerDiameter.floatValue = Mathf.Max(propPlacerDiameter.floatValue, 0.1f);
+				break;
             case PlacerShape.Cuboid:
                 EditorGUILayout.PropertyField (propPlacerSize);
-                break;
+				Vector3 placerPoint = propPlacerSize.vector3Value;
+				placerPoint.x = Mathf.Max(placerPoint.x, 0.1f);
+				placerPoint.y = Mathf.Max(placerPoint.y, 0.1f);
+				placerPoint.z = Mathf.Max(placerPoint.z, 0.1f);
+				propPlacerSize.vector3Value = placerPoint;
+				break;
         }
         EditorGUILayout.PropertyField (propSpawnDensity);
 
@@ -69,16 +75,59 @@ public class PropPlacer : EditorWindow
         if (so.ApplyModifiedProperties()) {
             SceneView.RepaintAll ();
         }
+
+		if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
+		{
+			GUI.FocusControl (null);
+			Repaint();
+		}
     }
 
     void DuringSceneGUI (SceneView sceneView)
     {
-        Transform camTf = sceneView.camera.transform;
+        Ray ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
 
-        Ray ray = new Ray (camTf.position, camTf.forward);
-        if (Physics.Raycast (ray, out RaycastHit hit))
+		if (Event.current.type == EventType.MouseMove)
+		{
+			sceneView.Repaint();
+		}
+
+		bool holdingAlt = (Event.current.modifiers & EventModifiers.Alt) != 0;
+
+		if (Event.current.type == EventType.ScrollWheel && holdingAlt)
+		{
+			float scrollDir = Mathf.Sign (Event.current.delta.y);
+
+			so.Update();
+
+			switch (placerShape)
+			{
+				case PlacerShape.Sphere:
+					propPlacerDiameter.floatValue += scrollDir;
+					propPlacerDiameter.floatValue = Mathf.Max(propPlacerDiameter.floatValue, 0.1f);
+					break;
+				case PlacerShape.Cuboid:
+					propPlacerSize.vector3Value += Vector3.one * scrollDir;
+					Vector3 placerPoint = propPlacerSize.vector3Value;
+					placerPoint.x = Mathf.Max(placerPoint.x, 0.1f);
+					placerPoint.y = Mathf.Max(placerPoint.y, 0.1f);
+					placerPoint.z = Mathf.Max(placerPoint.z, 0.1f);
+					propPlacerSize.vector3Value = placerPoint;
+					break;
+			}
+
+			so.ApplyModifiedProperties();
+
+			Repaint();
+			SceneView.RepaintAll();
+
+			Event.current.Use();
+		}
+
+
+
+		if (Physics.Raycast (ray, out RaycastHit hit))
         {
-            
             DrawPlacer (hit.point, hit.normal);
         }
 
