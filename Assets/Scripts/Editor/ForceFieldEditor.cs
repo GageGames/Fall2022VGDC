@@ -5,7 +5,7 @@ using UnityEditor;
 using Unity.VisualScripting;
 
 [CanEditMultipleObjects]
-[CustomEditor(typeof(Forcefield))]
+[CustomEditor(typeof(ForceField))]
 public class ForceFieldEditor : Editor
 {
 	SerializedObject so;

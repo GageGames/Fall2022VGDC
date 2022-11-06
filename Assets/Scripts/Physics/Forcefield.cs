@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 //Pushes movable objects in a direction. (Functions like a fan)
-public class Forcefield : MonoBehaviour
+public class ForceField : MonoBehaviour
 {
     public float strength;
     public Vector3 direction;
