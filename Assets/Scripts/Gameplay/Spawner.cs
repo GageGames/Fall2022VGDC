@@ -8,7 +8,8 @@ using UnityEditor;
 public class Spawner : MonoBehaviour
 {
 	// Spawning is equally likely to occur in the entire area within the circle defined by maxRadius.
-	public float SpawnRadius;
+	public float MaxSpawnRadius = 2f;
+	public float MinSpawnRadius = 0f;
 
 	// Spawns at least min and at most max entities
 	public int MaxSpawnQuantity;
@@ -31,7 +32,7 @@ public class Spawner : MonoBehaviour
 		Vector3 pos = gameObject.transform.position;
 		for (int i = 0; i < Random.Range(MinSpawnQuantity, MaxSpawnQuantity); ++i)
 		{
-			float r = Mathf.Sqrt(Random.Range(0, SpawnRadius * SpawnRadius));
+			float r = Mathf.Sqrt(Random.Range(MinSpawnRadius * MinSpawnRadius, MaxSpawnRadius * MaxSpawnRadius));
 			float theta = Random.Range(0.0f, 2.0f * Mathf.PI);
 
 			float relativeY = r * Mathf.Sin(theta);
@@ -74,7 +75,9 @@ public class Spawner : MonoBehaviour
 	{
 		Color colorCache = Handles.color;
 		Handles.color = editorPreviewData.discColor;
-		Handles.DrawWireDisc(transform.position, transform.up, SpawnRadius, editorPreviewData.discThickness);
+		Handles.DrawWireDisc(transform.position, transform.up, MaxSpawnRadius, editorPreviewData.discThickness);
+		Handles.color = editorPreviewData.discColor * new Color (1, 1, 1, 0.7f);
+		Handles.DrawWireDisc(transform.position, transform.up, MinSpawnRadius, editorPreviewData.discThickness * 0.5f);
 		Handles.color = colorCache;
 	}
 #endif

@@ -7,7 +7,8 @@ using UnityEngine;
 public class SpawnerEditor : Editor
 {
 	SerializedObject so;
-	SerializedProperty propSpawnRadius;
+	SerializedProperty propMaxSpawnRadius;
+	SerializedProperty propMinSpawnRadius;
 	SerializedProperty propSpawnpointType;
 
 	SerializedProperty propMaxSpawnQuantity;
@@ -20,13 +21,15 @@ public class SpawnerEditor : Editor
 
 	float selectionBuffer = 10f;
 
-	int hotControlID = 0;
+	int maxHotControlID = 0;
+	int minHotControlID = 0;
 
 	private void OnEnable()
 	{
 		so = serializedObject;
 
-		propSpawnRadius = so.FindProperty("SpawnRadius");
+		propMaxSpawnRadius = so.FindProperty("MaxSpawnRadius");
+		propMinSpawnRadius = so.FindProperty("MinSpawnRadius");
 		propSpawnpointType = so.FindProperty("spawnType");
 
 		propMaxSpawnQuantity = so.FindProperty("MaxSpawnQuantity");
@@ -42,7 +45,8 @@ public class SpawnerEditor : Editor
 	{
 		so.Update();
 
-		EditorGUILayout.PropertyField(propSpawnRadius);
+		EditorGUILayout.PropertyField(propMaxSpawnRadius);
+		EditorGUILayout.PropertyField(propMinSpawnRadius);
 
 		EditorGUILayout.PropertyField(propMaxSpawnQuantity);
 		EditorGUILayout.PropertyField(propMinSpawnQuantity);
@@ -75,7 +79,8 @@ public class SpawnerEditor : Editor
 
 	private void OnSceneGUI()
 	{
-		hotControlID = GUIUtility.GetControlID("Spawn Preview Circle".GetHashCode(), FocusType.Passive);
+		maxHotControlID = GUIUtility.GetControlID("Spawn Max Preview Circle".GetHashCode(), FocusType.Passive);
+		minHotControlID = GUIUtility.GetControlID("Spawn Min Preview Circle".GetHashCode(), FocusType.Passive);
 
 		foreach (Object targetObject in so.targetObjects)
 		{
@@ -83,13 +88,17 @@ public class SpawnerEditor : Editor
 
 			Plane dragPlane = new Plane(Vector3.up, targetOrigin);
 
-			float radius = propSpawnRadius.floatValue;
-			DrawSpawnRadius(targetOrigin, radius, dragPlane, ref radius);
-			propSpawnRadius.floatValue = radius;
+			float maxRadius = propMaxSpawnRadius.floatValue;
+			DrawSpawnRadius(maxHotControlID, targetOrigin, maxRadius, dragPlane, ref maxRadius);
+			propMaxSpawnRadius.floatValue = Mathf.Max (maxRadius, 0.5f);
+
+			float minRadius = propMinSpawnRadius.floatValue;
+			DrawSpawnRadius(minHotControlID, targetOrigin, minRadius, dragPlane, ref minRadius);
+			propMinSpawnRadius.floatValue = minRadius;
 		}
 	}
 
-	void DrawSpawnRadius(Vector3 centerPos, float radius, Plane draggingPlane, ref float newRadius)
+	void DrawSpawnRadius(int hotControlID, Vector3 centerPos, float radius, Plane draggingPlane, ref float newRadius)
 	{
 		float size = HandleUtility.GetHandleSize(centerPos);
 		float selectionRange = selectionBuffer * size;
@@ -127,7 +136,7 @@ public class SpawnerEditor : Editor
 					{
 						Vector3 intersectPoint = r.GetPoint(dist);
 
-						float radiusDist = Mathf.Max((intersectPoint - centerPos).magnitude, 0.5f);
+						float radiusDist = (intersectPoint - centerPos).magnitude;
 						//Debug.Log (projectedDist);
 
 						newRadius = radiusDist;

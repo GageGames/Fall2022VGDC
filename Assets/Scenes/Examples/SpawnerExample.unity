@@ -410,7 +410,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873097eb908f8415fa3437589ef8f3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRadius: 3.8923585
+  MaxSpawnRadius: 3.2315075
+  MinSpawnRadius: 0
   MaxSpawnQuantity: 2
   MinSpawnQuantity: 1
   spawnPrefab: {fileID: 2303974895611222557, guid: 05e90e899db3b044b94041c44053a6ef, type: 3}
@@ -626,7 +627,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 873097eb908f8415fa3437589ef8f3ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRadius: 7.7900753
+  MaxSpawnRadius: 8.420611
+  MinSpawnRadius: 1.7902179
   MaxSpawnQuantity: 4
   MinSpawnQuantity: 2
   spawnPrefab: {fileID: 4548827022190203505, guid: 27d1f4605b510cf4b8b7f26e8672ed35, type: 3}
