@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  thisRenderer: {fileID: 0}
   invincible: 0
   player: 0
   maxHealth: 8
