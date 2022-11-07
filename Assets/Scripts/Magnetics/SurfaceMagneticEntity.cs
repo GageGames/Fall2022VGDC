@@ -27,8 +27,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 		curAnchors.Add(output);
 
 		// Prep anchor to be recycled when detached from
-		print(output);
-		output.OnDetachTether.AddListener((tether) => RemoveTetheredAnchor(tether));
+		output.OnDetachTether.AddListener(RemoveTetheredAnchor);
 
 		return output;
 	}
@@ -61,8 +60,12 @@ public class SurfaceMagneticEntity : MagneticEntity
 		}
 	}
 
-	protected override void ReadTethers()
+	protected override void ApplyImpulses()
 	{
+		// TODO: is this the right logic?
+		// Brain fried, but I think it's looping too much depth
+		// There's exactly one anchor for every tether,
+		// so you would need to check if every tether has the anchor in question
 		foreach (Anchor anchor in curAnchors)
 		{
 			foreach (Tether tether in tethers)
@@ -70,6 +73,7 @@ public class SurfaceMagneticEntity : MagneticEntity
 				Vector3 pos = tether.GetOpposite(anchor).Position;
 				float strength = tether.Strength * Time.deltaTime;
 				Vector3 dir = pos - anchor.Position;
+				dir.y = 0;
 				physEntity.ApplyImpulse(dir, strength, impulseSourceType);
 			}
 		}

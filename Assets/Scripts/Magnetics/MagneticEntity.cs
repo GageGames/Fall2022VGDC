@@ -7,13 +7,13 @@ public abstract class MagneticEntity : MonoBehaviour
 {
 	public abstract Anchor GetAnchor(Vector3 targetPosition);
 
-	protected List<Tether> tethers = new List<Tether> ();
+	protected List<Tether> tethers = new List<Tether>();
 
 	protected void Update()
 	{
 		UpdateAnchorage();
 		RefreshTethers();
-		ReadTethers();
+		ApplyImpulses();
 	}
 
 	// Updates self anchor(s)
@@ -23,5 +23,14 @@ public abstract class MagneticEntity : MonoBehaviour
 	protected abstract void RefreshTethers();
 
 	// Applies force to self based on attached tethers
-	protected abstract void ReadTethers();
+	protected abstract void ApplyImpulses();
+
+	protected void OnDisable()
+	{
+		Tether[] tetherCache = tethers.ToArray();
+		foreach (Tether tether in tetherCache)
+		{
+			tether.Detach();
+		}
+	}
 }

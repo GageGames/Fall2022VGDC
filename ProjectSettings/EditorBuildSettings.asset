@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MagneticsTest.unity
-    guid: 22a633f27923be84aaa66a4cffeccf1e
+    path: Assets/PrototypingTempStuff/scenes/Tutorial Prototype2.unity
+    guid: 9d0a4af042da9244db283fa04d8b7cbd
   m_configObjects: {}

@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// An object that can be tethered onto
+// A point that can be tethered onto
 
 public class Anchor
 {
 	public Vector3 Position { get; private set; }
 
-	public UnityEvent<Tether> OnAttachTether;
-	public UnityEvent<Tether> OnDetachTether;
+	public UnityEvent<Tether> OnAttachTether = new UnityEvent<Tether>();
+	public UnityEvent<Tether> OnDetachTether = new UnityEvent<Tether>();
 
 	protected List<Tether> attachedTethers = new List<Tether>();
 

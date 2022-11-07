@@ -1,14 +1,15 @@
 using UnityEngine;
-using static Unity.VisualScripting.Member;
+using UnityEngine.Events;
 
 // Connects two anchor points with a physics force and allows those anchor points to refer to each other
 
 public class Tether : MonoBehaviour
 {
-	protected static Tether TetherPrefab;
-
 	public Anchor Sender { get; private set; }
 	public Anchor Recipient { get; private set; }
+
+	public UnityEvent OnAttach = new UnityEvent();
+	public UnityEvent OnDetach = new UnityEvent();
 
 	// Current cached strength according to tether data
 	public float Strength
@@ -51,6 +52,8 @@ public class Tether : MonoBehaviour
 
 		source.AddTether(this);
 		destination.AddTether(this);
+
+		OnAttach.Invoke();
 	}
 
 	public void Pause()
@@ -65,11 +68,13 @@ public class Tether : MonoBehaviour
 
 	public void Detach()
 	{
-		Sender.RemoveTether(this);
-		Recipient.RemoveTether(this);
+		Sender?.RemoveTether(this);
+		Recipient?.RemoveTether(this);
 
 		Sender = null;
 		Recipient = null;
+
+		OnDetach.Invoke();
 
 		// TODO: Recycle with object pooling
 		Destroy(gameObject);
