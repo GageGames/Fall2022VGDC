@@ -28,5 +28,6 @@ public class PhysicsData : MonoBehaviour
 
 		Resistance = ConfigData.Resistance;
 		rb.mass = ConfigData.Mass;
+		rb.isKinematic = ConfigData.Kinematic;
 	}
 }

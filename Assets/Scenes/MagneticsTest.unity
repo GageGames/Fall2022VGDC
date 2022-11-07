@@ -796,6 +796,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Strength: 80
   DetectionRadius: 5
+  OnFire:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &959706305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c246b8dd6d0ae04aa6befb2cb6d2be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  val: {fileID: 11400000, guid: 00f8035bb10c16d4ebd0ac1960762351, type: 2}
 --- !u!4 &959706306
 Transform:
   m_ObjectHideFlags: 0
@@ -1376,7 +1378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConfigData: {fileID: 11400000, guid: b410327de482fcc4ba669b10fd5db25e, type: 2}
+  ConfigData: {fileID: 11400000, guid: a16354024d256274d9201090dce67730, type: 2}
   Resistance: 0.95
 --- !u!65 &1886163517
 BoxCollider:
