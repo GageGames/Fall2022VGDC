@@ -68,8 +68,8 @@ public class Tether : MonoBehaviour
 
 	public void Detach()
 	{
-		Sender.RemoveTether(this);
-		Recipient.RemoveTether(this);
+		Sender?.RemoveTether(this);
+		Recipient?.RemoveTether(this);
 
 		Sender = null;
 		Recipient = null;

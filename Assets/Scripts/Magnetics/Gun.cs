@@ -68,14 +68,11 @@ public class Gun : MonoBehaviour
 
 		Anchor self = magEntity.GetAnchor(transform.position);
 
-		if (ActiveTether != null)
-		{
-			ActiveTether.Detach();
-			ActiveTether = null;
-		}
+		Detach();
 
 		ActiveTether = Tether.CreateTether(self, fireData.SelectedTarget);
 		ActiveTether.Strength = Strength * (pull ? 1f : -1f);
+		ActiveTether.OnDetach.AddListener(() => ActiveTether = null);
 
 		OnFire.Invoke(fireData);
 
@@ -87,11 +84,9 @@ public class Gun : MonoBehaviour
 	{
 		//print("Detaching Gun");
 
-		if (ActiveTether != null)
-		{
-			ActiveTether.Detach();
-			ActiveTether = null;
-		}
+		ActiveTether?.Detach();
+
+		ActiveTether = null;
 	}
 
 	[Tooltip("Finds all magnetic entities within range of the target position")]
