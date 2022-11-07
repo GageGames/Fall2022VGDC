@@ -38,8 +38,7 @@ public class Spawner : MonoBehaviour
 			float relativeY = r * Mathf.Sin(theta);
 			float relativeX = r * Mathf.Cos(theta);
 
-			GameObject newObject = Instantiate(spawnPrefab);
-			newObject.transform.position = new Vector3(pos.x + relativeX, pos.y, pos.z + relativeY);
+			Instantiate(spawnPrefab, new Vector3(pos.x + relativeX, pos.y, pos.z + relativeY), spawnPrefab.transform.rotation);
 		}
 	}
 

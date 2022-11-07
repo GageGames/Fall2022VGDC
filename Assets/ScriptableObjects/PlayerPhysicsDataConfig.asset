@@ -15,3 +15,4 @@ MonoBehaviour:
   Kinematic: 0
   Resistance: 0.658
   Mass: 1
+  physicMaterial: {fileID: 13400000, guid: 15d865be2defe404fa083a53e629c466, type: 2}

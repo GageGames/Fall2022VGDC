@@ -16,4 +16,7 @@ public class PhysicsDataConfig : ScriptableObject
 	[Tooltip("The mass of the rigidbody associated with this object")]
 	[ConditionalField("Kinematic", true)]
 	public float Mass = 1;
+
+	[Tooltip("The physics material of the collider(s) associated with this object")]
+	public PhysicMaterial physicMaterial;
 }
