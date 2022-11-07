@@ -80,7 +80,7 @@ public class TestPlayer : MonoBehaviour
 
 			if (!viewBounds.Contains(projectedPos))
 			{
-				print($"{projectedPos} is outside view bounds {viewBounds}!");
+				//print($"{projectedPos} is outside view bounds {viewBounds}!");
 				gun.Detach();
 			}
 		}
