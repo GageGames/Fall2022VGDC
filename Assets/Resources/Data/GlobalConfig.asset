@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd036941cbb24dd4d9e5d56a146b97df, type: 3}
   m_Name: GlobalConfig
   m_EditorClassIdentifier: 
-  PauseMenuPrefab: {fileID: 5022587926504884387, guid: f982560ac82418944a07281c87be4d91, type: 3}
+  PauseMenuPrefab: {fileID: 7155003281717498884, guid: 817c6009bd38c7c42a3c01451bb401f5, type: 3}
+  PrimaryGameplayTuningValues: {fileID: 11400000, guid: 00f8035bb10c16d4ebd0ac1960762351, type: 2}
