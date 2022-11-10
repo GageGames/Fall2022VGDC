@@ -1,0 +1,17 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "NewHealthDataConfig", menuName = "Configs/Health Data Config")]
+[System.Serializable]
+public class HealthDataConfig : ScriptableObject
+{
+	[Tooltip("The maximum health this object can heal to")]
+	public float MaxHealth = 100;
+
+	[Tooltip("This object's starting health")]
+	public float StartingHealth = 100;
+
+	private void OnValidate() {
+		MaxHealth = Mathf.Max(0, MaxHealth);
+		StartingHealth = Mathf.Max(0, StartingHealth);
+	}
+}
