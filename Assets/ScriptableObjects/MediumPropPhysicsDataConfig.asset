@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MediumPropPhysicsDataConfig
   m_EditorClassIdentifier: 
   Kinematic: 0
-  Resistance: 0.658
-  Mass: 2
+  Resistance: 0
+  Mass: 1
   physicMaterial: {fileID: 13400000, guid: 9efd4d8697ab1bb48a85081eee030c9c, type: 2}

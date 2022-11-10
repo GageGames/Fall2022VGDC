@@ -11,21 +11,28 @@ public class GameplayTuningValues : ScriptableObject
 	public float PlayerGunDetectionRadius = 5f;
 
 	[Expandable] public PhysicsDataConfig PlayerPhysicsDataConfig;
-	//[Expandable] public HealthDataConfig PlayerHealthDataConfig;
+	[Expandable] public HealthDataConfig PlayerHealthDataConfig;
+
+	[Expandable] public SpeedImpactorConfig PlayerSpeedImpactorConfig;
 
 	[Header("Zombie Enemy")]
 
 	[Expandable] public PhysicsDataConfig ZombiePhysicsDataConfig;
-	//[Expandable] public HealthDataConfig ZombieHealthDataConfig;
+	[Expandable] public HealthDataConfig ZombieHealthDataConfig;
+
+	[Expandable] public SpeedImpactorConfig ZombieSpeedImpactorConfig;
 
 	[Header("Props")]
 
 	[Expandable] public PhysicsDataConfig LightPropPhysicsDataConfig;
-	//[Expandable] public HealthDataConfig LightPropHealthDataConfig;
+	[Expandable] public HealthDataConfig LightPropHealthDataConfig;
 	[Expandable] public PhysicsDataConfig MediumPropPhysicsDataConfig;
-	//[Expandable] public HealthDataConfig MediumPropHealthDataConfig;
+	[Expandable] public HealthDataConfig MediumPropHealthDataConfig;
 	[Expandable] public PhysicsDataConfig HeavyPropPhysicsDataConfig;
-	//[Expandable] public HealthDataConfig HeavyPropHealthDataConfig;
+	[Expandable] public HealthDataConfig HeavyPropHealthDataConfig;
+
 	[Expandable] public PhysicsDataConfig StaticPropPhysicsDataConfig;
-	//[Expandable] public HealthDataConfig StaticPropHealthDataConfig;
+	[Expandable] public HealthDataConfig StaticPropHealthDataConfig;
+
+	[Expandable] public SpeedImpactorConfig DynamicPropSpeedImpactorConfig;
 }

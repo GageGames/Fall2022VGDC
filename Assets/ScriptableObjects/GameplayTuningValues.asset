@@ -12,12 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9bd038c70294347afb98445e6472fe, type: 3}
   m_Name: GameplayTuningValues
   m_EditorClassIdentifier: 
-  PlayerGunPullStrength: 80
-  PlayerGunPushStrength: 50
+  PlayerGunPullStrength: 20
+  PlayerGunPushStrength: 15
   PlayerGunDetectionRadius: 5
   PlayerPhysicsDataConfig: {fileID: 11400000, guid: dd88e5402ac62d945af817f48c929c1c, type: 2}
+  PlayerHealthDataConfig: {fileID: 0}
   ZombiePhysicsDataConfig: {fileID: 11400000, guid: ca39a50f793c5fe4f9136f136388ffbb, type: 2}
+  ZombieHealthDataConfig: {fileID: 0}
   LightPropPhysicsDataConfig: {fileID: 11400000, guid: 5e1a49df50662f14fab70c4cebde89dd, type: 2}
+  LightPropHealthDataConfig: {fileID: 0}
   MediumPropPhysicsDataConfig: {fileID: 11400000, guid: 657d29897a8a5a142ba94b7e8fc792d7, type: 2}
+  MediumPropHealthDataConfig: {fileID: 0}
   HeavyPropPhysicsDataConfig: {fileID: 11400000, guid: b410327de482fcc4ba669b10fd5db25e, type: 2}
+  HeavyPropHealthDataConfig: {fileID: 0}
   StaticPropPhysicsDataConfig: {fileID: 11400000, guid: a16354024d256274d9201090dce67730, type: 2}
+  StaticPropHealthDataConfig: {fileID: 0}

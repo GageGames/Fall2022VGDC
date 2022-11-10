@@ -1,19 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Impactor : MonoBehaviour
 {
+	[HideInInspector]
+	public float ConstantContactDamage = 0f;
+	[HideInInspector]
+	public float ConstantContactKnockback = 0f;
 
-	public float ContactDamage = 0f;
-	//DamageSourceType contactDamageSourceType = new DamageSourceType(DamageSourceTag.Contact);
+	public ImpactorConfig impactorConfig;
 
-	public float ContactKnockback = 0f;
+	HealthEffectSourceType contactDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Impact);
 	ImpulseSourceType contactImpulseSourceType = new ImpulseSourceType(ImpulseSourceTag.PhysicalKnockback);
 
-	private void OnValidate()
+	protected virtual void OnValidate()
 	{
-		contactImpulseSourceType.impulseSourceTag = ContactDamage <= Mathf.Epsilon ? ImpulseSourceTag.PhysicalKnockback : ImpulseSourceTag.DangerousKnockback;
+		contactImpulseSourceType.impulseSourceTag = ConstantContactDamage <= Mathf.Epsilon ? ImpulseSourceTag.PhysicalKnockback : ImpulseSourceTag.DangerousKnockback;
+	}
+
+	protected virtual void Awake()
+	{
+		if (!impactorConfig)
+		{
+			Debug.LogError("No ImpactorConfig assigned!");
+			return;
+		}
+
+		ConstantContactDamage = impactorConfig.ConstantContactDamage;
+		ConstantContactKnockback = impactorConfig.ConstantContactKnockback;
 	}
 
 	private void OnCollisionEnter(Collision collision)
@@ -27,9 +40,9 @@ public class Impactor : MonoBehaviour
 		ApplyImpact(colTrans);
 	}
 
-	protected virtual void ApplyImpact (Transform other)
+	protected virtual void ApplyImpact(Transform other)
 	{
-		other.GetComponent<IImpulseReceiver>()?.ApplyImpulse((other.transform.position - transform.position).normalized, ContactKnockback, contactImpulseSourceType);
-		//colTrans.GetComponent<Health>()?.Damage(ContactDamage, contactDamageSourceType);
+		other.GetComponent<IImpulseReceiver>()?.ApplyImpulse((other.transform.position - transform.position).normalized, ConstantContactKnockback, contactImpulseSourceType);
+		other.GetComponent<HealthEntity>()?.ApplyDamage(ConstantContactDamage, contactDamageSourceType);
 	}
 }

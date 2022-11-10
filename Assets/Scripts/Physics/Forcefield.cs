@@ -17,12 +17,7 @@ public class Forcefield : MonoBehaviour
 
 	private void OnTriggerStay(Collider other)
 	{
-		Transform Othert = other.transform;
-		while (Othert.parent != null)
-		{
-			Othert = Othert.parent;
-		}
-		IImpulseReceiver receiver = Othert.GetComponent<IImpulseReceiver>();
+		IImpulseReceiver receiver = other.GetComponentInParent<IImpulseReceiver>();
 		if (receiver != null)
 		{
 			receiver.ApplyImpulse(direction, strength * Time.deltaTime, type);

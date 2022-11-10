@@ -1,44 +1,74 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PhysicsData))]
 public class SpeedImpactor : Impactor
 {
+	[HideInInspector]
+	public float ImpactThreshold = 5f;
+
 	PhysicsData physData;
-	//Health health;
+	HealthEntity health;
 
-	//DamageSourceType impactDamageSourceType = new DamageSourceType(DamageSourceTag.Impact);
+	HealthEffectSourceType impactDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Impact);
 
-	private void Awake()
+	protected override void Awake()
 	{
+		if (!impactorConfig)
+		{
+			Debug.LogError("No ImpactorConfig assigned!");
+			return;
+		}
+
+		ConstantContactDamage = impactorConfig.ConstantContactDamage;
+		ConstantContactKnockback = impactorConfig.ConstantContactKnockback;
+
 		physData = GetComponent<PhysicsData>();
-		//health = GetComponent<Health>();
+		health = GetComponent<HealthEntity>();
 	}
 
-	protected override void ApplyImpact (Transform other)
+	protected override void OnValidate()
 	{
-		base.ApplyImpact (other);
+		base.OnValidate();
+
+		if (impactorConfig == null) return;
+
+		if (impactorConfig.GetType() != typeof(SpeedImpactorConfig))
+		{
+			Debug.LogError("ImpactorConfig assigned must be of type SpeedImpactorConfig");
+			impactorConfig = null;
+		}
+	}
+
+	protected override void ApplyImpact(Transform other)
+	{
+		base.ApplyImpact(other);
 
 		float otherMass = 1f;
-		float otherSpeed = 0f;
+		Vector3 velocityDifferential = physData.rb.velocity;
 
 		if (other.GetComponent<PhysicsData>())
 		{
 			Rigidbody otherRb = other.GetComponent<PhysicsData>().rb;
 			otherMass = otherRb.mass;
-			otherSpeed = otherRb.velocity.magnitude;
-		} else if (other.GetComponent<Rigidbody>())
+			velocityDifferential -= otherRb.velocity;
+		}
+		else if (other.GetComponent<Rigidbody>())
 		{
 			Debug.LogWarning("All Rigidbodies that can be impacted should have PhysicsData somewhere on them!");
 			Rigidbody otherRb = other.GetComponent<Rigidbody>();
 			otherMass = otherRb.mass;
-			otherSpeed = otherRb.velocity.magnitude;
+			velocityDifferential -= otherRb.velocity;
 		}
 
-		float dmg = (physData.rb.mass * physData.rb.velocity.magnitude) + (otherMass * otherSpeed);
+		if (velocityDifferential.magnitude * (physData.rb.mass + otherMass) < ImpactThreshold)
+		{
+			Debug.Log("Impact damage below threshold, not applied");
+			return;
+		}
 
-		//colTrans.GetComponent<Health>()?.Damage(dmg, impactDamageSourceType);
-		//health?.Damage(dmg, impactDamageSourceType);
+		other.GetComponent<HealthEntity>()?.ApplyDamage(physData.rb.mass * velocityDifferential.magnitude, impactDamageSourceType);
+		health?.ApplyDamage(otherMass * velocityDifferential.magnitude, impactDamageSourceType);
+
+		Debug.Log($"Applied {otherMass * velocityDifferential.magnitude} damage to self and {physData.rb.mass * velocityDifferential.magnitude} to other");
 	}
 }
