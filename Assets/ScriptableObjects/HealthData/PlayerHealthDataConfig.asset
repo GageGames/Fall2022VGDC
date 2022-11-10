@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f987ed77ea38740bad16d031698492, type: 3}
-  m_Name: PlayerSpeedImpactorDataConfig
+  m_Script: {fileID: 11500000, guid: cf5c2eecdac36fb45946dda2e9a74b7e, type: 3}
+  m_Name: PlayerHealthDataConfig
   m_EditorClassIdentifier: 
-  ConstantContactDamage: 0
-  ConstantContactKnockback: 0
-  ImpactThreshold: 1
+  MaxHealth: 100
+  StartingHealth: 100
