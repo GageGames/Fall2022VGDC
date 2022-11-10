@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 // Creates and manages a tether
 
+[RequireComponent(typeof(MagneticEntity))]
 public class Gun : MonoBehaviour
 {
 	public Tether ActiveTether { get; private set; }
@@ -13,6 +15,8 @@ public class Gun : MonoBehaviour
 	public float Strength = 80f;
 	[HideInInspector]
 	public float DetectionRadius = 5f;
+
+	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
 
 	private void Awake()
 	{
@@ -42,7 +46,7 @@ public class Gun : MonoBehaviour
 			if (dist < closestDist)
 			{
 				// Target is closer, store its anchor and distance
-				output.AvailableTargets.Add(targetAnchor);
+				output.SelectedTarget = targetAnchor;
 				closestDist = dist;
 			}
 		}
@@ -64,14 +68,13 @@ public class Gun : MonoBehaviour
 
 		Anchor self = magEntity.GetAnchor(transform.position);
 
-		if (ActiveTether != null)
-		{
-			ActiveTether.Detach();
-			ActiveTether = null;
-		}
+		Detach();
 
 		ActiveTether = Tether.CreateTether(self, fireData.SelectedTarget);
 		ActiveTether.Strength = Strength * (pull ? 1f : -1f);
+		ActiveTether.OnDetach.AddListener(() => ActiveTether = null);
+
+		OnFire.Invoke(fireData);
 
 		return fireData;
 	}
@@ -81,11 +84,9 @@ public class Gun : MonoBehaviour
 	{
 		//print("Detaching Gun");
 
-		if (ActiveTether != null)
-		{
-			ActiveTether.Detach();
-			ActiveTether = null;
-		}
+		ActiveTether?.Detach();
+
+		ActiveTether = null;
 	}
 
 	[Tooltip("Finds all magnetic entities within range of the target position")]

@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4c86cf1b42eff4a8cf9d990d4c7492, type: 3}
   m_Name: HeavyPropPhysicsDataConfig
   m_EditorClassIdentifier: 
+  Kinematic: 0
   Resistance: 0.796
   Mass: 5
+  physicMaterial: {fileID: 13400000, guid: 9efd4d8697ab1bb48a85081eee030c9c, type: 2}

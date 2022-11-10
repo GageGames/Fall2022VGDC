@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4c86cf1b42eff4a8cf9d990d4c7492, type: 3}
   m_Name: PlayerPhysicsDataConfig
   m_EditorClassIdentifier: 
+  Kinematic: 0
   Resistance: 0.658
   Mass: 1
+  physicMaterial: {fileID: 13400000, guid: 15d865be2defe404fa083a53e629c466, type: 2}

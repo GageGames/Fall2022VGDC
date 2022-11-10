@@ -19,7 +19,30 @@ public class PhysicsData : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>();
 
+		if (!ConfigData)
+		{
+			Debug.LogError("PhysicsData must have config data assigned!");
+			Resistance = 0;
+			return;
+		}
+
 		Resistance = ConfigData.Resistance;
 		rb.mass = ConfigData.Mass;
+		rb.isKinematic = ConfigData.Kinematic;
+
+		ApplyPhysicMaterial(transform);
+	}
+
+	void ApplyPhysicMaterial (Transform transform)
+	{
+		if (transform.GetComponent<Collider>())
+		{
+			transform.GetComponent<Collider>().material = ConfigData.physicMaterial;
+		}
+
+		foreach (Transform child in transform)
+		{
+			ApplyPhysicMaterial(child);
+		}
 	}
 }

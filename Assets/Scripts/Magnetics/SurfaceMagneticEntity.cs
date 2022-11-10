@@ -60,8 +60,12 @@ public class SurfaceMagneticEntity : MagneticEntity
 		}
 	}
 
-	protected override void ReadTethers()
+	protected override void ApplyImpulses()
 	{
+		// TODO: is this the right logic?
+		// Brain fried, but I think it's looping too much depth
+		// There's exactly one anchor for every tether,
+		// so you would need to check if every tether has the anchor in question
 		foreach (Anchor anchor in curAnchors)
 		{
 			foreach (Tether tether in tethers)

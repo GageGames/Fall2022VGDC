@@ -12,6 +12,8 @@ public enum ImpulseSourceTag
 
 public struct ImpulseSourceType
 {
+	public static ImpulseSourceType defaultType = new ImpulseSourceType(ImpulseSourceTag.Generic);
+
 	public ImpulseSourceTag impulseSourceTag;
 
 	public ImpulseSourceType(ImpulseSourceTag istg)
@@ -22,6 +24,8 @@ public struct ImpulseSourceType
 
 public interface IImpulseReceiver
 {
+	public void ApplyImpulse(Vector3 direction, float strength);
+	
 	public void ApplyImpulse(Vector3 direction, float strength, ImpulseSourceType type);
 }
 
