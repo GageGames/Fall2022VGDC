@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public struct HealthEffectSourceType
 {
@@ -30,8 +31,11 @@ public class HealthEntity : MonoBehaviour
 {
 	private HealthData data;
 
-	void Awake()
-	{
+	public UnityEvent OnDamage = new UnityEvent();
+	public UnityEvent OnHeal = new UnityEvent();
+	public UnityEvent OnDeath = new UnityEvent();
+
+	void Awake() {
 		data = GetComponent<HealthData>();
 	}
 
@@ -49,12 +53,21 @@ public class HealthEntity : MonoBehaviour
 	public float ApplyDamage(float amount, HealthEffectSourceType damageSourceType)
 	{
 		data.CurrentHealth = Mathf.Max(0, data.CurrentHealth - amount);
+
+		OnDamage.Invoke();
+		if (data.CurrentHealth == 0) {
+			OnDeath.Invoke();
+		}
+
 		return data.CurrentHealth;
 	}
 
 	public float ApplyHeal(float amount, HealthEffectSourceType healingSourceType)
 	{
 		data.CurrentHealth = Mathf.Min(data.MaxHealth, data.CurrentHealth + amount);
+
+		OnHeal.Invoke();
+
 		return data.CurrentHealth;
 	}
 }
