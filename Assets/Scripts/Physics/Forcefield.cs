@@ -6,7 +6,14 @@ public class Forcefield : MonoBehaviour
 {
 	public float strength;
 	public Vector3 direction;
+	public AudioClip SoundEffect;
+
 	static ImpulseSourceType type = new ImpulseSourceType(ImpulseSourceTag.Field);
+
+	private void Awake()
+	{
+		SFXManager.PlayLoopedSound(SoundEffect, () => false, transform.position, transform);
+	}
 
 	private void OnTriggerStay(Collider other)
 	{
