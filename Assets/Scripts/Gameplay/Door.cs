@@ -24,7 +24,9 @@ public class Door : MonoBehaviour
 
 	public void RegisterKey()
 	{
-		keysLeft++;
+		if (requiresAllSubscribedKeys) {
+			keysLeft++;
+		}
 	}
 
 	public void KeyCollected() {

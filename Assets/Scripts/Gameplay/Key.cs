@@ -9,7 +9,7 @@ public class Key : MonoBehaviour
 
 	public UnityEvent OnKeyPickup = new UnityEvent();
 
-	void Awake() {
+	void Start() {
 		if (door == null) {
 			Debug.LogError("key needs a reference to its assigned door!");
 			Destroy(gameObject);
