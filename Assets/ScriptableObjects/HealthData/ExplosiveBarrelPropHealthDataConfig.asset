@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5c2eecdac36fb45946dda2e9a74b7e, type: 3}
   m_Name: ExplosiveBarrelPropHealthDataConfig
   m_EditorClassIdentifier: 
-  MaxHealth: 2
-  StartingHealth: 2
-  ImpactDamageThreshold: 1
+  MaxHealth: 1
+  StartingHealth: 1
+  ImpactDamageThreshold: 0.2
