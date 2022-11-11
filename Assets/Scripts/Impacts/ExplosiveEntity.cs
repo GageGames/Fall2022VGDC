@@ -31,7 +31,11 @@ public class ExplosiveEntity : MonoBehaviour
 			{
 				if (col.gameObject != gameObject)
 				{
-					col.GetComponent<IImpulseReceiver>()?.ApplyImpulse((col.transform.position - transform.position).normalized, ExplosionStrength);
+					Vector3 dir = col.transform.position - transform.position;
+					dir.y = 0;
+					dir = dir.normalized;
+
+					col.GetComponent<IImpulseReceiver>()?.ApplyImpulse(dir, ExplosionStrength);
 					col.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage, explosiveDamageSourceType);
 				}
 			}
