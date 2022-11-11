@@ -63,9 +63,9 @@ public class HealthEntity : MonoBehaviour
 		data.CurrentHealth = Mathf.Max(0, data.CurrentHealth - amount);
 
 		OnDamage.Invoke();
+
 		if (data.CurrentHealth < Mathf.Epsilon) {
-			data.Dead = true;
-			OnDeath.Invoke();
+			Die();
 		}
 
 		return data.CurrentHealth;
@@ -81,5 +81,12 @@ public class HealthEntity : MonoBehaviour
 		OnHeal.Invoke();
 
 		return data.CurrentHealth;
+	}
+
+	void Die ()
+	{
+		data.Dead = true;
+		OnDeath.Invoke();
+		Destroy(gameObject);
 	}
 }

@@ -18,7 +18,11 @@ public class ContactImpactor : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		ApplyImpact(collision.transform.root, collision.GetContact(0).normal);
+		/*foreach (var item in collision.contacts)
+		{
+			Debug.DrawRay(item.point, item.normal * -100, Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f), 10f);
+		}*/
+		ApplyImpact(collision.transform.root, collision.GetContact(0).normal * -1f);
 	}
 
 	private void ApplyImpact(Transform other, Vector3 contactNormal)

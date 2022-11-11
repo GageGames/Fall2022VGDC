@@ -37,8 +37,6 @@ public class ExplosiveEntity : MonoBehaviour
 			}
 		}
 
-		Destroy(gameObject);
-
 		OnExplode?.Invoke();
 	}
 }
