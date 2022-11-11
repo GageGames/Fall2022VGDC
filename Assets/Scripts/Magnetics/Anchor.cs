@@ -39,4 +39,13 @@ public class Anchor
 	{
 		Position = pos;
 	}
+
+	public void DetachAllTethers()
+	{
+		Tether[] tetherCache = attachedTethers.ToArray();
+		foreach (Tether tether in tetherCache)
+		{
+			RemoveTether(tether);
+		}
+	}
 }
