@@ -16,6 +16,7 @@ public class Gun : MonoBehaviour
 	[HideInInspector]
 	public float DetectionRadius = 5f;
 
+	[HideInInspector]
 	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
 
 	private void Awake()
