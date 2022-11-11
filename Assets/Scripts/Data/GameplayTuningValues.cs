@@ -13,14 +13,12 @@ public class GameplayTuningValues : ScriptableObject
 	[Expandable] public PhysicsDataConfig PlayerPhysicsDataConfig;
 	[Expandable] public HealthDataConfig PlayerHealthDataConfig;
 
-	[Expandable] public SpeedImpactorConfig PlayerSpeedImpactorConfig;
-
 	[Header("Zombie Enemy")]
 
 	[Expandable] public PhysicsDataConfig ZombiePhysicsDataConfig;
 	[Expandable] public HealthDataConfig ZombieHealthDataConfig;
 
-	[Expandable] public SpeedImpactorConfig ZombieSpeedImpactorConfig;
+	[Expandable] public ContactImpactorConfig ZombieImpactorConfig;
 
 	[Header("Props")]
 
@@ -34,5 +32,5 @@ public class GameplayTuningValues : ScriptableObject
 	[Expandable] public PhysicsDataConfig StaticPropPhysicsDataConfig;
 	[Expandable] public HealthDataConfig StaticPropHealthDataConfig;
 
-	[Expandable] public SpeedImpactorConfig DynamicPropSpeedImpactorConfig;
+	[Expandable] public ContactImpactorConfig HazardPropImpactorConfig;
 }

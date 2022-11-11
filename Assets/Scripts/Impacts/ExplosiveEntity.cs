@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(HealthEntity))]
 public class ExplosiveEntity : MonoBehaviour
 {
+	[HideInInspector]
+	public UnityEvent OnExplode = new UnityEvent();
+
 	[SerializeField] float ExplosionRadius = 5f;
 	[SerializeField] float ExplosionStrength = 5f;
 	[SerializeField] float ExplosionDamage = 5f;
@@ -14,7 +18,7 @@ public class ExplosiveEntity : MonoBehaviour
 	{
 		health = GetComponent<HealthEntity>();
 
-		//health.OnDeath.AddListener (Explode);
+		health.OnDeath.AddListener (Explode);
 	}
 
 	void Explode()
@@ -25,9 +29,16 @@ public class ExplosiveEntity : MonoBehaviour
 		{
 			foreach (Collider col in colliders)
 			{
-				col.GetComponent<IImpulseReceiver>()?.ApplyImpulse((col.transform.position - transform.position).normalized, ExplosionStrength);
-				col.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage, explosiveDamageSourceType);
+				if (col.gameObject != gameObject)
+				{
+					col.GetComponent<IImpulseReceiver>()?.ApplyImpulse((col.transform.position - transform.position).normalized, ExplosionStrength);
+					col.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage, explosiveDamageSourceType);
+				}
 			}
 		}
+
+		Destroy(gameObject);
+
+		OnExplode?.Invoke();
 	}
 }

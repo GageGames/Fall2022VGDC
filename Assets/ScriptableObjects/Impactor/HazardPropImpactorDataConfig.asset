@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f987ed77ea38740bad16d031698492, type: 3}
-  m_Name: DynamicPropSpeedImpactorDataConfig
+  m_Script: {fileID: 11500000, guid: f1e4504c39a25424b89998b6c88c3db6, type: 3}
+  m_Name: HazardPropImpactorDataConfig
   m_EditorClassIdentifier: 
-  ConstantContactDamage: 0
-  ConstantContactKnockback: 0
-  ImpactThreshold: 10
+  Damage: 10
+  Knockback: 10

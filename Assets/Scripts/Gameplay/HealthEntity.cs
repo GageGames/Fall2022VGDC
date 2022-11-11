@@ -31,9 +31,12 @@ public class HealthEntity : MonoBehaviour
 {
 	private HealthData data;
 
+	[HideInInspector]
 	public UnityEvent OnDamage = new UnityEvent();
+	[HideInInspector]
 	public UnityEvent OnHeal = new UnityEvent();
-	public UnityEvent OnDeath = new UnityEvent();
+	[HideInInspector]
+	public UnityEvent OnDeath = new UnityEvent();	
 
 	void Awake() {
 		data = GetComponent<HealthData>();
@@ -52,10 +55,16 @@ public class HealthEntity : MonoBehaviour
 
 	public float ApplyDamage(float amount, HealthEffectSourceType damageSourceType)
 	{
+		// Don't take damage after death
+		if (data.Dead) return 0;
+		// Ignore impact damage if it does not reach the minimum threshold
+		if (damageSourceType.damageSourceTag == HealthEffectSourceTag.Impact && amount < data.ImpactDamageThreshold) return 0;
+
 		data.CurrentHealth = Mathf.Max(0, data.CurrentHealth - amount);
 
 		OnDamage.Invoke();
-		if (data.CurrentHealth == 0) {
+		if (data.CurrentHealth < Mathf.Epsilon) {
+			data.Dead = true;
 			OnDeath.Invoke();
 		}
 
@@ -64,6 +73,9 @@ public class HealthEntity : MonoBehaviour
 
 	public float ApplyHeal(float amount, HealthEffectSourceType healingSourceType)
 	{
+		// Don't take healing after death
+		if (data.Dead) return 0;
+
 		data.CurrentHealth = Mathf.Min(data.MaxHealth, data.CurrentHealth + amount);
 
 		OnHeal.Invoke();
