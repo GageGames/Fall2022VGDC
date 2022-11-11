@@ -24,6 +24,12 @@ public class ExplosiveEntity : MonoBehaviour
 	void Explode()
 	{
 		Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+		/*
+		GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		debugSphere.transform.position = transform.position;
+		debugSphere.transform.localScale = Vector3.one * ExplosionRadius;
+		debugSphere.GetComponent<Collider>().enabled = false;
+		Destroy(debugSphere, 5f);*/
 
 		if (colliders.Length > 0)
 		{
