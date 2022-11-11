@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa4c86cf1b42eff4a8cf9d990d4c7492, type: 3}
-  m_Name: LightPropPhysicsDataConfig
+  m_Script: {fileID: 11500000, guid: cf5c2eecdac36fb45946dda2e9a74b7e, type: 3}
+  m_Name: PlayerHealthDataConfig
   m_EditorClassIdentifier: 
-  Kinematic: 0
-  Resistance: 0.367
-  Mass: 1
-  physicMaterial: {fileID: 13400000, guid: 9efd4d8697ab1bb48a85081eee030c9c, type: 2}
+  MaxHealth: 100
+  StartingHealth: 100

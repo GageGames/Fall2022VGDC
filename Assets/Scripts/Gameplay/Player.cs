@@ -4,6 +4,7 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Gun))]
 public class Player : MonoBehaviour
 {
+	[HideInInspector]
 	public UnityEvent<State> OnStateChange = new UnityEvent<State>();
 
 	public enum State
