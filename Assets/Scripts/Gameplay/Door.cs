@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using MyBox;
 using UnityEngine;
 using UnityEngine.Events;
@@ -13,34 +11,42 @@ public class Door : MonoBehaviour
 
 	private int keysLeft = 0;
 
+	[HideInInspector]
 	public UnityEvent OnKeyCollected = new UnityEvent();
+	[HideInInspector]
 	public UnityEvent OnDoorOpened = new UnityEvent();
 
-	void Start() {
-		if (!requiresAllSubscribedKeys) {
+	void Start()
+	{
+		if (!requiresAllSubscribedKeys)
+		{
 			keysLeft = keysRequired;
 		}
 	}
 
 	public void RegisterKey()
 	{
-		if (requiresAllSubscribedKeys) {
+		if (requiresAllSubscribedKeys)
+		{
 			keysLeft++;
 		}
 	}
 
-	public void KeyCollected() {
+	public void KeyCollected()
+	{
 		keysLeft--;
 		OnKeyCollected.Invoke();
 
-		if (keysLeft <= 0) {
+		if (keysLeft <= 0)
+		{
 			OpenDoor();
 			OnDoorOpened.Invoke();
 		}
 	}
 
 	/// currently destroys door object, can be changed to more complex behavior later
-	private void OpenDoor() {
+	private void OpenDoor()
+	{
 		Destroy(gameObject);
 	}
 }
