@@ -9,6 +9,7 @@ public class GameplayTuningValues : ScriptableObject
 	public float PlayerGunPullStrength = 80f;
 	public float PlayerGunPushStrength = 50f;
 	public float PlayerGunDetectionRadius = 5f;
+	public LayerMask PlayerGunDetectionMask;
 
 	[Expandable] public PhysicsDataConfig PlayerPhysicsDataConfig;
 	[Expandable] public HealthDataConfig PlayerHealthDataConfig;
