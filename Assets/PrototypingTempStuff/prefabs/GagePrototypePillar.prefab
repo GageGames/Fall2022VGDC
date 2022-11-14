@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0bbba8b2223358498a08f202f5f1542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConfigData: {fileID: 11400000, guid: 657d29897a8a5a142ba94b7e8fc792d7, type: 2}
+  ConfigData: {fileID: 11400000, guid: a16354024d256274d9201090dce67730, type: 2}
   Resistance: 1
 --- !u!114 &1475384886457106285
 MonoBehaviour:
@@ -197,8 +197,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537b6e38f67752347b662c66e8a71602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  renderer: {fileID: 1475384886457106192}
+  rb: {fileID: 0}
+  thisRenderer: {fileID: 0}
   invincible: 1
   player: 0
   maxHealth: 0
   health: 0
+  healthText: {fileID: 0}
+  diedEvent:
+    m_PersistentCalls:
+      m_Calls: []
