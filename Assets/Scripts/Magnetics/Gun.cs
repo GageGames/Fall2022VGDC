@@ -11,11 +11,11 @@ public class Gun : MonoBehaviour
 
 	protected MagneticEntity magEntity;
 
-	[HideInInspector]
 	public float Strength = 80f;
-	[HideInInspector]
 	public float DetectionRadius = 5f;
+	public LayerMask DetectionMask;
 
+	[HideInInspector]
 	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
 
 	private void Awake()
@@ -93,7 +93,7 @@ public class Gun : MonoBehaviour
 	MagneticEntity[] FindAvailableTargetsInRadius(Vector3 targetPos)
 	{
 		// First, find all potential targets by checking for physics objects
-		Collider[] potentialTargets = Physics.OverlapSphere(targetPos, DetectionRadius);
+		Collider[] potentialTargets = Physics.OverlapSphere(targetPos, DetectionRadius, DetectionMask);
 		if (potentialTargets.Length == 0)
 		{
 			return null;

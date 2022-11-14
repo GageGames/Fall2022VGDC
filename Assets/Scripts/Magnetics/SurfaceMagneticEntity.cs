@@ -50,25 +50,11 @@ public class SurfaceMagneticEntity : MagneticEntity
 
 	protected override void UpdateAnchorage() { }
 
-	protected override void RefreshTethers()
-	{
-		tethers.Clear();
-
-		foreach (Anchor anchor in curAnchors)
-		{
-			tethers.AddRange(anchor.GetTethers());
-		}
-	}
-
 	protected override void ApplyImpulses()
 	{
-		// TODO: is this the right logic?
-		// Brain fried, but I think it's looping too much depth
-		// There's exactly one anchor for every tether,
-		// so you would need to check if every tether has the anchor in question
 		foreach (Anchor anchor in curAnchors)
 		{
-			foreach (Tether tether in tethers)
+			foreach (Tether tether in anchor.GetTethers())
 			{
 				Vector3 pos = tether.GetOpposite(anchor).Position;
 				float strength = tether.Strength * Time.deltaTime;
@@ -76,6 +62,15 @@ public class SurfaceMagneticEntity : MagneticEntity
 				dir.y = 0;
 				physEntity.ApplyImpulse(dir, strength, impulseSourceType);
 			}
+		}
+	}
+
+	protected override void DetachAnchorage()
+	{
+		Anchor[] anchorCache = curAnchors.ToArray();
+		foreach (Anchor anchor in anchorCache)
+		{
+			anchor.DetachAllTethers();
 		}
 	}
 }

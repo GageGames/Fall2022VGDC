@@ -6,6 +6,7 @@ using UnityEngine;
 public class PhysicsData : MonoBehaviour
 {
 	[SerializeField]
+	[Expandable]
 	protected PhysicsDataConfig ConfigData;
 
 	[HideInInspector]
