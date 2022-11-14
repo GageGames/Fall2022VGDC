@@ -8,6 +8,8 @@ TagManager:
   - floor
   - tag
   - key
+  - SpeedPillar
+  - speed pillar
   layers:
   - Default
   - TransparentFX
