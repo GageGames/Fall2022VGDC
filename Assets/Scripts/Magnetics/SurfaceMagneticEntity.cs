@@ -32,6 +32,11 @@ public class SurfaceMagneticEntity : MagneticEntity
 		return output;
 	}
 
+	public override bool ContainsAnchor(Anchor anchor)
+	{
+		return curAnchors.Contains(anchor);
+	}
+
 	void RemoveTetheredAnchor(Tether tether)
 	{
 		if (curAnchors.Contains(tether.Sender))

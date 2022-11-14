@@ -23,6 +23,11 @@ public class PointMagneticEntity : MagneticEntity
 		//print("Anchor requested");
 		return curAnchor;
 	}
+	
+	public override bool ContainsAnchor(Anchor anchor)
+	{
+		return curAnchor == anchor;
+	}
 
 	protected override void UpdateAnchorage()
 	{

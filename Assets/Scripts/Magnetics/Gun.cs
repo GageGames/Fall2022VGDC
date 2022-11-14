@@ -11,6 +11,7 @@ public class Gun : MonoBehaviour
 
 	protected MagneticEntity magEntity;
 
+	// Note: for the player, these are overridden at runtime
 	public float Strength = 80f;
 	public float DetectionRadius = 5f;
 	public LayerMask DetectionMask;
@@ -112,5 +113,17 @@ public class Gun : MonoBehaviour
 		}
 
 		return targets.ToArray();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		//print($"Trigger entered on Gun. Other: {other.name}");
+		if (other.GetComponent<TriggerDetacher>() &&
+			other.GetComponent<MagneticEntity>() && 
+			other.GetComponent<MagneticEntity>().ContainsAnchor(ActiveTether?.Recipient))
+		{
+			//print("Detaching!");
+			Detach();
+		}
 	}
 }
