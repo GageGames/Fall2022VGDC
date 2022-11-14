@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ZombiePhysicsDataConfig
   m_EditorClassIdentifier: 
   Kinematic: 0
-  Resistance: 0.502
-  Mass: 1
+  Resistance: 0
+  Mass: 0.5
   physicMaterial: {fileID: 13400000, guid: 15d865be2defe404fa083a53e629c466, type: 2}

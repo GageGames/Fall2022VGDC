@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1e4504c39a25424b89998b6c88c3db6, type: 3}
-  m_Name: ZombieImpactorDataConfig
+  m_Script: {fileID: 11500000, guid: fe53067c2627e0048855b76b498a8894, type: 3}
+  m_Name: ZombiePathfindingBehaviorConfig
   m_EditorClassIdentifier: 
-  Damage: 0
-  Knockback: 5
+  MovementSpeed: 5

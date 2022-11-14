@@ -10,6 +10,7 @@ public class ExplosiveEntity : MonoBehaviour
 	[SerializeField] float ExplosionRadius = 5f;
 	[SerializeField] float ExplosionStrength = 5f;
 	[SerializeField] float ExplosionDamage = 5f;
+	[SerializeField] AnimationCurve ExplosionFalloff;
 
 	HealthEntity health;
 	HealthEffectSourceType explosiveDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Explosive);
@@ -41,10 +42,11 @@ public class ExplosiveEntity : MonoBehaviour
 				{
 					Vector3 dir = target.position - transform.position;
 					dir.y = 0;
-					dir = dir.normalized;
 
-					target.GetComponent<IImpulseReceiver>()?.ApplyImpulse(dir, ExplosionStrength);
-					target.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage, explosiveDamageSourceType);
+					float falloffFactor = ExplosionFalloff.Evaluate(dir.magnitude / ExplosionRadius);
+
+					target.GetComponent<IImpulseReceiver>()?.ApplyImpulse(dir.normalized, ExplosionStrength * falloffFactor);
+					target.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage * falloffFactor, explosiveDamageSourceType);
 				}
 			}
 		}
