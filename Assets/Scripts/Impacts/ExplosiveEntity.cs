@@ -24,19 +24,27 @@ public class ExplosiveEntity : MonoBehaviour
 	void Explode()
 	{
 		Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+		/*
+		GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		debugSphere.transform.position = transform.position;
+		debugSphere.transform.localScale = Vector3.one * ExplosionRadius;
+		debugSphere.GetComponent<Collider>().enabled = false;
+		Destroy(debugSphere, 5f);*/
 
 		if (colliders.Length > 0)
 		{
 			foreach (Collider col in colliders)
 			{
-				if (col.gameObject != gameObject)
+				Transform target = col.transform.root;
+
+				if (target.gameObject != gameObject)
 				{
-					Vector3 dir = col.transform.position - transform.position;
+					Vector3 dir = target.position - transform.position;
 					dir.y = 0;
 					dir = dir.normalized;
 
-					col.GetComponent<IImpulseReceiver>()?.ApplyImpulse(dir, ExplosionStrength);
-					col.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage, explosiveDamageSourceType);
+					target.GetComponent<IImpulseReceiver>()?.ApplyImpulse(dir, ExplosionStrength);
+					target.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage, explosiveDamageSourceType);
 				}
 			}
 		}

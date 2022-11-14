@@ -15,6 +15,9 @@ MonoBehaviour:
   PlayerGunPullStrength: 20
   PlayerGunPushStrength: 15
   PlayerGunDetectionRadius: 5
+  PlayerGunDetectionMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
   PlayerPhysicsDataConfig: {fileID: 11400000, guid: dd88e5402ac62d945af817f48c929c1c, type: 2}
   PlayerHealthDataConfig: {fileID: 11400000, guid: 69846ec9cdfe861439c17e56e03e486a, type: 2}
   ZombiePhysicsDataConfig: {fileID: 11400000, guid: ca39a50f793c5fe4f9136f136388ffbb, type: 2}
