@@ -69,7 +69,7 @@ public class BoundingWallEditor : Editor
 					Ray r = HandleUtility.GUIPointToWorldRay(e.mousePosition);
 					if (dragPlane.Raycast(r, out float dist))
 					{
-						Vector3 spawnPosition = r.GetPoint(dist);
+						Vector3 spawnPosition = r.GetPoint(dist) - pos;
 						newPoint = spawnPosition;
 
 						wps.intValue++;
