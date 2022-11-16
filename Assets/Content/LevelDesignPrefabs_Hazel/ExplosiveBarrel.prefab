@@ -226,33 +226,7 @@ MonoBehaviour:
   OnExplode:
     m_PersistentCalls:
       m_Calls: []
-  ExplosionRadius: 5
-  ExplosionStrength: 5
-  ExplosionDamage: 25
-  ExplosionFalloff:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0.02700906
-      outSlope: 0.02700906
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.10578261
-    - serializedVersion: 3
-      time: 1
-      value: -0.00000013038516
-      inSlope: -3.0385442
-      outSlope: -3.0385442
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.042313397
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  explosiveConfig: {fileID: 11400000, guid: 134d61734362a704db6700ed61aa0696, type: 2}
 --- !u!114 &5645288964666774747
 MonoBehaviour:
   m_ObjectHideFlags: 0
