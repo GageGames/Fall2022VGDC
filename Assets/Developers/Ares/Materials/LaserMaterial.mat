@@ -105,9 +105,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _LaserScale: 5
-    - _LaserSmooth: 103.6
-    - _LaserThick: 0
+    - _LaserScale: 0.74
+    - _LaserSmooth: 100
+    - _LaserThick: 4.24
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
@@ -124,6 +124,6 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0, g: 1.1084857, b: 2.433572, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _LaserSpeed: {r: 1, g: 0, b: 0, a: 0}
+    - _LaserSpeed: {r: 30, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
