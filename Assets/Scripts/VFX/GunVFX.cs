@@ -13,20 +13,10 @@ public class GunVFX : MonoBehaviour
 	private void Start()
 	{
 		gun = GetComponent<Gun>();
-	}
 
-	private void OnEnable()
-	{
 		gun.OnFire.AddListener(SpawnTetherHitEffect);
 		gun.OnFire.AddListener(SpawnTetherEffect);
 		gun.OnDetach.AddListener(DestroyTetherEffect);
-	}
-
-	private void OnDisable()
-	{
-		gun.OnFire.RemoveListener(SpawnTetherHitEffect);
-		gun.OnFire.RemoveListener(SpawnTetherEffect);
-		gun.OnDetach.RemoveListener(DestroyTetherEffect);
 	}
 
 	void FixedUpdate()
@@ -47,7 +37,7 @@ public class GunVFX : MonoBehaviour
 	{
 		if (tetherHitPullEffectPrefab != null)
 		{
-			Instantiate(tetherHitPullEffectPrefab, result.CursorOrigin, Quaternion.identity);
+			Instantiate(tetherHitPullEffectPrefab, result.SelectedTarget.Position, Quaternion.identity);
 		}
 	}
 
