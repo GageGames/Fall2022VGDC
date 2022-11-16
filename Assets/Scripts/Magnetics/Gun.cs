@@ -11,11 +11,12 @@ public class Gun : MonoBehaviour
 
 	protected MagneticEntity magEntity;
 
-	[HideInInspector]
+	// Note: for the player, these are overridden at runtime
 	public float Strength = 80f;
-	[HideInInspector]
 	public float DetectionRadius = 5f;
+	public LayerMask DetectionMask;
 
+	[HideInInspector]
 	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
 
 	private void Awake()
@@ -93,7 +94,7 @@ public class Gun : MonoBehaviour
 	MagneticEntity[] FindAvailableTargetsInRadius(Vector3 targetPos)
 	{
 		// First, find all potential targets by checking for physics objects
-		Collider[] potentialTargets = Physics.OverlapSphere(targetPos, DetectionRadius);
+		Collider[] potentialTargets = Physics.OverlapSphere(targetPos, DetectionRadius, DetectionMask);
 		if (potentialTargets.Length == 0)
 		{
 			return null;
@@ -112,5 +113,17 @@ public class Gun : MonoBehaviour
 		}
 
 		return targets.ToArray();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		//print($"Trigger entered on Gun. Other: {other.name}");
+		if (other.GetComponent<TriggerDetacher>() &&
+			other.GetComponent<MagneticEntity>() && 
+			other.GetComponent<MagneticEntity>().ContainsAnchor(ActiveTether?.Recipient))
+		{
+			//print("Detaching!");
+			Detach();
+		}
 	}
 }

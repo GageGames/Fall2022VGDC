@@ -6,6 +6,7 @@ using UnityEngine;
 public class PhysicsData : MonoBehaviour
 {
 	[SerializeField]
+	[Expandable]
 	protected PhysicsDataConfig ConfigData;
 
 	[HideInInspector]
@@ -28,5 +29,21 @@ public class PhysicsData : MonoBehaviour
 
 		Resistance = ConfigData.Resistance;
 		rb.mass = ConfigData.Mass;
+		rb.isKinematic = ConfigData.Kinematic;
+
+		ApplyPhysicMaterial(transform);
+	}
+
+	void ApplyPhysicMaterial (Transform transform)
+	{
+		if (transform.GetComponent<Collider>())
+		{
+			transform.GetComponent<Collider>().material = ConfigData.physicMaterial;
+		}
+
+		foreach (Transform child in transform)
+		{
+			ApplyPhysicMaterial(child);
+		}
 	}
 }
