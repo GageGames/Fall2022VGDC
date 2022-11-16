@@ -506,11 +506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf749d4c91c22bc4b919e8ae0b28c77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRadius: 2.0321856
-  spawnpointType: 1
-  editorPreviewData: {fileID: 11400000, guid: a73c2b10e9de1ef458b0b04909223ce6, type: 2}
-  customDiscColor: {r: 0.38581347, g: 0.9622642, b: 0.7758562, a: 1}
-  customDiscThickness: 4
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,11 +656,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf749d4c91c22bc4b919e8ae0b28c77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRadius: 2.0719786
-  spawnpointType: 1
-  editorPreviewData: {fileID: 11400000, guid: a73c2b10e9de1ef458b0b04909223ce6, type: 2}
-  customDiscColor: {r: 0.38581347, g: 0.9622642, b: 0.7758562, a: 1}
-  customDiscThickness: 4
 --- !u!65 &1703168805
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -776,11 +766,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf749d4c91c22bc4b919e8ae0b28c77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnRadius: 5.394468
-  spawnpointType: 0
-  editorPreviewData: {fileID: 11400000, guid: 2224c49450730c24f80de7b4d26c6cac, type: 2}
-  customDiscColor: {r: 0.9339623, g: 0.4008989, b: 0.6986556, a: 1}
-  customDiscThickness: 4
 --- !u!65 &1822408233
 BoxCollider:
   m_ObjectHideFlags: 0
