@@ -20,10 +20,17 @@ public class SurfaceMagneticEntity : MagneticEntity
 		physEntity = GetComponent<PhysicsEntity>();
 	}
 
+	// Create and store new anchor
 	public override Anchor GetAnchor(Vector3 targetPosition)
 	{
-		// Create and store new anchor
-		Anchor output = new Anchor(col.ClosestPoint(targetPosition));
+		Vector3 pos = col.ClosestPoint(targetPosition);
+		if (col.GetType() == typeof(MeshCollider) && !((MeshCollider)col).convex)
+		{
+			pos = targetPosition;
+			Debug.LogError("Does not work with non-convex colliders! Stoppppp");
+		}
+
+		Anchor output = new Anchor(pos);
 		curAnchors.Add(output);
 
 		// Prep anchor to be recycled when detached from
