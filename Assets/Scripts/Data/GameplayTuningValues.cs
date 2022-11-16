@@ -20,6 +20,7 @@ public class GameplayTuningValues : ScriptableObject
 	[Expandable] public HealthDataConfig ZombieHealthDataConfig;
 
 	[Expandable] public ContactImpactorConfig ZombieImpactorConfig;
+	[Expandable] public PathfindingBehaviorConfig ZombiePathfindingBehaviorConfig;
 
 	[Header("Props")]
 
