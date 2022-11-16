@@ -214,6 +214,8 @@ public class BoundingWallEditor : Editor
 			prevPos = nextPos;
 		}
 
+		if (!so.FindProperty("CloseLoop").boolValue) return;
+
 		// Spawn last wall
 		PlaceWall(firstPos, prevPos, transform);
 	}
@@ -223,7 +225,7 @@ public class BoundingWallEditor : Editor
 		GameObject wall = (GameObject)PrefabUtility.InstantiatePrefab(propWallPrefab.objectReferenceValue, parent);
 		wall.transform.position = (endPoint + startPoint) * 0.5f;
 		wall.transform.rotation = Quaternion.Euler(0, Mathf.Atan2(endPoint.x - startPoint.x, endPoint.z - startPoint.z) * Mathf.Rad2Deg, 0);
-		wall.transform.localScale = new Vector3(1, 1, Vector3.Distance(endPoint, startPoint));
+		wall.transform.localScale = new Vector3(1, 5, Vector3.Distance(endPoint, startPoint));
 		return wall;
 	}
 }
