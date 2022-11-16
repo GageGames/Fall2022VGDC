@@ -209,18 +209,21 @@ public class BoundingWallEditor : Editor
 
 			Vector3 nextPos = wps.vector3Value + transform.position;
 
-			GameObject wall = (GameObject) PrefabUtility.InstantiatePrefab(propWallPrefab.objectReferenceValue, transform);
-			wall.transform.position = (nextPos + prevPos) * 0.5f;
-			wall.transform.rotation = Quaternion.Euler(0, Mathf.Atan2(nextPos.x - prevPos.x, nextPos.z - prevPos.z) * Mathf.Rad2Deg, 0);
-			wall.transform.localScale = new Vector3(1, 1, Vector3.Distance(nextPos, prevPos));
+			PlaceWall(prevPos, nextPos, transform);
 
 			prevPos = nextPos;
 		}
 
 		// Spawn last wall
-		GameObject lastWall = (GameObject)PrefabUtility.InstantiatePrefab(propWallPrefab.objectReferenceValue, transform);
-		lastWall.transform.position = (prevPos + firstPos) * 0.5f;
-		lastWall.transform.rotation = Quaternion.Euler(0, Mathf.Atan2(prevPos.x - firstPos.x, prevPos.z - firstPos.z) * Mathf.Rad2Deg, 0);
-		lastWall.transform.localScale = new Vector3(1, 5, Vector3.Distance(prevPos, firstPos));
+		PlaceWall(firstPos, prevPos, transform);
+	}
+
+	GameObject PlaceWall (Vector3 startPoint, Vector3 endPoint, Transform parent)
+	{
+		GameObject wall = (GameObject)PrefabUtility.InstantiatePrefab(propWallPrefab.objectReferenceValue, parent);
+		wall.transform.position = (endPoint + startPoint) * 0.5f;
+		wall.transform.rotation = Quaternion.Euler(0, Mathf.Atan2(endPoint.x - startPoint.x, endPoint.z - startPoint.z) * Mathf.Rad2Deg, 0);
+		wall.transform.localScale = new Vector3(1, 1, Vector3.Distance(endPoint, startPoint));
+		return wall;
 	}
 }
