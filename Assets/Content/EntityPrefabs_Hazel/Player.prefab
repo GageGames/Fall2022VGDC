@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 6589458163671775256}
   - component: {fileID: 9187111663911455437}
   - component: {fileID: 5754104234163071563}
+  - component: {fileID: 3452534691151778586}
   m_Layer: 26
   m_Name: Player
   m_TagString: Untagged
@@ -290,6 +291,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   OnFire:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDetach:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &6194671024525158176
@@ -396,3 +400,18 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3452534691151778586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194671024525158180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bb891edc09b9a4094817f348562c32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tetherBeamPullEffectPrefab: {fileID: 892984419396705350, guid: 86c74c226b43b6742bf9cb0ad51bf426, type: 3}
+  tetherBeamPushEffectPrefab: {fileID: 1824584983990579323, guid: cec33863a61a43a459c6a2e42d01744b, type: 3}
+  tetherHitPullEffectPrefab: {fileID: 6652571451325675485, guid: 7e3b952d4d71b2a4291f67713e68707a, type: 3}
