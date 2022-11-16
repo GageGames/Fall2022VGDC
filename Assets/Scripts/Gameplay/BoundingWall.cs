@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class BoundingWall : MonoBehaviour
 {
+	public bool CloseLoop;
 	public GameObject WallPrefab;
 	public List<Vector3> Points = new List<Vector3>();
 
