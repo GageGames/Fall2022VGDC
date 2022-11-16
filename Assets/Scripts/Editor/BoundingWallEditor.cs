@@ -221,6 +221,6 @@ public class BoundingWallEditor : Editor
 		GameObject lastWall = (GameObject)PrefabUtility.InstantiatePrefab(propWallPrefab.objectReferenceValue, transform);
 		lastWall.transform.position = (prevPos + firstPos) * 0.5f;
 		lastWall.transform.rotation = Quaternion.Euler(0, Mathf.Atan2(prevPos.x - firstPos.x, prevPos.z - firstPos.z) * Mathf.Rad2Deg, 0);
-		lastWall.transform.localScale = new Vector3(1, 1, Vector3.Distance(prevPos, firstPos));
+		lastWall.transform.localScale = new Vector3(1, 5, Vector3.Distance(prevPos, firstPos));
 	}
 }
