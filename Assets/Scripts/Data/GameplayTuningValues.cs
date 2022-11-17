@@ -9,17 +9,35 @@ public class GameplayTuningValues : ScriptableObject
 	public float PlayerGunPullStrength = 80f;
 	public float PlayerGunPushStrength = 50f;
 	public float PlayerGunDetectionRadius = 5f;
+	public LayerMask PlayerGunDetectionMask;
+
+	[Space]
 
 	[Expandable] public PhysicsDataConfig PlayerPhysicsDataConfig;
 	[Expandable] public HealthDataConfig PlayerHealthDataConfig;
 
+	[Space]
 	[Header("Zombie Enemy")]
 
 	[Expandable] public PhysicsDataConfig ZombiePhysicsDataConfig;
 	[Expandable] public HealthDataConfig ZombieHealthDataConfig;
 
-	[Expandable] public ContactImpactorConfig ZombieImpactorConfig;
+	[Space]
 
+	[Expandable] public ContactImpactorConfig ZombieImpactorConfig;
+	[Expandable] public PathfindingBehaviorConfig ZombiePathfindingBehaviorConfig;
+
+	[Space]
+	[Header("Special Objects")]
+
+	[Expandable] public HealthDataConfig BarrelHealthDataConfig;
+	[Expandable] public ExplosiveConfig BarrelExplosiveConfig;
+
+	[Space]
+
+	[Expandable] public PitConfig PitConfig;
+
+	[Space]
 	[Header("Props")]
 
 	[Expandable] public PhysicsDataConfig LightPropPhysicsDataConfig;
@@ -29,8 +47,12 @@ public class GameplayTuningValues : ScriptableObject
 	[Expandable] public PhysicsDataConfig HeavyPropPhysicsDataConfig;
 	[Expandable] public HealthDataConfig HeavyPropHealthDataConfig;
 
+	[Space]
+
 	[Expandable] public PhysicsDataConfig StaticPropPhysicsDataConfig;
 	[Expandable] public HealthDataConfig StaticPropHealthDataConfig;
+
+	[Space]
 
 	[Expandable] public ContactImpactorConfig HazardPropImpactorConfig;
 }

@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
 		{
 			case State.Idle:
 				gun.DetectionRadius = val.PlayerGunDetectionRadius;
+				gun.DetectionMask = val.PlayerGunDetectionMask;
 				if (Input.GetMouseButtonDown(0))
 				{
 					FireGun(val.PlayerGunPullStrength, true);

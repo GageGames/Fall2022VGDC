@@ -9,7 +9,7 @@ public enum PlacerShape
 
 public class PropPlacer : EditorWindow
 {
-	[MenuItem("Custom/Prop Placer")]
+	//[MenuItem("Custom/Prop Placer")]
 	public static void OpenPlacer() => GetWindow<PropPlacer>();
 
 	public PlacerShape placerShape = PlacerShape.Sphere;

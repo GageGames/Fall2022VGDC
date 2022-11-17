@@ -7,6 +7,7 @@ public class Key : MonoBehaviour
 {
 	[SerializeField] private Door door;
 
+	[HideInInspector]
 	public UnityEvent OnKeyPickup = new UnityEvent();
 
 	void Start() {
