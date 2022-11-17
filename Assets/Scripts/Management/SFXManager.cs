@@ -9,7 +9,7 @@ using UnityEngine;
 public class SFXManager : MonoBehaviour
 {
 	// TODO: Genericize object pooling system
-	static Queue<GameObject> sourcePool = new Queue<GameObject>();
+	//static Queue<GameObject> sourcePool = new Queue<GameObject>();
 
 	public static void PlaySound(AudioClip clip, float volume = 1, float pitch = 1)
 	{
@@ -20,7 +20,9 @@ public class SFXManager : MonoBehaviour
 		source.pitch = pitch;
 		source.Play();
 
-		Singleton<SFXManager>.Instance.StartCoroutine(RequeueSource(source, clip.length));
+		Destroy(source.gameObject, clip.length);
+
+		//Singleton<SFXManager>.Instance.StartCoroutine(RequeueSource(source, clip.length));
 	}
 
 	public static void PlaySound(AudioClip clip, Vector3 pos, Transform parent, float spatialBlend = 1, float volume = 1, float pitch = 1)
@@ -33,7 +35,9 @@ public class SFXManager : MonoBehaviour
 		source.pitch = pitch;
 		source.Play();
 
-		Singleton<SFXManager>.Instance.StartCoroutine(RequeueSource(source, clip.length));
+		Destroy(source.gameObject, clip.length);
+
+		//Singleton<SFXManager>.Instance.StartCoroutine(RequeueSource(source, clip.length));
 	}
 
 	public static void PlayLoopedSound(AudioClip clip, Func<bool> loopEndCondition, float volume = 1, float pitch = 1)
@@ -62,12 +66,12 @@ public class SFXManager : MonoBehaviour
 
 		Singleton<SFXManager>.Instance.StartCoroutine(RequeueLoopedSource(source, loopEndCondition));
 	}
-
+	/*
 	static IEnumerator RequeueSource(AudioSource source, float clipLength)
 	{
 		yield return new WaitForSeconds(clipLength);
 		sourcePool.Enqueue(source.gameObject);
-	}
+	}*/
 
 	static IEnumerator RequeueLoopedSource(AudioSource source, Func<bool> loopEndCondition)
 	{
@@ -76,22 +80,24 @@ public class SFXManager : MonoBehaviour
 			yield return null;
 		}
 
-		source.loop = false;
-		sourcePool.Enqueue(source.gameObject);
+		Destroy(source.gameObject);
+
+		//source.loop = false;
+		//sourcePool.Enqueue(source.gameObject);
 	}
 
 	static AudioSource GetSource(Vector3 pos, Transform parent = null)
 	{
 		GameObject obj;
 
-		if (sourcePool.Count > 0)
+		/*if (sourcePool.Count > 0)
 		{
 			obj = sourcePool.Dequeue();
 		}
 		else
-		{
-			obj = new GameObject("SFX Source", components: typeof(AudioSource));
-		}
+		{*/
+		obj = new GameObject("SFX Source", components: typeof(AudioSource));
+		//}
 
 		obj.transform.position = pos;
 		obj.transform.parent = parent == null ? Singleton<SFXManager>.Instance.transform : parent;
