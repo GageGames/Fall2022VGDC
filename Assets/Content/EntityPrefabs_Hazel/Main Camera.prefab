@@ -134,10 +134,10 @@ MonoBehaviour:
   smoothTime: 0.2
   positionOffset: {x: 0, y: -7}
   baseYPos: 10
-  maxYOffset: 5
+  maxYOffset: 3
   baseFOV: 60
-  maxFOVOffset: 20
-  zoomCapSpeed: 20
+  maxFOVOffset: 30
+  zoomCapSpeed: 23
   zoomFloorSpeed: 0
   zoomEaseCurve:
     serializedVersion: 2
@@ -152,17 +152,8 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0.2774053
     - serializedVersion: 3
-      time: 0.16093999
-      value: -0.0024695825
-      inSlope: 0.001881012
-      outSlope: 0.001881012
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.35201982
-      outWeight: 0.5268561
-    - serializedVersion: 3
-      time: 0.2453435
-      value: -0.1448608
+      time: 0.04076892
+      value: -0.034844935
       inSlope: 0.19730659
       outSlope: 0.19730659
       tangentMode: 0
@@ -170,49 +161,22 @@ MonoBehaviour:
       inWeight: 0.47314385
       outWeight: 0.3680974
     - serializedVersion: 3
-      time: 0.41970637
-      value: 0.13538426
-      inSlope: 0.74332476
-      outSlope: 0.74332476
+      time: 0.42098466
+      value: 0.5628356
+      inSlope: 1.3847338
+      outSlope: 1.3847338
       tangentMode: 0
       weightedMode: 3
-      inWeight: 0.75491005
-      outWeight: 0.4200251
-    - serializedVersion: 3
-      time: 0.76265895
-      value: 1.0122024
-      inSlope: 1.0137728
-      outSlope: 1.0137728
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.63235307
-      outWeight: 0.2705254
-    - serializedVersion: 3
-      time: 0.80319893
-      value: 1.2291713
-      inSlope: 0.5259864
-      outSlope: 0.5259864
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.40526214
-      outWeight: 0.67967063
-    - serializedVersion: 3
-      time: 0.85256535
-      value: 1.0023333
-      inSlope: 0.0053708986
-      outSlope: 0.0053708986
-      tangentMode: 0
-      weightedMode: 3
-      inWeight: 0.12969616
-      outWeight: 1
+      inWeight: 0.49421823
+      outWeight: 0.29621613
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: -0.022215858
-      outSlope: -0.022215858
+      inSlope: -0.016663047
+      outSlope: -0.016663047
       tangentMode: 0
       weightedMode: 3
-      inWeight: 0.7855392
+      inWeight: 0.11876366
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

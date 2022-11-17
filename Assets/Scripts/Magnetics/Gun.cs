@@ -130,4 +130,9 @@ public class Gun : MonoBehaviour
 			Detach();
 		}
 	}
+
+	private void OnDestroy()
+	{
+		Detach();
+	}
 }

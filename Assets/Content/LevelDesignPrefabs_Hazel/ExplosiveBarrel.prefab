@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 5645288964666774692}
   - component: {fileID: 5645288964666774695}
   - component: {fileID: 5645288964666774747}
+  - component: {fileID: 5654964080568793845}
   m_Layer: 25
   m_Name: ExplosiveBarrel
   m_TagString: Untagged
@@ -255,3 +256,16 @@ MonoBehaviour:
   cutsAddedGeom: 1
   updateRotationDistance: 10
   useRotationAndScale: 1
+--- !u!114 &5654964080568793845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645288964666774694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f83ecf9e6419ff499a804f668e919e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VFXPrefab: {fileID: 4497657793576873650, guid: 7ab05a9a08d2d7340b78b91289fb332d, type: 3}
