@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8140986400132072605}
   - component: {fileID: 8140986400132072604}
   - component: {fileID: 8140986400132072596}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: TetherOnlyTriggerProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}

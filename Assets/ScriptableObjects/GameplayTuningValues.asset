@@ -24,6 +24,9 @@ MonoBehaviour:
   ZombieHealthDataConfig: {fileID: 11400000, guid: a163735388b27cd4aaaae6076dffe055, type: 2}
   ZombieImpactorConfig: {fileID: 11400000, guid: 62db7c00cdad8ed41b3eecfd76b17acc, type: 2}
   ZombiePathfindingBehaviorConfig: {fileID: 11400000, guid: b2046131af544dc40bab00422ceeafae, type: 2}
+  BarrelHealthDataConfig: {fileID: 11400000, guid: 1fb7573b525edc74b988cc8cf737c6f1, type: 2}
+  BarrelExplosiveConfig: {fileID: 11400000, guid: 134d61734362a704db6700ed61aa0696, type: 2}
+  PitConfig: {fileID: 11400000, guid: a4eb8c3d5813197418b851c8d5c84a79, type: 2}
   LightPropPhysicsDataConfig: {fileID: 11400000, guid: 5e1a49df50662f14fab70c4cebde89dd, type: 2}
   LightPropHealthDataConfig: {fileID: 11400000, guid: 15061f02c23c1f94ea3f9637200020a6, type: 2}
   MediumPropPhysicsDataConfig: {fileID: 11400000, guid: 657d29897a8a5a142ba94b7e8fc792d7, type: 2}
