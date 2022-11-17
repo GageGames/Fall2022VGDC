@@ -55,7 +55,7 @@ public class HealthEntity : MonoBehaviour
 
 	public float ApplyDamage(float amount, HealthEffectSourceType damageSourceType)
 	{
-		Debug.Log($"Received {amount} damage of type {damageSourceType.damageSourceTag}");
+		//Debug.Log($"Received {amount} damage of type {damageSourceType.damageSourceTag}");
 
 		// Don't take damage after death
 		if (data.Dead) return 0;
