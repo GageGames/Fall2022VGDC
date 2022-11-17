@@ -1,13 +1,8 @@
 using Pathfinding;
 using UnityEngine;
 
-/// <summary>
-/// Required components:
-/// AIDestinationSetter
-/// AIPath
-/// 
-/// </summary>
-
+[RequireComponent(typeof(AIDestinationSetter))]
+[RequireComponent(typeof(AIPath))]
 public class ZombieBehavior : MonoBehaviour
 {
 	[Expandable]
@@ -26,6 +21,13 @@ public class ZombieBehavior : MonoBehaviour
 	void Start()
 	{
 		player = FindObjectOfType<Player>()?.transform;
+
+		if (!player)
+		{
+			Debug.LogError("Failed to assign player!");
+			return;
+		}
+
 		aIDestinationSetter.target = player;
 		aIPath.maxSpeed = pathfindingBehaviorConfig.MovementSpeed;
 	}

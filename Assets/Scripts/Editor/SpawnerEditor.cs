@@ -35,7 +35,7 @@ public class SpawnerEditor : Editor
 		propMaxSpawnQuantity = so.FindProperty("MaxSpawnQuantity");
 		propMinSpawnQuantity = so.FindProperty("MinSpawnQuantity");
 
-		propSpawnPrefab = so.FindProperty("spawnPrefab");
+		propSpawnPrefab = so.FindProperty("SpawnPrefab");
 
 		propCustomDiscColor = so.FindProperty("customDiscColor");
 		propCustomDiscThickness = so.FindProperty("customDiscThickness");

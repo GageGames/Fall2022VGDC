@@ -4,10 +4,10 @@ using UnityEngine.Events;
 
 public class Door : MonoBehaviour
 {
-	[SerializeField] private bool requiresAllSubscribedKeys;
+	[SerializeField] bool RequireAllSubscribedKeys;
 
-	[ConditionalField("requiresAllSubscribedKeys", true)]
-	[SerializeField] private int keysRequired = 0;
+	[ConditionalField("RequireAllSubscribedKeys", true)]
+	[SerializeField] int KeysRequired = 0;
 
 	private int keysLeft = 0;
 
@@ -18,15 +18,15 @@ public class Door : MonoBehaviour
 
 	void Start()
 	{
-		if (!requiresAllSubscribedKeys)
+		if (!RequireAllSubscribedKeys)
 		{
-			keysLeft = keysRequired;
+			keysLeft = KeysRequired;
 		}
 	}
 
 	public void RegisterKey()
 	{
-		if (requiresAllSubscribedKeys)
+		if (RequireAllSubscribedKeys)
 		{
 			keysLeft++;
 		}
@@ -35,16 +35,16 @@ public class Door : MonoBehaviour
 	public void KeyCollected()
 	{
 		keysLeft--;
-		OnKeyCollected.Invoke();
+		OnKeyCollected?.Invoke();
 
 		if (keysLeft <= 0)
 		{
 			OpenDoor();
-			OnDoorOpened.Invoke();
+			OnDoorOpened?.Invoke();
 		}
 	}
 
-	/// currently destroys door object, can be changed to more complex behavior later
+	// Currently destroys door object, can be changed to more complex behavior later
 	private void OpenDoor()
 	{
 		Destroy(gameObject);

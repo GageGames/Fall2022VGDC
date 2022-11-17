@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Triggers a Spawner at a regular time interval while an entity cap is not reached
+
 public class CappedIntervalSpawner : IntervalSpawner
 {
 	[SerializeField] int EntityCap;

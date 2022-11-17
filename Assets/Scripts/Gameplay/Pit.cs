@@ -1,45 +1,28 @@
-using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Deals continuous damage to all objects in contact
+
 public class Pit : MonoBehaviour
 {
-	[SerializeField]
 	[Expandable]
-	PitConfig pitConfig;
-	/*
-	[SerializeField]
-	float tickLength;
-
-	float tickTime = 0.0f;*/
+	[SerializeField] PitConfig pitConfig;
 
 	HashSet<HealthEntity> stuffInPit = new HashSet<HealthEntity>();
+
+	HealthEffectSourceType pitDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Pit);
 
 	void Update()
 	{
 		foreach (HealthEntity he in stuffInPit)
 		{
-			he.ApplyDamage(pitConfig.DamagePerSecond * Time.deltaTime);
+			he.ApplyDamage(pitConfig.DamagePerSecond * Time.deltaTime, pitDamageSourceType);
 		}
-		/*
-		tickTime += Time.fixedDeltaTime;
-		if (tickTime > tickLength)
-		{
-			foreach (var obj in stuffInPit)
-			{
-				if (obj != null)
-				{
-					obj.GetComponent<GageProtoInteractsWithDamage>().thisRenderer.material.DOColor(Color.black, tickTime / 2.1f).SetLoops(2, LoopType.Yoyo);
-				}
-			}
-
-			tickTime = 0.0f;
-		}*/
 	}
 
 	void OnTriggerEnter(Collider other)
 	{
-		// TODO: More stable way of determining what should be affected by the pit
+		// TODO: More reliable way of finding HealthEntity
 		if (other.GetComponentInParent<HealthEntity>())
 		{
 			stuffInPit.Add(other.GetComponentInParent<HealthEntity>());
@@ -48,7 +31,7 @@ public class Pit : MonoBehaviour
 
 	void OnTriggerExit(Collider other)
 	{
-		// TODO: More stable way of determining what should be affected by the pit
+		// TODO: More reliable way of finding HealthEntity
 		if (other.GetComponentInParent<HealthEntity>())
 		{
 			stuffInPit.Add(other.GetComponentInParent<HealthEntity>());

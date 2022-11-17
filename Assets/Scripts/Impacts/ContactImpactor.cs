@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Object that deals damage and/or knockback to object objects on contact
+// Object that applies damage and/or knockback to other objects on contact
 
 public class ContactImpactor : MonoBehaviour
 {

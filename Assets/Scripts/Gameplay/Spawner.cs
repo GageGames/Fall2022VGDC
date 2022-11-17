@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 
+// Spawns a random quantity of prefabs within min and max quantities, placed within a min and max radius
+
 [ExecuteAlways]
 public class Spawner : MonoBehaviour
 {
@@ -17,7 +19,7 @@ public class Spawner : MonoBehaviour
 	public int MinSpawnQuantity;
 
 	// A reference to the prefab of the object to spawn
-	public GameObject spawnPrefab;
+	public GameObject SpawnPrefab;
 
 	public SpawnType spawnType;
 	public SpawnerEditorPreviewData editorPreviewData;
@@ -41,7 +43,7 @@ public class Spawner : MonoBehaviour
 			float relativeY = r * Mathf.Sin(theta);
 			float relativeX = r * Mathf.Cos(theta);
 
-			output.Add(Instantiate(spawnPrefab, new Vector3(pos.x + relativeX, pos.y, pos.z + relativeY), spawnPrefab.transform.rotation));
+			output.Add(Instantiate(SpawnPrefab, new Vector3(pos.x + relativeX, pos.y, pos.z + relativeY), SpawnPrefab.transform.rotation));
 		}
 
 		return output;
