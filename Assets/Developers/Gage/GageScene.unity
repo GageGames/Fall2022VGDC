@@ -618,7 +618,6 @@ GameObject:
   m_Component:
   - component: {fileID: 258312446}
   - component: {fileID: 258312445}
-  - component: {fileID: 258312447}
   m_Layer: 0
   m_Name: aibrain
   m_TagString: Untagged
@@ -728,18 +727,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &258312447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 258312444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3291cefc3063ad48bd37ade4d8db62f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &348783574
 GameObject:
   m_ObjectHideFlags: 0

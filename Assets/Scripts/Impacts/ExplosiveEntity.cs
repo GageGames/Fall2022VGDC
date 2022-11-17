@@ -7,9 +7,8 @@ public class ExplosiveEntity : MonoBehaviour
 	[HideInInspector]
 	public UnityEvent OnExplode = new UnityEvent();
 
-	[SerializeField] float ExplosionRadius = 5f;
-	[SerializeField] float ExplosionStrength = 5f;
-	[SerializeField] float ExplosionDamage = 5f;
+	[Expandable]
+	[SerializeField] ExplosiveConfig explosiveConfig;
 
 	HealthEntity health;
 	HealthEffectSourceType explosiveDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Explosive);
@@ -23,7 +22,7 @@ public class ExplosiveEntity : MonoBehaviour
 
 	void Explode()
 	{
-		Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+		Collider[] colliders = Physics.OverlapSphere(transform.position, explosiveConfig.ExplosionRadius);
 		/*
 		GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 		debugSphere.transform.position = transform.position;
@@ -41,10 +40,11 @@ public class ExplosiveEntity : MonoBehaviour
 				{
 					Vector3 dir = target.position - transform.position;
 					dir.y = 0;
-					dir = dir.normalized;
 
-					target.GetComponent<IImpulseReceiver>()?.ApplyImpulse(dir, ExplosionStrength);
-					target.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage, explosiveDamageSourceType);
+					float falloffFactor = explosiveConfig.ExplosionFalloff.Evaluate(dir.magnitude / explosiveConfig.ExplosionRadius);
+
+					target.GetComponent<IImpulseReceiver>()?.ApplyImpulse(dir.normalized, explosiveConfig.ExplosionStrength * falloffFactor);
+					target.GetComponent<HealthEntity>()?.ApplyDamage(explosiveConfig.ExplosionDamage * falloffFactor, explosiveDamageSourceType);
 				}
 			}
 		}

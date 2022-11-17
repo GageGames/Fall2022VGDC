@@ -11,12 +11,15 @@ public class Gun : MonoBehaviour
 
 	protected MagneticEntity magEntity;
 
+	// Note: for the player, these are overridden at runtime
 	public float Strength = 80f;
 	public float DetectionRadius = 5f;
 	public LayerMask DetectionMask;
 
 	[HideInInspector]
 	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
+	[HideInInspector]
+	public UnityEvent OnDetach = new UnityEvent();
 
 	private void Awake()
 	{
@@ -87,6 +90,8 @@ public class Gun : MonoBehaviour
 		ActiveTether?.Detach();
 
 		ActiveTether = null;
+
+		OnDetach?.Invoke();
 	}
 
 	[Tooltip("Finds all magnetic entities within range of the target position")]
@@ -112,5 +117,17 @@ public class Gun : MonoBehaviour
 		}
 
 		return targets.ToArray();
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		//print($"Trigger entered on Gun. Other: {other.name}");
+		if (other.GetComponent<TriggerDetacher>() &&
+			other.GetComponent<MagneticEntity>() && 
+			other.GetComponent<MagneticEntity>().ContainsAnchor(ActiveTether?.Recipient))
+		{
+			//print("Detaching!");
+			Detach();
+		}
 	}
 }
