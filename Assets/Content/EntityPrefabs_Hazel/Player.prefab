@@ -414,4 +414,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tetherBeamPullEffectPrefab: {fileID: 892984419396705350, guid: 86c74c226b43b6742bf9cb0ad51bf426, type: 3}
   tetherBeamPushEffectPrefab: {fileID: 1824584983990579323, guid: cec33863a61a43a459c6a2e42d01744b, type: 3}
-  tetherHitPullEffectPrefab: {fileID: 6652571451325675485, guid: 7e3b952d4d71b2a4291f67713e68707a, type: 3}
+  tetherHitPullEffectPrefab: {fileID: 6793004075583213379, guid: 4f65933cf9e098b4098380536de5ee5c, type: 3}
+  tetherHitPushEffectPrefab: {fileID: 9031106044636243179, guid: 55f497169ad80434aa8822c31c14d9d6, type: 3}

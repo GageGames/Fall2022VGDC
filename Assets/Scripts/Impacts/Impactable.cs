@@ -14,27 +14,29 @@ public class Impactable : MonoBehaviour
 
 	private void OnCollisionEnter(Collision collision)
 	{
-		ApplyImpact(collision.transform.root);
+		ApplyImpact(collision.gameObject);
 	}
 
-	private void ApplyImpact(Transform other)
+	private void ApplyImpact(GameObject other)
 	{
 		Vector3 velocityDifferential = physData.rb.velocity;
 		float otherMass = 0;
 
-		if (other.GetComponent<PhysicsData>())
+		PhysicsData otherData = other.GetComponentInParent<PhysicsData>();
+
+		if (otherData)
 		{
-			velocityDifferential -= other.GetComponent<PhysicsData>().rb.velocity;
-			otherMass = other.GetComponent<PhysicsData>().rb.mass;
+			velocityDifferential -= otherData.rb.velocity;
+			otherMass = otherData.rb.mass;
 		}
-		else if (other.GetComponent<Rigidbody>())
+		else if (other.GetComponentInParent<Rigidbody>())
 		{
 			Debug.LogWarning("All Rigidbodies that can be impacted should have PhysicsData somewhere on them!");
-			velocityDifferential -= other.GetComponent<Rigidbody>().velocity;
-			otherMass = other.GetComponent<Rigidbody>().mass;
+			velocityDifferential -= other.GetComponentInParent<Rigidbody>().velocity;
+			otherMass = other.GetComponentInParent<Rigidbody>().mass;
 		}
 
-		other.GetComponent<HealthEntity>()?.ApplyDamage((physData.rb.mass + otherMass) * velocityDifferential.magnitude, impactDamageSourceType);
+		other.GetComponentInParent<HealthEntity>()?.ApplyDamage((physData.rb.mass + otherMass) * velocityDifferential.magnitude, impactDamageSourceType);
 
 		//Debug.Log($"Applied {physData.rb.mass * velocityDifferential.magnitude} damage to other");
 	}

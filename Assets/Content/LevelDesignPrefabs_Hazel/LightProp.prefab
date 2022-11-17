@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4714959946077965580}
   - component: {fileID: 4714959946077965572}
   - component: {fileID: 4714959946077963003}
-  m_Layer: 0
+  m_Layer: 25
   m_Name: LightProp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ MonoBehaviour:
   rectangleSize: {x: 1.2, y: 1.2}
   circleRadius: 1
   circleResolution: 6
-  height: 1
+  height: 1.5
   meshScale: 1
   center: {x: 0, y: 0, z: 0}
   updateDistance: 0.4

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -27,8 +28,10 @@ public class Spawner : MonoBehaviour
 	private void OnEnable() => SpawnManager.CurrentSpawners.Add(this);
 	private void OnDisable() => SpawnManager.CurrentSpawners.Remove(this);
 
-	public void Spawn()
+	public List<GameObject> Spawn()
 	{
+		List<GameObject> output = new List<GameObject>();
+
 		Vector3 pos = gameObject.transform.position;
 		for (int i = 0; i < Random.Range(MinSpawnQuantity, MaxSpawnQuantity); ++i)
 		{
@@ -38,10 +41,11 @@ public class Spawner : MonoBehaviour
 			float relativeY = r * Mathf.Sin(theta);
 			float relativeX = r * Mathf.Cos(theta);
 
-			Instantiate(spawnPrefab, new Vector3(pos.x + relativeX, pos.y, pos.z + relativeY), spawnPrefab.transform.rotation);
+			output.Add(Instantiate(spawnPrefab, new Vector3(pos.x + relativeX, pos.y, pos.z + relativeY), spawnPrefab.transform.rotation));
 		}
-	}
 
+		return output;
+	}
 
 	private void OnValidate()
 	{

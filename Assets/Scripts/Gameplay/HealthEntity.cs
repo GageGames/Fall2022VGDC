@@ -36,7 +36,7 @@ public class HealthEntity : MonoBehaviour
 	[HideInInspector]
 	public UnityEvent OnHeal = new UnityEvent();
 	[HideInInspector]
-	public UnityEvent OnDeath = new UnityEvent();	
+	public UnityEvent<HealthEntity> OnDeath = new UnityEvent<HealthEntity>();	
 
 	void Awake() {
 		data = GetComponent<HealthData>();
@@ -55,10 +55,16 @@ public class HealthEntity : MonoBehaviour
 
 	public float ApplyDamage(float amount, HealthEffectSourceType damageSourceType)
 	{
+		Debug.Log($"Received {amount} damage of type {damageSourceType.damageSourceTag}");
+
 		// Don't take damage after death
 		if (data.Dead) return 0;
 		// Ignore impact damage if it does not reach the minimum threshold
-		if (damageSourceType.damageSourceTag == HealthEffectSourceTag.Impact && amount < data.ImpactDamageThreshold) return 0;
+		if (damageSourceType.damageSourceTag == HealthEffectSourceTag.Impact && amount < data.ImpactDamageThreshold)
+		{
+			Debug.Log("Damage below threshold");
+			return 0;
+		}
 
 		data.CurrentHealth = Mathf.Max(0, data.CurrentHealth - amount);
 
@@ -86,7 +92,7 @@ public class HealthEntity : MonoBehaviour
 	void Die ()
 	{
 		data.Dead = true;
-		OnDeath.Invoke();
+		OnDeath.Invoke(this);
 		Destroy(gameObject);
 	}
 }
