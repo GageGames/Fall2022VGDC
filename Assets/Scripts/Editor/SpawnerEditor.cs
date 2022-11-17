@@ -19,8 +19,6 @@ public class SpawnerEditor : Editor
 	SerializedProperty propCustomDiscColor;
 	SerializedProperty propCustomDiscThickness;
 
-	float selectionBuffer = 10f;
-
 	int maxHotControlID = 0;
 	int minHotControlID = 0;
 
