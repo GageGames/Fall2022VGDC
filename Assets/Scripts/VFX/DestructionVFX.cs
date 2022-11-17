@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ExplosiveVFX : MonoBehaviour
+public class DestructionVFX : MonoBehaviour
 {
 	[SerializeField] GameObject VFXPrefab;
 
