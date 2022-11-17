@@ -34,7 +34,7 @@ public class Pit : MonoBehaviour
 		// TODO: More reliable way of finding HealthEntity
 		if (other.GetComponentInParent<HealthEntity>())
 		{
-			stuffInPit.Add(other.GetComponentInParent<HealthEntity>());
+			stuffInPit.Remove(other.GetComponentInParent<HealthEntity>());
 		}
 	}
 }

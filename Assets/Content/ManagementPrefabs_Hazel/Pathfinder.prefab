@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6019006391427221430}
   - component: {fileID: 6019006391427221431}
+  - component: {fileID: 1393884668986744044}
+  - component: {fileID: 5885300647417986684}
   m_Layer: 0
   m_Name: Pathfinder
   m_TagString: Untagged
@@ -119,3 +121,31 @@ MonoBehaviour:
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
   showGraphs: 1
+--- !u!114 &1393884668986744044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019006391427221429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a634230476dc478b88eceac73b1c8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  updateDistance: 10
+  target: {fileID: 0}
+  graphIndex: 0
+--- !u!114 &5885300647417986684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6019006391427221429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1822990a726aedf498a48ad7a04b8f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
