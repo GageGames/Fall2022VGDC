@@ -1,7 +1,6 @@
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 [CustomEditor(typeof(BoundingWall))]
 public class BoundingWallEditor : Editor
@@ -9,15 +8,18 @@ public class BoundingWallEditor : Editor
 	float selectionBuffer = 10f;
 
 	SerializedObject so;
+
+	SerializedProperty propWallSize;
 	SerializedProperty propWallPrefab;
-	SerializedProperty propWallPoints;
+	SerializedProperty propPoints;
 
 	private void OnEnable()
 	{
 		so = serializedObject;
 
+		propWallSize = so.FindProperty("WallSize");
 		propWallPrefab = so.FindProperty("WallPrefab");
-		propWallPoints = so.FindProperty("Points");
+		propPoints = so.FindProperty("Points");
 	}
 
 	public override void OnInspectorGUI()
@@ -32,9 +34,9 @@ public class BoundingWallEditor : Editor
 
 	private void OnSceneGUI()
 	{
-		if (propWallPoints == null) return;
+		if (propPoints == null) return;
 
-		SerializedProperty wps = propWallPoints.Copy(); // copy so we don't iterate the original
+		SerializedProperty wps = propPoints.Copy(); // copy so we don't iterate the original
 
 		if (!wps.isArray) return;
 
@@ -54,8 +56,8 @@ public class BoundingWallEditor : Editor
 		bool leftMouseDown = e.button == 0;
 		bool holdingAlt = (e.modifiers & EventModifiers.Alt) != 0;
 
-		Vector3 pos = so.targetObject.GetComponent<Transform>().position;
-		Plane dragPlane = new Plane(Vector3.up, pos);
+		Transform transform = so.targetObject.GetComponent<Transform>();
+		Plane dragPlane = new Plane(transform.up, transform.position);
 
 		Vector3? newPoint = null;
 
@@ -69,8 +71,8 @@ public class BoundingWallEditor : Editor
 					Ray r = HandleUtility.GUIPointToWorldRay(e.mousePosition);
 					if (dragPlane.Raycast(r, out float dist))
 					{
-						Vector3 spawnPosition = r.GetPoint(dist) - pos;
-						newPoint = spawnPosition;
+						Vector3 spawnPosition = r.GetPoint(dist);
+						newPoint = transform.InverseTransformPoint(spawnPosition);
 
 						wps.intValue++;
 						so.ApplyModifiedProperties();
@@ -84,7 +86,6 @@ public class BoundingWallEditor : Editor
 
 		// Handle inputs for points
 
-
 		wps.Next(true); // advance to first array index
 
 		// Write values to list
@@ -93,11 +94,11 @@ public class BoundingWallEditor : Editor
 		{
 			int hotControlID = GUIUtility.GetControlID($"WallPoint{i}".GetHashCode(), FocusType.Passive);
 
-			Vector3 targetOrigin = wps.vector3Value + pos;
+			Vector3 targetOrigin = transform.TransformPoint(wps.vector3Value);
 
 			DrawWallPoint(hotControlID, targetOrigin, dragPlane, ref targetOrigin);
 
-			Vector3 output = targetOrigin - pos;
+			Vector3 output = transform.InverseTransformPoint(targetOrigin);
 			output.y = 0;
 
 			wps.vector3Value = output;
@@ -175,9 +176,9 @@ public class BoundingWallEditor : Editor
 
 	void BakeWallObjects()
 	{
-		if (propWallPoints == null) return;
+		if (propPoints == null) return;
 
-		SerializedProperty wps = propWallPoints.Copy(); // copy so we don't iterate the original
+		SerializedProperty wps = propPoints.Copy(); // copy so we don't iterate the original
 
 		if (!wps.isArray) return;
 
@@ -193,7 +194,7 @@ public class BoundingWallEditor : Editor
 
 		Transform transform = so.targetObject.GetComponent<Transform>();
 
-		Vector3 prevPos = wps.vector3Value + transform.position;
+		Vector3 prevPos = transform.TransformPoint(wps.vector3Value);
 		Vector3 firstPos = prevPos;
 
 		// Clear existing walls
@@ -207,7 +208,7 @@ public class BoundingWallEditor : Editor
 		{
 			wps.Next(false); // advance without drilling into children
 
-			Vector3 nextPos = wps.vector3Value + transform.position;
+			Vector3 nextPos = transform.TransformPoint(wps.vector3Value);
 
 			PlaceWall(prevPos, nextPos, transform);
 
@@ -225,7 +226,7 @@ public class BoundingWallEditor : Editor
 		GameObject wall = (GameObject)PrefabUtility.InstantiatePrefab(propWallPrefab.objectReferenceValue, parent);
 		wall.transform.position = (endPoint + startPoint) * 0.5f;
 		wall.transform.rotation = Quaternion.Euler(0, Mathf.Atan2(endPoint.x - startPoint.x, endPoint.z - startPoint.z) * Mathf.Rad2Deg, 0);
-		wall.transform.localScale = new Vector3(1, 5, Vector3.Distance(endPoint, startPoint));
+		wall.transform.localScale = new Vector3(0, 0, Vector3.Distance(endPoint, startPoint)) + propWallSize.vector3Value;
 		return wall;
 	}
 }
