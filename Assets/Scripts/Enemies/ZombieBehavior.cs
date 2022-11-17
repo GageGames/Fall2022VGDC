@@ -25,7 +25,7 @@ public class ZombieBehavior : MonoBehaviour
 
 	void Start()
 	{
-		player = FindObjectOfType<Player>().transform;
+		player = FindObjectOfType<Player>()?.transform;
 		aIDestinationSetter.target = player;
 		aIPath.maxSpeed = pathfindingBehaviorConfig.MovementSpeed;
 	}

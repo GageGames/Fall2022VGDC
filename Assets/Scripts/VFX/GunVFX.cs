@@ -55,6 +55,7 @@ public class GunVFX : MonoBehaviour
 	{
 		if (ActiveTetherBeamEffect != null)
 		{
+			// TODO: Transform.root is dangerous, use something more stable
 			Destroy(ActiveTetherBeamEffect.transform.root.gameObject);
 		}
 	}
