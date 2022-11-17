@@ -19,8 +19,6 @@ public class SpawnerEditor : Editor
 	SerializedProperty propCustomDiscColor;
 	SerializedProperty propCustomDiscThickness;
 
-	float selectionBuffer = 10f;
-
 	int maxHotControlID = 0;
 	int minHotControlID = 0;
 
@@ -35,7 +33,7 @@ public class SpawnerEditor : Editor
 		propMaxSpawnQuantity = so.FindProperty("MaxSpawnQuantity");
 		propMinSpawnQuantity = so.FindProperty("MinSpawnQuantity");
 
-		propSpawnPrefab = so.FindProperty("spawnPrefab");
+		propSpawnPrefab = so.FindProperty("SpawnPrefab");
 
 		propCustomDiscColor = so.FindProperty("customDiscColor");
 		propCustomDiscThickness = so.FindProperty("customDiscThickness");
@@ -100,11 +98,8 @@ public class SpawnerEditor : Editor
 
 	void DrawSpawnRadius(int hotControlID, Vector3 centerPos, float radius, Plane draggingPlane, ref float newRadius)
 	{
-		float size = HandleUtility.GetHandleSize(centerPos);
-		float selectionRange = selectionBuffer * size;
-
 		if (!Camera.current) return;
-		float handleCursorDistance = HandleUtility.DistanceToDisc(centerPos, Vector3.up, radius);
+		float handleCursorDistance = HandleUtility.DistanceToDisc(centerPos, draggingPlane.normal, radius);
 
 		Event e = Event.current;
 		bool leftMouseDown = e.button == 0;
@@ -114,7 +109,7 @@ public class SpawnerEditor : Editor
 		switch (e.type)
 		{
 			case EventType.Layout:
-				HandleUtility.AddControl(hotControlID, Mathf.Max(handleCursorDistance - selectionRange, 0));
+				HandleUtility.AddControl(hotControlID, Mathf.Max(handleCursorDistance, 0));
 				break;
 			case EventType.MouseDown:
 				if (isHovering && leftMouseDown)

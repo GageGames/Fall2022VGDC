@@ -1,7 +1,7 @@
 using MyBox;
 using UnityEngine;
 
-// stores pure data on an object's current and max health
+// Stores pure data on an object's current and max health
 
 public class HealthData : MonoBehaviour
 {

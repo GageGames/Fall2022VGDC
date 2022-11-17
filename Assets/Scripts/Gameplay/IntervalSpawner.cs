@@ -1,5 +1,8 @@
 using UnityEngine;
 
+// Triggers a Spawner at a regular time interval
+
+[RequireComponent(typeof(Spawner))]
 public class IntervalSpawner : MonoBehaviour
 {
 	public float SpawnInterval;
@@ -7,7 +10,7 @@ public class IntervalSpawner : MonoBehaviour
 	protected Spawner spawner;
 	protected float timer;
 
-	private void Start()
+	private void Awake()
 	{
 		spawner = GetComponent<Spawner>();
 	}

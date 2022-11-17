@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Object that applies velocity-based impact damage to other objects on contact
+
 [RequireComponent(typeof(PhysicsData))]
 public class Impactable : MonoBehaviour
 {

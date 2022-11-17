@@ -6,7 +6,7 @@ public class TurretEnemy : MonoBehaviour
 
 	void Start()
 	{
-		player = ((Player)FindObjectOfType(typeof(Player))).transform;
+		player = FindObjectOfType<Player>().transform;
 	}
 
 	void Update()
