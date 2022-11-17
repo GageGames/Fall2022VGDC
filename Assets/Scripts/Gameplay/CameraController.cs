@@ -3,43 +3,58 @@ using System.Collections.Generic;
 using UnityEngine;
 using MyBox;
 
-// makes the camera smoothly follow the player and zoom depending on the player's speed, in a way that's configurable
+// Makes the camera smoothly follow the player and zoom depending on the player's speed, in a way that's configurable
 
 public class CameraController : MonoBehaviour
 {
-	[SerializeField] private float smoothTime;
-	[SerializeField] private Vector2 positionOffset;
-	[SerializeField] private float baseYPos;
-	[SerializeField] private float maxYOffset;
-	[SerializeField] private float baseFOV;
-	[SerializeField] private float maxFOVOffset;
-	[SerializeField] private float zoomCapSpeed;
-	[SerializeField] private float zoomFloorSpeed = 0;
-	[SerializeField] private AnimationCurve zoomEaseCurve;
-	
-	[SerializeField] private bool camSpeedCapped;
-	[ConditionalField("camSpeedCapped")]
-	[SerializeField] private float maxCamSpeed = 0;
-	[SerializeField] private bool smoothFOV;
-	[ConditionalField("smoothFOV")]
-	[SerializeField] private float FOVLerpSpeed = 1;
+	[SerializeField] float smoothTime;
 
-	private Camera cam;
-	private Transform player;
-	private Rigidbody rb;
-	private float yOffset;
-	private float FOVOffset;
-	private Vector3 velocity = Vector3.zero;
+	[Space]
+
+	[SerializeField] Vector2 positionOffset;
+	[SerializeField] float baseYPos;
+	[SerializeField] float maxYOffset;
+	[SerializeField] float baseFOV;
+	[SerializeField] float maxFOVOffset;
+
+	[Space]
+
+	[SerializeField] float zoomCapSpeed;
+	[SerializeField] float zoomFloorSpeed = 0;
+	[SerializeField] AnimationCurve zoomEaseCurve;
+
+	[Space]
+
+	[SerializeField] bool camSpeedCapped;
+	[ConditionalField("camSpeedCapped")]
+	[SerializeField] float maxCamSpeed = 0;
+
+	[SerializeField] bool smoothFOV;
+	[ConditionalField("smoothFOV")]
+	[SerializeField] float FOVLerpSpeed = 1;
+
+	Camera cam;
+	Transform player;
+	Rigidbody rb;
+
+	float yOffset;
+	float FOVOffset;
+	Vector3 velocity = Vector3.zero;
 
     void Start()
     {
 		cam = GetComponent<Camera>();
-		player = FindObjectOfType<Player>().transform;
-		rb = player.GetComponent<PhysicsData>().rb;
+		player = FindObjectOfType<Player>()?.transform;
+
+		if (!player) return;
+
+		rb = player.GetComponent<PhysicsData>()?.rb;
     }
 
     void Update()
     {
+		if (!player || !rb) return;
+
 		float zoomFactor = zoomEaseCurve.Evaluate((rb.velocity.magnitude-zoomFloorSpeed) / (zoomCapSpeed-zoomFloorSpeed));
 		//set target y offset
 		yOffset = zoomFactor * maxYOffset;

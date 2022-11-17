@@ -78,6 +78,8 @@ public class Spawner : MonoBehaviour
 #if UNITY_EDITOR
 	private void OnDrawGizmosSelected()
 	{
+		if (!editorPreviewData) return;
+
 		Color colorCache = Handles.color;
 		Handles.color = editorPreviewData.discColor;
 		Handles.DrawWireDisc(transform.position, transform.up, MaxSpawnRadius, editorPreviewData.discThickness);
