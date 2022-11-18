@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public enum ImpulseSourceTag
 {
 	Generic,
@@ -10,6 +11,7 @@ public enum ImpulseSourceTag
 	Field,
 }
 
+[System.Serializable]
 public struct ImpulseSourceType
 {
 	public static ImpulseSourceType defaultType = new ImpulseSourceType(ImpulseSourceTag.Generic);
