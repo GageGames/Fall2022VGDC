@@ -12,6 +12,11 @@ public class PathfindingGridPlayerTracker : MonoBehaviour
 			return;
 		}
 		GetComponent<ProceduralGridMover>().target = player;
+		player.GetComponent<HealthEntity>().OnDeath.AddListener(StopTracking);
+	}
 
+	void StopTracking(HealthEntity healthEntity)
+	{
+		GetComponent<ProceduralGridMover>().target = transform;
 	}
 }

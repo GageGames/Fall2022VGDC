@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1f18fc9cbf2894cb9bcf3137cad68a, type: 3}
   m_Name: PitConfig
   m_EditorClassIdentifier: 
-  DamagePerSecond: 2
+  DamagePerSecond: 10
