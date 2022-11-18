@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -115,18 +115,216 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: pause screen buttons_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 424
+        width: 253
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1d6681e6abd2344d8dea4b7e7b36eb5
+      internalID: 1297329270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause screen buttons_1
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 417
+        width: 280
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cd9573971522c54cb7d177e9e2aa0ef
+      internalID: -1366398785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause screen buttons_2
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 408
+        width: 297
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6ed5d38214da56468fe4266be091b23
+      internalID: 649792596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause screen buttons_3
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 254
+        width: 253
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f96ff9b310101c54aba20b2a7cb778a7
+      internalID: -608330665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause screen buttons_4
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 247
+        width: 280
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8953677f38b9a08468ea7fe467ade050
+      internalID: 1561288787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause screen buttons_5
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 241
+        width: 297
+        height: 114
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7d7c875dce79b4e97ea2d378fbc827
+      internalID: -494539942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause screen buttons_6
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 72
+        width: 253
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d676530f59b00a843844c560cf450258
+      internalID: -1600460577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause screen buttons_7
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 64
+        width: 280
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 320fb47b59b55614fbf9db00f4898453
+      internalID: -782469666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pause screen buttons_8
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 56
+        width: 297
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac422c8fdcf5c554989ca7b4085cd306
+      internalID: -858182334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f12b7941b0766a447853f321ba71d688
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pause screen buttons_7: -782469666
+      pause screen buttons_6: -1600460577
+      pause screen buttons_1: -1366398785
+      pause screen buttons_0: 1297329270
+      pause screen buttons_2: 649792596
+      pause screen buttons_8: -858182334
+      pause screen buttons_4: 1561288787
+      pause screen buttons_5: -494539942
+      pause screen buttons_3: -608330665
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

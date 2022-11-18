@@ -74,7 +74,7 @@ public class Tether : MonoBehaviour
 		Sender = null;
 		Recipient = null;
 
-		OnDetach.Invoke();
+		OnDetach?.Invoke();
 
 		// TODO: Recycle with object pooling
 		Destroy(gameObject);

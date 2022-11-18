@@ -6,10 +6,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	public bool IsPaused { get; private set; }
+	public bool IsGameOver { get; private set; }
 
 	public void Pause()
 	{
 		if (IsPaused) return;
+
+		Time.timeScale = 0;
 
 		Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.PauseMenuPrefab);
 		IsPaused = true;
@@ -19,6 +22,8 @@ public class GameManager : MonoBehaviour
 	public void Unpause()
 	{
 		if (!IsPaused) return;
+
+		Time.timeScale = 1;
 
 		IsPaused = false;
 		BroadcastAll("OnGameUnpause", null);
@@ -40,8 +45,12 @@ public class GameManager : MonoBehaviour
 		BroadcastAll("OnGameBegin", null);
 	}
 
-	void EndGame()
+	public void EndGame()
 	{
+		if (IsGameOver) return;
+
+		Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.GameOverMenuPrefab);
+		IsGameOver = true;
 		BroadcastAll("OnGameEnd", null);
 	}
 

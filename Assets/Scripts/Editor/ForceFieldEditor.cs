@@ -9,6 +9,7 @@ public class ForceFieldEditor : Editor
 	SerializedObject so;
 	SerializedProperty propStrength;
 	SerializedProperty propDirection;
+	SerializedProperty propSoundEffect;
 
 	float selectionBuffer = 10f;
 
@@ -18,8 +19,9 @@ public class ForceFieldEditor : Editor
 	{
 		so = serializedObject;
 
-		propStrength = so.FindProperty("strength");
-		propDirection = so.FindProperty("direction");
+		propStrength = so.FindProperty("Strength");
+		propDirection = so.FindProperty("Direction");
+		propSoundEffect = so.FindProperty("SoundEffect");
 	}
 
 	public override void OnInspectorGUI()
@@ -27,6 +29,7 @@ public class ForceFieldEditor : Editor
 		so.Update();
 		EditorGUILayout.PropertyField(propStrength);
 		EditorGUILayout.PropertyField(propDirection);
+		EditorGUILayout.PropertyField(propSoundEffect);
 		so.ApplyModifiedProperties();
 	}
 

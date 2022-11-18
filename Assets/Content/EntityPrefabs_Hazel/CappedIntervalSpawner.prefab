@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7679739915354630736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7679739915354630738}
+  - component: {fileID: 7679739915354630737}
+  - component: {fileID: 7679739915354630739}
+  m_Layer: 0
+  m_Name: CappedIntervalSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7679739915354630738
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7679739915354630736}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 44.997528, y: -2.3999996, z: 68.900024}
+  m_LocalScale: {x: 1.1138, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7679739915354630737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7679739915354630736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873097eb908f8415fa3437589ef8f3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxSpawnRadius: 10.259961
+  MinSpawnRadius: 3.3916137
+  MaxSpawnQuantity: 2
+  MinSpawnQuantity: 1
+  spawnPrefab: {fileID: 5799269840982725066, guid: 64998ed3457b1424d9ef55cc053949fc, type: 3}
+  spawnType: 0
+  editorPreviewData: {fileID: 11400000, guid: 2224c49450730c24f80de7b4d26c6cac, type: 2}
+  customDiscColor: {r: 1, g: 0, b: 0, a: 1}
+  customDiscThickness: 5.98
+--- !u!114 &7679739915354630739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7679739915354630736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba22c4e3431c9af49bb64db4a6f5a5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnInterval: 30
+  EntityCap: 4

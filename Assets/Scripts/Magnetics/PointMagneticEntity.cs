@@ -23,21 +23,25 @@ public class PointMagneticEntity : MagneticEntity
 		//print("Anchor requested");
 		return curAnchor;
 	}
+	
+	public override bool ContainsAnchor(Anchor anchor)
+	{
+		return curAnchor == anchor;
+	}
+
+	public override Anchor[] RetrieveActiveAnchors()
+	{
+		return new Anchor[] { curAnchor };
+	}
 
 	protected override void UpdateAnchorage()
 	{
 		curAnchor.SetPosition(physEntity.GetPosition());
 	}
 
-	// TODO: Cache
-	protected override void RefreshTethers()
-	{
-		tethers = curAnchor.GetTethers();
-	}
-
 	protected override void ApplyImpulses()
 	{
-		foreach (Tether tether in tethers)
+		foreach (Tether tether in curAnchor.GetTethers())
 		{
 			Vector3 pos = tether.GetOpposite(curAnchor).Position;
 			float strength = tether.Strength * Time.deltaTime;
@@ -45,5 +49,10 @@ public class PointMagneticEntity : MagneticEntity
 			dir.y = 0;
 			physEntity.ApplyImpulse(dir, strength, impulseSourceType);
 		}
+	}
+
+	protected override void DetachAnchorage()
+	{
+		curAnchor.DetachAllTethers();
 	}
 }
