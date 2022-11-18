@@ -77,7 +77,7 @@ public class Snapper : EditorWindow
 				continue;
 			}
 
-			output.Add(new SnapData(currentSnapPoint.root, activeSnapPoint.position - currentSnapPoint.position));
+			output.Add(new SnapData(currentSnapPoint.GetComponentInParent<Snappable>().transform, activeSnapPoint.position - currentSnapPoint.position));
 		}
 
 		return output.ToArray();

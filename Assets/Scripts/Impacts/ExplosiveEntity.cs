@@ -7,10 +7,8 @@ public class ExplosiveEntity : MonoBehaviour
 	[HideInInspector]
 	public UnityEvent OnExplode = new UnityEvent();
 
-	[SerializeField] float ExplosionRadius = 5f;
-	[SerializeField] float ExplosionStrength = 5f;
-	[SerializeField] float ExplosionDamage = 5f;
-	[SerializeField] AnimationCurve ExplosionFalloff;
+	[Expandable]
+	[SerializeField] ExplosiveConfig explosiveConfig;
 
 	HealthEntity health;
 	HealthEffectSourceType explosiveDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Explosive);
@@ -22,9 +20,9 @@ public class ExplosiveEntity : MonoBehaviour
 		health.OnDeath.AddListener (Explode);
 	}
 
-	void Explode()
+	void Explode(HealthEntity entity)
 	{
-		Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRadius);
+		Collider[] colliders = Physics.OverlapSphere(transform.position, explosiveConfig.ExplosionRadius);
 		/*
 		GameObject debugSphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 		debugSphere.transform.position = transform.position;
@@ -36,17 +34,18 @@ public class ExplosiveEntity : MonoBehaviour
 		{
 			foreach (Collider col in colliders)
 			{
-				Transform target = col.transform.root;
+				IImpulseReceiver targetImpulseReceiver = col.gameObject.GetComponentInParent<IImpulseReceiver>();
+				HealthEntity targetHealthEntity = col.gameObject.GetComponentInParent<HealthEntity>();
 
-				if (target.gameObject != gameObject)
+				if (targetHealthEntity != health)
 				{
-					Vector3 dir = target.position - transform.position;
+					Vector3 dir = col.transform.position - transform.position;
 					dir.y = 0;
 
-					float falloffFactor = ExplosionFalloff.Evaluate(dir.magnitude / ExplosionRadius);
+					float falloffFactor = explosiveConfig.ExplosionFalloff.Evaluate(dir.magnitude / explosiveConfig.ExplosionRadius);
 
-					target.GetComponent<IImpulseReceiver>()?.ApplyImpulse(dir.normalized, ExplosionStrength * falloffFactor);
-					target.GetComponent<HealthEntity>()?.ApplyDamage(ExplosionDamage * falloffFactor, explosiveDamageSourceType);
+					targetImpulseReceiver?.ApplyImpulse(dir.normalized, explosiveConfig.ExplosionStrength * falloffFactor);
+					targetHealthEntity?.ApplyDamage(explosiveConfig.ExplosionDamage * falloffFactor, explosiveDamageSourceType);
 				}
 			}
 		}

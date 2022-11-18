@@ -18,6 +18,8 @@ public class Gun : MonoBehaviour
 
 	[HideInInspector]
 	public UnityEvent<FireResult> OnFire = new UnityEvent<FireResult>();
+	[HideInInspector]
+	public UnityEvent OnDetach = new UnityEvent();
 
 	private void Awake()
 	{
@@ -88,6 +90,8 @@ public class Gun : MonoBehaviour
 		ActiveTether?.Detach();
 
 		ActiveTether = null;
+
+		OnDetach?.Invoke();
 	}
 
 	[Tooltip("Finds all magnetic entities within range of the target position")]
@@ -125,5 +129,10 @@ public class Gun : MonoBehaviour
 			//print("Detaching!");
 			Detach();
 		}
+	}
+
+	private void OnDestroy()
+	{
+		Detach();
 	}
 }

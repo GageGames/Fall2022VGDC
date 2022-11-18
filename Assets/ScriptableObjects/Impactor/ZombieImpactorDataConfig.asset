@@ -12,5 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e4504c39a25424b89998b6c88c3db6, type: 3}
   m_Name: ZombieImpactorDataConfig
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 20
   Knockback: 5
+  TargetLayers:
+    serializedVersion: 2
+    m_Bits: 67108864
+  contactDamageSourceType:
+    damageSourceTag: 2
+  contactImpulseSourceType:
+    impulseSourceTag: 2

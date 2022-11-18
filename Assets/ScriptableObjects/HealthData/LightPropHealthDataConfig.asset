@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5c2eecdac36fb45946dda2e9a74b7e, type: 3}
   m_Name: LightPropHealthDataConfig
   m_EditorClassIdentifier: 
-  MaxHealth: 10
-  StartingHealth: 10
+  MaxHealth: 8
+  StartingHealth: 8
+  ImpactDamageThreshold: 0.5

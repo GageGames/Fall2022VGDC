@@ -14,3 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   Knockback: 10
+  TargetLayers:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  contactDamageSourceType:
+    damageSourceTag: 2
+  contactImpulseSourceType:
+    impulseSourceTag: 2

@@ -1,11 +1,12 @@
 using UnityEditor;
 using UnityEngine;
 
-//Pushes movable objects in a direction. (Functions like a fan)
+// Pushes movable objects in a direction. (Functions like a fan)
+
 public class Forcefield : MonoBehaviour
 {
-	public float strength;
-	public Vector3 direction;
+	public float Strength;
+	public Vector3 Direction;
 	public AudioClip SoundEffect;
 
 	static ImpulseSourceType type = new ImpulseSourceType(ImpulseSourceTag.Field);
@@ -20,7 +21,7 @@ public class Forcefield : MonoBehaviour
 		IImpulseReceiver receiver = other.GetComponentInParent<IImpulseReceiver>();
 		if (receiver != null)
 		{
-			receiver.ApplyImpulse(direction, strength * Time.deltaTime, type);
+			receiver.ApplyImpulse(Direction, Strength * Time.deltaTime, type);
 		}
 	}
 
@@ -28,8 +29,8 @@ public class Forcefield : MonoBehaviour
 	private void OnDrawGizmosSelected()
 	{
 		Color colorCache = Handles.color;
-		Handles.color = Color.Lerp(Color.green, Color.red, Mathf.Clamp01(strength / 8f));
-		Handles.DrawLine(transform.position, transform.position + direction * strength, 3 + 5f * Mathf.Clamp01(strength / 8f));
+		Handles.color = Color.Lerp(Color.green, Color.red, Mathf.Clamp01(Strength / 8f));
+		Handles.DrawLine(transform.position, transform.position + Direction * Strength, 3 + 5f * Mathf.Clamp01(Strength / 8f));
 		Handles.color = colorCache;
 	}
 #endif

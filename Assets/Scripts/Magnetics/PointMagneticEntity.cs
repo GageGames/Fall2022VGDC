@@ -29,6 +29,11 @@ public class PointMagneticEntity : MagneticEntity
 		return curAnchor == anchor;
 	}
 
+	public override Anchor[] RetrieveActiveAnchors()
+	{
+		return new Anchor[] { curAnchor };
+	}
+
 	protected override void UpdateAnchorage()
 	{
 		curAnchor.SetPosition(physEntity.GetPosition());

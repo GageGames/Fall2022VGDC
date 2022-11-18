@@ -1,9 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
 public struct HealthEffectSourceType
 {
-	public static HealthEffectSourceType defaultType = new HealthEffectSourceType(HealthEffectSourceTag.Generic);
+	public static HealthEffectSourceType DefaultType = new HealthEffectSourceType(HealthEffectSourceTag.Generic);
 
 	public HealthEffectSourceTag damageSourceTag;
 
@@ -13,6 +14,7 @@ public struct HealthEffectSourceType
 	}
 }
 
+[System.Serializable]
 public enum HealthEffectSourceTag
 {
 	Generic,
@@ -24,7 +26,7 @@ public enum HealthEffectSourceTag
 	Pickup
 }
 
-// handles changing an object's health
+// Handles changing an object's health
 
 [RequireComponent(typeof(HealthData))]
 public class HealthEntity : MonoBehaviour
@@ -36,7 +38,7 @@ public class HealthEntity : MonoBehaviour
 	[HideInInspector]
 	public UnityEvent OnHeal = new UnityEvent();
 	[HideInInspector]
-	public UnityEvent OnDeath = new UnityEvent();	
+	public UnityEvent<HealthEntity> OnDeath = new UnityEvent<HealthEntity>();	
 
 	void Awake() {
 		data = GetComponent<HealthData>();
@@ -45,24 +47,31 @@ public class HealthEntity : MonoBehaviour
 	// ***both functions return new CurrentHealth, after operation
 	public float ApplyDamage(float amount)
 	{
-		return ApplyDamage(amount, HealthEffectSourceType.defaultType);
+		return ApplyDamage(amount, HealthEffectSourceType.DefaultType);
 	}
 
 	public float ApplyHeal(float amount)
 	{
-		return ApplyHeal(amount, HealthEffectSourceType.defaultType);
+		return ApplyHeal(amount, HealthEffectSourceType.DefaultType);
 	}
 
 	public float ApplyDamage(float amount, HealthEffectSourceType damageSourceType)
 	{
+		//Debug.Log($"Received {amount} damage of type {damageSourceType.damageSourceTag}");
+
 		// Don't take damage after death
 		if (data.Dead) return 0;
+
 		// Ignore impact damage if it does not reach the minimum threshold
-		if (damageSourceType.damageSourceTag == HealthEffectSourceTag.Impact && amount < data.ImpactDamageThreshold) return 0;
+		if (damageSourceType.damageSourceTag == HealthEffectSourceTag.Impact && amount < data.ImpactDamageThreshold)
+		{
+			//Debug.Log("Damage below threshold");
+			return 0;
+		}
 
 		data.CurrentHealth = Mathf.Max(0, data.CurrentHealth - amount);
 
-		OnDamage.Invoke();
+		OnDamage?.Invoke();
 
 		if (data.CurrentHealth < Mathf.Epsilon) {
 			Die();
@@ -86,7 +95,7 @@ public class HealthEntity : MonoBehaviour
 	void Die ()
 	{
 		data.Dead = true;
-		OnDeath.Invoke();
+		OnDeath.Invoke(this);
 		Destroy(gameObject);
 	}
 }

@@ -47,15 +47,31 @@ public class ReplaceWithPrefab : EditorWindow
 
 	void ReplaceSelectedWithPrefab()
 	{
-		foreach (GameObject go in Selection.gameObjects)
-		{
-			GameObject newObject;
-			newObject = (GameObject)PrefabUtility.InstantiatePrefab(Prefab);
-			newObject.transform.position = go.transform.position;
-			newObject.transform.rotation = go.transform.rotation;
-			newObject.transform.parent = go.transform.parent;
+		GameObject[] goCache = Selection.gameObjects;
 
-			DestroyImmediate(go);
+		foreach (GameObject go in goCache)
+		{
+			Undo.IncrementCurrentGroup();
+
+			GameObject newObject = (GameObject) PrefabUtility.InstantiatePrefab(Prefab, go.transform.parent);
+			//Undo.RegisterCreatedObjectUndo(newObject, "Create Prefab Instance");
+			Selection.activeObject = newObject;
+
+			Undo.RegisterCompleteObjectUndo(go, "Update transform values");
+
+			newObject.transform.position = go.transform.position;
+			if (propCopyScale.boolValue)
+			{
+				newObject.transform.localScale = go.transform.localScale;
+			}
+			if (propCopyRotation.boolValue)
+			{
+				newObject.transform.rotation = go.transform.rotation;
+			}
+
+			Undo.DestroyObjectImmediate(go);
+
+			Undo.SetCurrentGroupName("Replace GameObject With Prefab");
 		}
 	}
 }
