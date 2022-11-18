@@ -27,11 +27,21 @@ public class ContactImpactor : MonoBehaviour
 
 	private void ApplyImpact(Transform other, Vector3 contactNormal)
 	{
+		// if the other object is not on a layer contained in the layermask, stop
+		if ((contactImpactorConfig.TargetLayers & (1 << other.gameObject.layer)) == 0) {
+			return;
+		}
+
 		other.GetComponentInParent<IImpulseReceiver>()?.ApplyImpulse(
 			contactNormal.normalized, 
 			contactImpactorConfig.Knockback, 
 			contactImpactorConfig.contactImpulseSourceType
 		);
+		//Debug.Log($"Damaging {other.name} by {contactImpactorConfig.Damage}");
+		/*if (other.GetComponentInParent<HealthEntity>())
+		{
+			Debug.Log($"Damaging {other.GetComponentInParent<HealthEntity>().name} by {contactImpactorConfig.Damage}");
+		}*/
 		other.GetComponentInParent<HealthEntity>()?.ApplyDamage(
 			contactImpactorConfig.Damage, 
 			contactImpactorConfig.contactDamageSourceType

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
 public struct HealthEffectSourceType
 {
 	public static HealthEffectSourceType DefaultType = new HealthEffectSourceType(HealthEffectSourceTag.Generic);
@@ -13,6 +14,7 @@ public struct HealthEffectSourceType
 	}
 }
 
+[System.Serializable]
 public enum HealthEffectSourceTag
 {
 	Generic,

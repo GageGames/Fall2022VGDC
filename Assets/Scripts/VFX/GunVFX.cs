@@ -19,7 +19,7 @@ public class GunVFX : MonoBehaviour
 		gun.OnDetach.AddListener(DestroyTetherEffect);
 	}
 
-	void FixedUpdate()
+	void LateUpdate()
 	{
 		if (gun.ActiveTether != null)
 		{
