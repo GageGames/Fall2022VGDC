@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _FadeTex:
-        m_Texture: {fileID: 2800000, guid: a7bbdf3438218bf48b6085ddfadb02a1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 38db506de6fbce34093cbc9f020be629, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
