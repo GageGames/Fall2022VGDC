@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5489902935327754055
+--- !u!1 &2682214917332963382
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,52 +8,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5489902935327754047}
-  - component: {fileID: 5489902935327754048}
-  - component: {fileID: 5489902935327754049}
-  - component: {fileID: 5489902935327754050}
-  - component: {fileID: 5489902935327754051}
-  - component: {fileID: 5489902935327754052}
-  - component: {fileID: 5489902935327754053}
-  - component: {fileID: 5489902935327754054}
-  - component: {fileID: 5578615399939252049}
+  - component: {fileID: 5497620516221258407}
+  - component: {fileID: 3977723705984480082}
+  - component: {fileID: 3045500917340011695}
   m_Layer: 0
-  m_Name: SurfaceTetherOnlyTriggerProp
+  m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5489902935327754047
+--- !u!4 &5497620516221258407
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489902935327754055}
-  m_LocalRotation: {x: -0, y: -0.13417956, z: -0, w: 0.990957}
-  m_LocalPosition: {x: -6.14, y: 0.16, z: 3.3}
-  m_LocalScale: {x: 13.2714, y: 1.72434, z: 2.0025299}
+  m_GameObject: {fileID: 2682214917332963382}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 5489902935327754047}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -15.422, z: 0}
---- !u!33 &5489902935327754048
+--- !u!33 &3977723705984480082
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489902935327754055}
+  m_GameObject: {fileID: 2682214917332963382}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5489902935327754049
+--- !u!23 &3045500917340011695
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489902935327754055}
+  m_GameObject: {fileID: 2682214917332963382}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -89,6 +83,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5489902935327754055
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5489902935327754047}
+  - component: {fileID: 5489902935327754050}
+  - component: {fileID: 5489902935327754051}
+  - component: {fileID: 5489902935327754052}
+  - component: {fileID: 5489902935327754053}
+  - component: {fileID: 5489902935327754054}
+  - component: {fileID: 5578615399939252049}
+  m_Layer: 0
+  m_Name: SurfaceTetherOnlyTriggerProp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5489902935327754047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5489902935327754055}
+  m_LocalRotation: {x: -0, y: -0.13417956, z: -0, w: 0.990957}
+  m_LocalPosition: {x: -6.14, y: 0.16, z: 3.3}
+  m_LocalScale: {x: 13.2714, y: 1.72434, z: 2.0025299}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5497620516221258407}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -15.422, z: 0}
 --- !u!65 &5489902935327754050
 BoxCollider:
   m_ObjectHideFlags: 0
