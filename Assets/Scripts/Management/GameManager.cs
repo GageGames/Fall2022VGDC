@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	public bool IsPaused { get; private set; }
+	public bool IsGameOver { get; private set; }
 
 	public void Pause()
 	{
@@ -40,8 +41,12 @@ public class GameManager : MonoBehaviour
 		BroadcastAll("OnGameBegin", null);
 	}
 
-	void EndGame()
+	public void EndGame()
 	{
+		if (IsGameOver) return;
+
+		Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.GameOverMenuPrefab);
+		IsGameOver = true;
 		BroadcastAll("OnGameEnd", null);
 	}
 
