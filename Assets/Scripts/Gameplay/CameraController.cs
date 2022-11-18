@@ -62,7 +62,7 @@ public class CameraController : MonoBehaviour
 		//set fov
 		if (smoothFOV)
 		{
-			FOVOffset = Mathf.Lerp(FOVOffset, zoomFactor * maxFOVOffset, FOVLerpSpeed);
+			FOVOffset = Mathf.Lerp(FOVOffset, zoomFactor * maxFOVOffset, FOVLerpSpeed * Time.deltaTime);
 		}
 		else {
 			FOVOffset = zoomFactor * maxFOVOffset;
