@@ -6,7 +6,7 @@ public class LevelCompleteTrigger : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.GetComponent<Player>())
+		if (other.GetComponentInParent<Player>())
 		{
 			Singleton<GameManager>.Instance.InitiateSceneLoad(NextSceneName);
 		}

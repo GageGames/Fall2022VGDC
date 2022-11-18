@@ -31,8 +31,14 @@ public class GameManager : MonoBehaviour
 
 	public void InitiateSceneLoad(string sceneName)
 	{
-		// TODO: Loading screens, asynch loading for non-web versions
+		Singleton<SceneTransitionOverlay>.Instance.BeginTransition(CompleteSceneLoad, sceneName);
+	}
+
+	static void CompleteSceneLoad(string sceneName)
+	{
 		SceneManager.LoadScene(sceneName);
+
+		Singleton<SceneTransitionOverlay>.Instance.EndTransition();
 	}
 
 	public void QuitGame()
