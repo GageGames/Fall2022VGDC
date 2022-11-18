@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1d94f6f40b0cf4487daa8c258f3f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 0}
-  Interval: 0
+  BulletPrefab: {fileID: 9096207973630377826, guid: c81adcc5dbe60574ab566b5f33f1d92c, type: 3}
+  Interval: 0.5
 --- !u!1 &6970690737752511854
 GameObject:
   m_ObjectHideFlags: 0

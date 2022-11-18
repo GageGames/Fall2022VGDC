@@ -5397,7 +5397,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh172966
+  m_Name: pb_Mesh244234
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13691,15 +13691,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6194671024525158237, guid: 65a4def19aba04e478e50f2fe6e8f0cf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.6499996
+      value: 4.89
       objectReference: {fileID: 0}
     - target: {fileID: 6194671024525158237, guid: 65a4def19aba04e478e50f2fe6e8f0cf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8349998
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 6194671024525158237, guid: 65a4def19aba04e478e50f2fe6e8f0cf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.280014
+      value: -1.59
       objectReference: {fileID: 0}
     - target: {fileID: 6194671024525158237, guid: 65a4def19aba04e478e50f2fe6e8f0cf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -27866,7 +27866,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh173358
+  m_Name: pb_Mesh244626
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -38727,6 +38727,7 @@ GameObject:
   - component: {fileID: 1998305317}
   - component: {fileID: 1998305314}
   - component: {fileID: 1998305313}
+  - component: {fileID: 1998305318}
   m_Layer: 0
   m_Name: Level Complete Trigger
   m_TagString: Untagged
@@ -38746,7 +38747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 185975ff7a214944b8e5d58fab8224de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: 
+  NextSceneName: Main
 --- !u!65 &1998305314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38775,6 +38776,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -2.276, z: 0}
+--- !u!54 &1998305318
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1998305312}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &2000885111
 PrefabInstance:
   m_ObjectHideFlags: 0
