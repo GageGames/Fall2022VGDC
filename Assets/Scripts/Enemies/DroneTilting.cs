@@ -4,19 +4,13 @@ using UnityEngine;
 
 public class DroneTilting : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField]
+    private float maxTilt = 45.0f;
+    [SerializeField]
+    private float tiltFactor = 5.0f;
     void Update()
     {
         Vector3 velocity = gameObject.GetComponent<Rigidbody>().velocity;
-        // TODO: move these somewhere nicer
-        float maxTilt = 45.0f;
-        float tiltFactor = 5.0f;
         // xTilt and zTilt are in degrees
         float xTilt = tiltFactor * velocity.x;
         float zTilt = tiltFactor * velocity.x;
