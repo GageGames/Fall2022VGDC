@@ -19,8 +19,8 @@ public class ForceFieldEditor : Editor
 	{
 		so = serializedObject;
 
-		propStrength = so.FindProperty("strength");
-		propDirection = so.FindProperty("direction");
+		propStrength = so.FindProperty("Strength");
+		propDirection = so.FindProperty("Direction");
 		propSoundEffect = so.FindProperty("SoundEffect");
 	}
 
