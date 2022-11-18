@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 9187111663911455437}
   - component: {fileID: 5754104234163071563}
   - component: {fileID: 3452534691151778586}
+  - component: {fileID: 4711371192519688255}
   m_Layer: 26
   m_Name: Player
   m_TagString: Untagged
@@ -329,3 +330,15 @@ MonoBehaviour:
   tetherBeamPushEffectPrefab: {fileID: 1824584983990579323, guid: cec33863a61a43a459c6a2e42d01744b, type: 3}
   tetherHitPullEffectPrefab: {fileID: 6793004075583213379, guid: 4f65933cf9e098b4098380536de5ee5c, type: 3}
   tetherHitPushEffectPrefab: {fileID: 9031106044636243179, guid: 55f497169ad80434aa8822c31c14d9d6, type: 3}
+--- !u!114 &4711371192519688255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194671024525158180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec7e6d379e7710408b7ef07a321011b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

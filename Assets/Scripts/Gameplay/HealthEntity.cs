@@ -71,7 +71,7 @@ public class HealthEntity : MonoBehaviour
 
 		data.CurrentHealth = Mathf.Max(0, data.CurrentHealth - amount);
 
-		OnDamage.Invoke();
+		OnDamage?.Invoke();
 
 		if (data.CurrentHealth < Mathf.Epsilon) {
 			Die();
