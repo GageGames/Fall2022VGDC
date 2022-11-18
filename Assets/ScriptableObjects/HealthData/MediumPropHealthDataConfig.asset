@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5c2eecdac36fb45946dda2e9a74b7e, type: 3}
   m_Name: MediumPropHealthDataConfig
   m_EditorClassIdentifier: 
-  MaxHealth: 35
-  StartingHealth: 35
+  MaxHealth: 20
+  StartingHealth: 20
+  ImpactDamageThreshold: 2

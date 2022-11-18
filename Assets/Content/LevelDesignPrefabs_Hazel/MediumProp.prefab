@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 4714959946077965580}
   - component: {fileID: 4714959946077965572}
   - component: {fileID: 4714959946077963003}
+  - component: {fileID: 4266672844256163617}
+  - component: {fileID: 3502075445337341514}
   m_Layer: 25
   m_Name: MediumProp
   m_TagString: Untagged
@@ -229,3 +231,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f177bcc0417f48d429edd84c58f2d919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4266672844256163617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4714959946077965581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3458ea21d2b2feb48ac50c92f6e73cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  configData: {fileID: 11400000, guid: 4017a08cf24153f46a3ff4803f6ac56a, type: 2}
+  CurrentHealth: 0
+  MaxHealth: 0
+  ImpactDamageThreshold: 0
+  Dead: 0
+--- !u!114 &3502075445337341514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4714959946077965581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81b68f273050b94f9b1fdd6398cc19e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHeal:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
