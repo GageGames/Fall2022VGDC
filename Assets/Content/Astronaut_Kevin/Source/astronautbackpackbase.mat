@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: astronautbase
+  m_Name: astronautbackpackbase
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _SPECULAR_SETUP
@@ -120,8 +120,8 @@ Material:
     - _WorkflowMode: 0
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 0.8018868, g: 0.48447126, b: 0.21560162, a: 1}
-    - _Color: {r: 0.8018868, g: 0.4844712, b: 0.2156016, a: 1}
+    - _BaseColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+    - _Color: {r: 0.44339618, g: 0.44339618, b: 0.44339618, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
   m_BuildTextureStacks: []
