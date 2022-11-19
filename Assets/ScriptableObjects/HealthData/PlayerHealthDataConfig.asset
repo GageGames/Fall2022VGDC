@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5c2eecdac36fb45946dda2e9a74b7e, type: 3}
   m_Name: PlayerHealthDataConfig
   m_EditorClassIdentifier: 
-  MaxHealth: 100
-  StartingHealth: 100
+  MaxHealth: 150
+  StartingHealth: 150
   ImpactDamageThreshold: 1000000
