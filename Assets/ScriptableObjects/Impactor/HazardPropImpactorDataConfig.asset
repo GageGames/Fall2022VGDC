@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HazardPropImpactorDataConfig
   m_EditorClassIdentifier: 
   Damage: 0
-  Knockback: 10
+  Knockback: 5
   TargetLayers:
     serializedVersion: 2
     m_Bits: 2147483647
