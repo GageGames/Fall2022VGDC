@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerGunPullStrength: 20
   PlayerGunPushStrength: 15
-  PlayerGunDetectionRadius: 5
+  PlayerGunDetectionRadius: 15
   PlayerGunDetectionMask:
     serializedVersion: 2
     m_Bits: 2147483647
