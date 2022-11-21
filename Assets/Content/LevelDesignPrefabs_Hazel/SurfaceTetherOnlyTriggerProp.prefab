@@ -212,6 +212,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3585624658202680941, guid: 3bf9b9fe5610ab448bd5b754bb1238cf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 5768071b07d85e3468165e79c52376fc, type: 2}
+    - target: {fileID: 3585624658395399400, guid: 3bf9b9fe5610ab448bd5b754bb1238cf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6319a329a6044b4418baa866b8eefefc, type: 2}
     - target: {fileID: 3585624658395399402, guid: 3bf9b9fe5610ab448bd5b754bb1238cf, type: 3}
       propertyPath: m_Name
       value: TetherPole_Ares 1
@@ -276,6 +284,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.312
       objectReference: {fileID: 0}
+    - target: {fileID: 3585624659443465906, guid: 3bf9b9fe5610ab448bd5b754bb1238cf, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: df32268e3365e304b8ad561772842e30, type: 2}
     - target: {fileID: 3585624659443465908, guid: 3bf9b9fe5610ab448bd5b754bb1238cf, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.2510982

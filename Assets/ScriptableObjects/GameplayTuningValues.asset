@@ -36,3 +36,6 @@ MonoBehaviour:
   StaticPropPhysicsDataConfig: {fileID: 11400000, guid: a16354024d256274d9201090dce67730, type: 2}
   StaticPropHealthDataConfig: {fileID: 11400000, guid: 03439124efee504458839c54ae5315ee, type: 2}
   HazardPropImpactorConfig: {fileID: 11400000, guid: acb9df509eada2b4e8ef04067ddd8541, type: 2}
+  SceneTransitionFadeInTime: 1
+  SceneTransitionIdleTime: 1
+  SceneTransitionFadeOutTime: 1

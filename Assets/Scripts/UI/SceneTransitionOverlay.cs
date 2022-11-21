@@ -5,59 +5,62 @@ using UnityEngine.UI;
 
 public class SceneTransitionOverlay : MonoBehaviour
 {
-	public float FadeInTime = 4;
-	public float SceneLoadIdleTime = 2;
-	public float FadeOutTime = 4;
-
-	public void BeginTransition(Action<string> ContinueCallback, string sceneName)
+	private void Awake()
 	{
-		StartCoroutine(Transition(ContinueCallback, sceneName));
+		DontDestroyOnLoad(this);
 	}
 
-	public void EndTransition()
+	public void BeginTransition(Action<string> sceneLoadCallback, string sceneName)
 	{
-		StartCoroutine(StopTransition());
+		StartCoroutine(Transition(sceneLoadCallback, sceneName));
 	}
 
 	// hehe hrt go brrrr
-	IEnumerator Transition(Action<string> ContinueCallback, string sceneName)
+	IEnumerator Transition(Action<string> sceneLoadCallback, string sceneName)
 	{
 		GameObject overlay = Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.SceneTransitionOverlayPrefab);
+		DontDestroyOnLoad(overlay);
 
 		Material mat = overlay.GetComponentInChildren<Image>().material;
 
-		for (float i = 0; i < 1; i += Time.deltaTime / FadeInTime)
+		//Debug.Log("Transitioning");
+
+		mat.SetFloat("_Flip", 1);
+
+		float fadeInTime = Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionFadeInTime;
+
+		for (float i = 0; i < 1; i += Time.deltaTime / fadeInTime)
 		{
-			mat.SetFloat("Fade Progress", FadeInTime);
+			mat.SetFloat("_Fade", i);
 			yield return null;
 		}
-		
-		Debug.Log("Transitioned, idling");
+		mat.SetFloat("_Fade", 1);
 
-		yield return new WaitForSeconds(SceneLoadIdleTime);
+		//Debug.Log("Transitioned, idling");
 
-		Debug.Log("Loading");
+		yield return new WaitForSeconds(Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionIdleTime / 2f);
 
-		ContinueCallback(sceneName);
-	}
+		//Debug.Log("Loading");
 
-	// no I'm not naming this detransition fuck you
-	IEnumerator StopTransition()
-	{
-		GameObject overlay = Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.SceneTransitionOverlayPrefab);
+		sceneLoadCallback(sceneName);
 
-		Material mat = overlay.GetComponentInChildren<Image>().material;
+		//Debug.Log("Loaded, idling");
 
-		Debug.Log("Loaded, idling");
+		yield return new WaitForSeconds(Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionIdleTime / 2f);
 
-		yield return new WaitForSeconds(SceneLoadIdleTime);
+		//Debug.Log("Stopping transition");
 
-		Debug.Log("Stopping transition");
+		mat.SetFloat("_Flip", 0);
 
-		for (float i = 0; i < 1; i += Time.deltaTime / FadeInTime)
+		float fadeOutTime = Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionFadeOutTime;
+
+		for (float i = 0; i < 1; i += Time.deltaTime / fadeOutTime)
 		{
-			mat.SetFloat("Fade Progress", 1 - FadeInTime);
+			mat.SetFloat("_Fade", 1 - i);
 			yield return null;
 		}
+		mat.SetFloat("_Fade", 0);
+
+		Destroy(overlay);
 	}
 }
