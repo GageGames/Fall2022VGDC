@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class SceneTransitionOverlay : MonoBehaviour
 {
-	public float FadeInTime = 4;
-	public float SceneLoadIdleTime = 2;
-	public float FadeOutTime = 4;
-
 	private void Awake()
 	{
 		DontDestroyOnLoad(this);
@@ -23,36 +19,47 @@ public class SceneTransitionOverlay : MonoBehaviour
 	IEnumerator Transition(Action<string> sceneLoadCallback, string sceneName)
 	{
 		GameObject overlay = Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.SceneTransitionOverlayPrefab);
+		DontDestroyOnLoad(overlay);
 
 		Material mat = overlay.GetComponentInChildren<Image>().material;
 
-		for (float i = 0; i < 1; i += Time.deltaTime / FadeInTime)
+		//Debug.Log("Transitioning");
+
+		mat.SetFloat("_Flip", 1);
+
+		float fadeInTime = Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionFadeInTime;
+
+		for (float i = 0; i < 1; i += Time.deltaTime / fadeInTime)
 		{
-			mat.SetFloat("Fade Progress", FadeInTime);
+			mat.SetFloat("_Fade", i);
 			yield return null;
 		}
-		mat.SetFloat("Fade Progress", 1);
+		mat.SetFloat("_Fade", 1);
 
-		Debug.Log("Transitioned, idling");
+		//Debug.Log("Transitioned, idling");
 
-		yield return new WaitForSeconds(SceneLoadIdleTime);
+		yield return new WaitForSeconds(Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionIdleTime / 2f);
 
-		Debug.Log("Loading");
+		//Debug.Log("Loading");
 
 		sceneLoadCallback(sceneName);
 
-		Debug.Log("Loaded, idling");
+		//Debug.Log("Loaded, idling");
 
-		yield return new WaitForSeconds(SceneLoadIdleTime);
+		yield return new WaitForSeconds(Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionIdleTime / 2f);
 
-		Debug.Log("Stopping transition");
+		//Debug.Log("Stopping transition");
 
-		for (float i = 0; i < 1; i += Time.deltaTime / FadeInTime)
+		mat.SetFloat("_Flip", 0);
+
+		float fadeOutTime = Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionFadeOutTime;
+
+		for (float i = 0; i < 1; i += Time.deltaTime / fadeOutTime)
 		{
-			mat.SetFloat("Fade Progress", 1 - FadeInTime);
+			mat.SetFloat("_Fade", 1 - i);
 			yield return null;
 		}
-		mat.SetFloat("Fade Progress", 0);
+		mat.SetFloat("_Fade", 0);
 
 		Destroy(overlay);
 	}
