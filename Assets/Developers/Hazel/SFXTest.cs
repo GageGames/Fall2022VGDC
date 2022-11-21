@@ -8,11 +8,11 @@ public class SFXTest : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			SFXManager.PlaySound(audioClip);
+			SFXManager.PlaySound(audioClip, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup);
 		}
 		if (Input.GetMouseButtonDown(1))
 		{
-			SFXManager.PlayLoopedSound(audioClip, () => Input.GetMouseButtonUp(1), transform.position, transform);
+			SFXManager.PlayLoopedSound(audioClip, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, () => Input.GetMouseButtonUp(1), transform.position, transform);
 		}
 	}
 }

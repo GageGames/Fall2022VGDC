@@ -8,7 +8,7 @@ public class GameOverScreen : MonoBehaviour
 	[SerializeField] private float soundVolume = 1;
 	private void PlayButtonSound()
 	{
-		SFXManager.PlaySound(buttonSound, soundVolume, 1);
+		SFXManager.PlaySound(buttonSound, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, soundVolume, 1);
 	}
 	public void Restart()
 	{
