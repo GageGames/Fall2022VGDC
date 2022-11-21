@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3143870137323014483, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d9bffe7626e9d184aac4691a2d9c15ae, type: 2}
+    - target: {fileID: 3143870137482843094, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ccd4535879d9c9940acb3fbb8c35b52a, type: 2}
+    - target: {fileID: 3143870138564454796, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a193a405e9049841a10dc5e1389781c, type: 2}
     - target: {fileID: 5489902935327754047, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5489902935327754055, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
       propertyPath: m_Name
-      value: SurfaceTetherOnlyTriggerProp
+      value: AcceleratorTriggerProp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
