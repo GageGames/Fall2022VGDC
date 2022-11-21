@@ -9,18 +9,18 @@ public class SceneTransitionOverlay : MonoBehaviour
 	public float SceneLoadIdleTime = 2;
 	public float FadeOutTime = 4;
 
-	public void BeginTransition(Action<string> ContinueCallback, string sceneName)
+	private void Awake()
 	{
-		StartCoroutine(Transition(ContinueCallback, sceneName));
+		DontDestroyOnLoad(this);
 	}
 
-	public void EndTransition()
+	public void BeginTransition(Action<string> sceneLoadCallback, string sceneName)
 	{
-		StartCoroutine(StopTransition());
+		StartCoroutine(Transition(sceneLoadCallback, sceneName));
 	}
 
 	// hehe hrt go brrrr
-	IEnumerator Transition(Action<string> ContinueCallback, string sceneName)
+	IEnumerator Transition(Action<string> sceneLoadCallback, string sceneName)
 	{
 		GameObject overlay = Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.SceneTransitionOverlayPrefab);
 
@@ -31,22 +31,15 @@ public class SceneTransitionOverlay : MonoBehaviour
 			mat.SetFloat("Fade Progress", FadeInTime);
 			yield return null;
 		}
-		
+		mat.SetFloat("Fade Progress", 1);
+
 		Debug.Log("Transitioned, idling");
 
 		yield return new WaitForSeconds(SceneLoadIdleTime);
 
 		Debug.Log("Loading");
 
-		ContinueCallback(sceneName);
-	}
-
-	// no I'm not naming this detransition fuck you
-	IEnumerator StopTransition()
-	{
-		GameObject overlay = Instantiate(Singleton<GlobalData>.Instance.GlobalConfigInstance.SceneTransitionOverlayPrefab);
-
-		Material mat = overlay.GetComponentInChildren<Image>().material;
+		sceneLoadCallback(sceneName);
 
 		Debug.Log("Loaded, idling");
 
@@ -59,5 +52,8 @@ public class SceneTransitionOverlay : MonoBehaviour
 			mat.SetFloat("Fade Progress", 1 - FadeInTime);
 			yield return null;
 		}
+		mat.SetFloat("Fade Progress", 0);
+
+		Destroy(overlay);
 	}
 }

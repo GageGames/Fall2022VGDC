@@ -31,14 +31,12 @@ public class GameManager : MonoBehaviour
 
 	public void InitiateSceneLoad(string sceneName)
 	{
-		Singleton<SceneTransitionOverlay>.Instance.BeginTransition(CompleteSceneLoad, sceneName);
+		Singleton<SceneTransitionOverlay>.Instance.BeginTransition(LoadScene, sceneName);
 	}
 
-	static void CompleteSceneLoad(string sceneName)
+	static void LoadScene(string sceneName)
 	{
 		SceneManager.LoadScene(sceneName);
-
-		Singleton<SceneTransitionOverlay>.Instance.EndTransition();
 	}
 
 	public void QuitGame()
