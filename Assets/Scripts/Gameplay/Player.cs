@@ -41,6 +41,7 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
 		val = Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues;
+		GetComponent<HealthEntity>().OnDeath.AddListener(OnDeath);
 	}
 
 	void Update()
@@ -104,5 +105,10 @@ public class Player : MonoBehaviour
 			//print($"{projectedPos} is outside view bounds {viewBounds}!");
 			gun.Detach();
 		}
+	}
+
+	void OnDeath(HealthEntity healthEntity)
+	{
+		Singleton<GameManager>.Instance.EndGame();
 	}
 }

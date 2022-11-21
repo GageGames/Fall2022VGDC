@@ -5,6 +5,8 @@ using UnityEngine;
 public class GlobalConfig : ScriptableObject
 {
 	public GameObject PauseMenuPrefab;
+	public GameObject GameOverMenuPrefab;
+	public GameObject SceneTransitionOverlayPrefab;
 	[Expandable]
 	public GameplayTuningValues PrimaryGameplayTuningValues;
 }

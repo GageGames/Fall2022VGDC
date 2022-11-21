@@ -6,6 +6,7 @@ public abstract class MagneticEntity : MonoBehaviour
 {
 	public abstract Anchor GetAnchor(Vector3 targetPosition);
 	public abstract bool ContainsAnchor(Anchor anchor);
+	public abstract Anchor[] RetrieveActiveAnchors();
 
 	protected void Update()
 	{

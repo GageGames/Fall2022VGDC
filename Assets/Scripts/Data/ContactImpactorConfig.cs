@@ -10,8 +10,11 @@ public class ContactImpactorConfig : ScriptableObject
 	[Tooltip("The amount of force to apply on contact with another object")]
 	public float Knockback = 0;
 
+	[Tooltip("The layers that are affected by this contact impactor")]
+	public LayerMask TargetLayers;
+
 	[Tooltip("The type of damage this contact would be tagged as")]
-	public HealthEffectSourceType contactDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Impact);
+	public HealthEffectSourceType contactDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Knockback);
 
 	[Tooltip("The type of physics force this contact would be tagged as")]
 	public ImpulseSourceType contactImpulseSourceType = new ImpulseSourceType(ImpulseSourceTag.PhysicalKnockback);
