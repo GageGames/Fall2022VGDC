@@ -31,7 +31,9 @@ public class PointMagneticEntity : MagneticEntity
 
 	public override Anchor[] RetrieveActiveAnchors()
 	{
-		return new Anchor[] { curAnchor };
+		Anchor[] output = new Anchor[1];
+		output[0] = curAnchor;
+		return output;
 	}
 
 	protected override void UpdateAnchorage()
