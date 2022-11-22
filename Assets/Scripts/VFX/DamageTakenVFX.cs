@@ -7,6 +7,7 @@ using DG.Tweening;
 public class DamageTakenVFX : MonoBehaviour
 {
     static float damageEffectDuration = 0.15f;
+    [SerializeField] GameObject playerDamageSparksEffect;
     HealthEntity HE;
     Sequence damageSequenceGroup;
     bool isRunning = false;
@@ -18,7 +19,10 @@ public class DamageTakenVFX : MonoBehaviour
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
         foreach (Renderer renderer in renderers)
         {
-            damageSequenceGroup.Join(renderer.material.DOColor(Color.red, damageEffectDuration).SetEase(Ease.InOutSine).SetLoops(2,LoopType.Yoyo));
+            if(renderer.material != null && (renderer.material.HasProperty("_Color")))
+            {
+                damageSequenceGroup.Join(renderer.material.DOColor(Color.red, damageEffectDuration).SetEase(Ease.InOutSine).SetLoops(2,LoopType.Yoyo));
+            }
         }
         damageSequenceGroup.Pause();
     }
@@ -47,7 +51,11 @@ public class DamageTakenVFX : MonoBehaviour
     {
         if(isRunning == false)//only do the tween if a previous bit of damage isnt already running the effect
         {
-            print("Start Tween");
+            if(playerDamageSparksEffect != null)
+            {
+                GameObject sparkEffect = Instantiate(playerDamageSparksEffect, transform.position, Quaternion.identity) as GameObject;
+                Destroy(sparkEffect, 2.0f);
+            }
             isRunning = true;
             damageSequenceGroup.Restart();
         }
@@ -55,6 +63,5 @@ public class DamageTakenVFX : MonoBehaviour
     public void DamageEffectComplete()
     {
         isRunning = false;
-        print("tweenFinished");
     }
 }
