@@ -29,7 +29,7 @@ public class GunVFX : MonoBehaviour
 
 	void UpdateTetherEffectPoints()
 	{
-		ActiveTetherBeamEffect.SetPosition(0, gun.ActiveTether.Sender.Position);
+		ActiveTetherBeamEffect.SetPosition(0, gun.transform.position);
 		ActiveTetherBeamEffect.SetPosition(1, gun.ActiveTether.Recipient.Position);
 	}
 
