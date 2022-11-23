@@ -1,5 +1,67 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1827736564986203988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6511868020500253262}
+  m_Layer: 0
+  m_Name: Right Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6511868020500253262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827736564986203988}
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0.0021, y: 0.018, z: 0.0141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1983030320911795640}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!1 &2781260791167757845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4214448201825461748}
+  m_Layer: 0
+  m_Name: Left Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4214448201825461748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781260791167757845}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalPosition: {x: 0.002100001, y: -0.017400002, z: 0.0141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7987492458246873300}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
 --- !u!1001 &4370019522313828003
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -73,7 +135,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f43142c0812165d42bf32122bb3bacfb, type: 2}
     - target: {fileID: 919132149155446097, guid: 1728ecccae5da1248b8d382d84356515, type: 3}
       propertyPath: m_Name
-      value: robotCharacterImport
+      value: robotCharacterImport Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1896653802447510314, guid: 1728ecccae5da1248b8d382d84356515, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -85,3 +147,13 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f43142c0812165d42bf32122bb3bacfb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1728ecccae5da1248b8d382d84356515, type: 3}
+--- !u!4 &1983030320911795640 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -6404032873152679141, guid: 1728ecccae5da1248b8d382d84356515, type: 3}
+  m_PrefabInstance: {fileID: 4370019522313828003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7987492458246873300 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5943673471654631031, guid: 1728ecccae5da1248b8d382d84356515, type: 3}
+  m_PrefabInstance: {fileID: 4370019522313828003}
+  m_PrefabAsset: {fileID: 0}

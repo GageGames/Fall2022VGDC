@@ -28,6 +28,7 @@ public class Anchor
 	{
 		attachedTethers.Remove(tether);
 		OnDetachTether?.Invoke(tether);
+		Debug.Log("Detached a tether");
 	}
 
 	public List<Tether> GetTethers()
@@ -42,10 +43,11 @@ public class Anchor
 
 	public void DetachAllTethers()
 	{
+		Debug.Log("Disabled, detaching all tethers");
 		Tether[] tetherCache = attachedTethers.ToArray();
 		foreach (Tether tether in tetherCache)
 		{
-			RemoveTether(tether);
+			tether.Detach();
 		}
 	}
 }
