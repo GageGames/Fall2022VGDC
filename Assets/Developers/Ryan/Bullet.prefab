@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 75
+  projectileDistance: 121.14
 --- !u!54 &917249800604407071
 Rigidbody:
   m_ObjectHideFlags: 0

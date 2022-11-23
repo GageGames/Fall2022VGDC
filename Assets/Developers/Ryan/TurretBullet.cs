@@ -6,17 +6,18 @@ public class TurretBullet : MonoBehaviour
 {
 	[SerializeField]
 	float bulletSpeed;
-	Rigidbody rg;
 
-    // Start is called before the first frame update
-    void Start()
+	// Start is called before the first frame update
+	void Start()
     {
-		rg = GetComponent<Rigidbody>();
+
     }
 
 	private void FixedUpdate()
 	{
 		transform.position += transform.forward * Time.deltaTime * bulletSpeed;
+
+
 	}
 
 	// Update is called once per frame

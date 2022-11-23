@@ -24,13 +24,9 @@ public class SpeedPillar : MonoBehaviour
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "SpeedPillar")
-		{
-			//should be constant rather than multiplicative
-
-	
+		{	
 			GetComponent<Rigidbody>().velocity = speedBoostVelocity * (GetComponent<Rigidbody>().velocity.normalized);
 
-			//this.gameObject.GetComponent<Rigidbody>().velocity *= 1.8f;
 		}
 
 	}
