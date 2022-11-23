@@ -78,7 +78,14 @@ public class EdgeOfScreenIndicators : MonoBehaviour
     void setIndicatorPositionAndTransparency(EOSIndicator indicator)
     {
         float dist = Vector3.Distance(indicator.correspondingPointOfInterest.transform.position, thePlayer.transform.position);
-        indicator.GetComponent<Image>().color = Color.yellow;
+        if(indicator.correspondingPointOfInterest.Type == POIType.Key)
+        {
+            indicator.GetComponent<Image>().color = Color.yellow;
+        }
+        else
+        {
+            indicator.GetComponent<Image>().color = new Color(255,165,0,1);
+        }
         if(dist> maxDistanceToSeeIndicators)
         {
             indicator.GetComponent<Image>().color = new Color(indicator.GetComponent<Image>().color.r,indicator.GetComponent<Image>().color.g,indicator.GetComponent<Image>().color.b, 0);
