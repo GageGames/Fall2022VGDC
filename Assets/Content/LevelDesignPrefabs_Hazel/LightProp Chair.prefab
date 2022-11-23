@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: -7702353210792871996}
   - component: {fileID: 1714628636738124894}
   m_Layer: 25
-  m_Name: LightProp
+  m_Name: LightProp Chair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
