@@ -8,19 +8,6 @@ public class SpeedPillar : MonoBehaviour
 	[SerializeField]
 	float speedBoostVelocity;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "SpeedPillar")
@@ -28,6 +15,5 @@ public class SpeedPillar : MonoBehaviour
 			GetComponent<Rigidbody>().velocity = speedBoostVelocity * (GetComponent<Rigidbody>().velocity.normalized);
 
 		}
-
 	}
 }
