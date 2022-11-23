@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5939132220360385964}
   - component: {fileID: -5884125415318363062}
   - component: {fileID: -4172298429866390214}
+  - component: {fileID: 4096806358779158291}
   m_Layer: 25
   m_Name: HeavyProp  Vending Machine
   m_TagString: Untagged
@@ -187,6 +188,19 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4096806358779158291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2799035603963458579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f742da4b4c2e584cb77a8784e46502b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VFXSmokePrefab: {fileID: 2341300969483093280, guid: 700bf4b90f98a554abcb66b4ce014f38, type: 3}
 --- !u!1 &6815451988179518180
 GameObject:
   m_ObjectHideFlags: 0
