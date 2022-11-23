@@ -29,7 +29,7 @@ public class GunVFX : MonoBehaviour
 
 	void UpdateTetherEffectPoints()
 	{
-		ActiveTetherBeamEffect.SetPosition(0, gun.transform.position);
+		ActiveTetherBeamEffect.SetPosition(0, gun.ActiveTether.Sender.Position);
 		ActiveTetherBeamEffect.SetPosition(1, gun.ActiveTether.Recipient.Position);
 	}
 
@@ -42,12 +42,12 @@ public class GunVFX : MonoBehaviour
 		if (gun.ActiveTether.Strength >= 0)
 		{
 			Instantiate(tetherHitPullEffectPrefab, result.SelectedTarget.Position, dir);
-			ActiveTetherBeamEffect = Instantiate(tetherBeamPullEffectPrefab, Vector3.zero, Quaternion.identity).GetComponentInChildren<LineRenderer>();
+			ActiveTetherBeamEffect = Instantiate(tetherBeamPullEffectPrefab, Vector3.zero, Quaternion.identity).GetComponent<LineRenderer>();
 		}
 		else
 		{
 			Instantiate(tetherHitPushEffectPrefab, result.SelectedTarget.Position, dir);
-			ActiveTetherBeamEffect = Instantiate(tetherBeamPushEffectPrefab, Vector3.zero, Quaternion.identity).GetComponentInChildren<LineRenderer>();
+			ActiveTetherBeamEffect = Instantiate(tetherBeamPushEffectPrefab, Vector3.zero, Quaternion.identity).GetComponent<LineRenderer>();
 		}
 	}
 
