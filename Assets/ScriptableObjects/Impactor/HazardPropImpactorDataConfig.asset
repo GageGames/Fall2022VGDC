@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1e4504c39a25424b89998b6c88c3db6, type: 3}
   m_Name: HazardPropImpactorDataConfig
   m_EditorClassIdentifier: 
-  Damage: 0
-  Knockback: 10
+  Damage: 5
+  Knockback: 0
   TargetLayers:
     serializedVersion: 2
     m_Bits: 2147483647
   contactDamageSourceType:
-    damageSourceTag: 2
+    damageSourceTag: 0
   contactImpulseSourceType:
     impulseSourceTag: 2
