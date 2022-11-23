@@ -330,8 +330,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 593ec90b06f4e45d1893d27daf6be467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTilt: 45
-  tiltFactor: 5
+  maxTilt: 30
+  tiltFactor: 6
+  smoothingFactor: 10
+  visuals: {fileID: 281569249715630100}
 --- !u!1 &7452233968673708728
 GameObject:
   m_ObjectHideFlags: 0
