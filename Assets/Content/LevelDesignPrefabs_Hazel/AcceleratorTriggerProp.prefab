@@ -67,5 +67,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: AcceleratorTriggerProp
       objectReference: {fileID: 0}
+    - target: {fileID: 5489902935327754055, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
+      propertyPath: m_TagString
+      value: SpeedPillar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
