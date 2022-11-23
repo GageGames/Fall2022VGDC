@@ -10,8 +10,12 @@ public abstract class MagneticEntity : MonoBehaviour
 
 	protected void Update()
 	{
-		UpdateAnchorage();
 		ApplyImpulses();
+	}
+
+	protected void FixedUpdate()
+	{
+		UpdateAnchorage();
 	}
 
 	// Updates self anchor(s)

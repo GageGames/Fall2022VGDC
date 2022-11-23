@@ -75,7 +75,7 @@ public class Gun : MonoBehaviour
 
 		ActiveTether = Tether.CreateTether(self, fireData.SelectedTarget);
 		ActiveTether.Strength = Strength * (pull ? 1f : -1f);
-		ActiveTether.OnDetach.AddListener(() => ActiveTether = null);
+		ActiveTether.OnDetach.AddListener(Detach);
 
 		OnFire.Invoke(fireData);
 
@@ -86,10 +86,10 @@ public class Gun : MonoBehaviour
 	public void Detach()
 	{
 		//print("Detaching Gun");
-
-		ActiveTether?.Detach();
-
+		Tether oldTether = ActiveTether;
 		ActiveTether = null;
+
+		oldTether?.Detach();
 
 		OnDetach?.Invoke();
 	}
