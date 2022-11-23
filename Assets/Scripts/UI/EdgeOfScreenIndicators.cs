@@ -37,9 +37,24 @@ public class EdgeOfScreenIndicators : MonoBehaviour
     }
     void UpdateIndicators()
     {    
+         //remove indicators if object is gone or if object is on screen
+        List<EOSIndicator> indicatorsToRemove = new List<EOSIndicator>();
+        foreach (var indicator in allIndicators)
+        {
+            if(indicator.correspondingPointOfInterest == null || PointOfInterest.AllPointsOfInterest.Contains(indicator.correspondingPointOfInterest) == false || CheckIfKill(indicator.correspondingPointOfInterest.gameObject))
+            {
+                indicatorsToRemove.Add(indicator);
+            }
+        }
+        foreach(var indicator1 in indicatorsToRemove)
+        {
+            allIndicators.Remove(indicator1);
+            Destroy(indicator1.gameObject);
+        }
         //add indicators if new objects not in the list
         foreach(var POI in PointOfInterest.AllPointsOfInterest)
         {
+            
             //print(allIndicators.Count);
             bool doesExist = false;
             foreach(var indicator in allIndicators)
@@ -53,20 +68,6 @@ public class EdgeOfScreenIndicators : MonoBehaviour
             {
                 CreateIndicator(POI);
             }
-        }
-        //remove indicators if object is gone or if object is on screen
-        List<EOSIndicator> indicatorsToRemove = new List<EOSIndicator>();
-        foreach (var indicator in allIndicators)
-        {
-            if(indicator.correspondingPointOfInterest == null || PointOfInterest.AllPointsOfInterest.Contains(indicator.correspondingPointOfInterest) == false || CheckIfKill(indicator.correspondingPointOfInterest.gameObject))
-            {
-                indicatorsToRemove.Add(indicator);
-            }
-        }
-        foreach(var indicator1 in indicatorsToRemove)
-        {
-            allIndicators.Remove(indicator1);
-            Destroy(indicator1.gameObject);
         }
         //update position of indicators
         foreach (var indicator in allIndicators)
