@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 4714959946077963003}
   - component: {fileID: 2264227937423436730}
   - component: {fileID: -7702353210792871996}
+  - component: {fileID: 1714628636738124894}
   m_Layer: 25
   m_Name: LightProp
   m_TagString: Untagged
@@ -270,6 +271,19 @@ MonoBehaviour:
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1714628636738124894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4714959946077965581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f742da4b4c2e584cb77a8784e46502b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VFXSmokePrefab: {fileID: 2341300969483093280, guid: 700bf4b90f98a554abcb66b4ce014f38, type: 3}
 --- !u!1001 &6667293753253961651
 PrefabInstance:
   m_ObjectHideFlags: 0
