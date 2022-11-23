@@ -27,7 +27,14 @@ public class EdgeOfScreenIndicators : MonoBehaviour
             UpdateIndicators();
         }
     }
-
+    void CreateIndicator(PointOfInterest POI)
+    {
+        GameObject indicatorObj = Instantiate(indicatorPrefab, transform.position, Quaternion.identity) as GameObject;
+        indicatorObj.transform.SetParent(theCanvas.transform);
+        indicatorObj.transform.localScale = Vector3.one;
+        indicatorObj.GetComponent<EOSIndicator>().correspondingPointOfInterest = POI;
+        allIndicators.Add(indicatorObj.GetComponent<EOSIndicator>());
+    }
     void UpdateIndicators()
     {    
         //add indicators if new objects not in the list
@@ -44,10 +51,7 @@ public class EdgeOfScreenIndicators : MonoBehaviour
             }
             if (doesExist == false && CheckIfKill(POI.gameObject) == false)
             {
-                GameObject indicatorObj = Instantiate(indicatorPrefab, transform.position, Quaternion.identity) as GameObject;
-                indicatorObj.transform.SetParent(theCanvas.transform);
-                indicatorObj.GetComponent<EOSIndicator>().correspondingPointOfInterest = POI;
-                allIndicators.Add(indicatorObj.GetComponent<EOSIndicator>());
+                CreateIndicator(POI);
             }
         }
         //remove indicators if object is gone or if object is on screen
@@ -73,8 +77,6 @@ public class EdgeOfScreenIndicators : MonoBehaviour
     void setIndicatorPositionAndTransparency(EOSIndicator indicator)
     {
         float dist = Vector3.Distance(indicator.correspondingPointOfInterest.transform.position, thePlayer.transform.position);
-        print("----");
-        print(dist);
         
         if(dist> maxDistanceToSeeIndicators)
         {
@@ -86,44 +88,38 @@ public class EdgeOfScreenIndicators : MonoBehaviour
             RectTransform RT = indicator.GetComponent<RectTransform>();
             Vector3 POIPos = calculateWorldPosition(indicator.correspondingPointOfInterest.transform.position, theCamera);
             Vector2 projectedPos = Camera.main.WorldToViewportPoint(POIPos);
-            print(projectedPos.normalized);
+            float rotation = 0.0f;
+            print(projectedPos);
             float y = projectedPos.y - 0.5f;
             float x = projectedPos.x - 0.5f;
+            float theX = 0.0f;
+            float theY = 0.0f;
             float m = (y)/(x);
             if(y > 0.5f)//TEST ABOVE
             {
                 float testX = 0.5f/m;
-                print("testX "+testX);
                 if(testX > 0.5f || testX < -0.5f)
                 {
                     if(x > 0)
                     {
                         //then it is offscreen to the right, not above
-                        float theX = 0.5f;
-                        float theY = m*0.5f;
-                        theX += 0.5f;
-                        theY += 0.5f;
-                        print("right above");
-                        RT.position = theCanvas.GetComponent<RectTransform>().sizeDelta*new Vector2(theX,theY);
+                        theX = 0.5f;
+                        theY = m*0.5f;
+                        rotation = 270;
+                        
                     }
                     else
                     {
-                        float theX = -0.5f;
-                        float theY = m*(-0.5f);
-                        theX += 0.5f;
-                        theY += 0.5f;
-                        print("above: " + theX + ", " + theY);
-                        RT.position = theCanvas.GetComponent<RectTransform>().sizeDelta*new Vector2(theX,theY);
-                        //then it is offscreen to the left, not above
+                        theX = -0.5f;
+                        theY = m*(-0.5f);
+                        rotation = 90;
                     }
                 }
                 else
                 {
-                    float theY = 0.5f;
-                    float theX = testX;
-                    theX += 0.5f;
-                    theY += 0.5f;
-                    RT.position = theCanvas.GetComponent<RectTransform>().sizeDelta*new Vector2(theX,theY);
+                    theY = 0.5f;
+                    theX = testX;
+                    rotation = 0;
                 }
             }
             else//TEST BELOW
@@ -134,33 +130,32 @@ public class EdgeOfScreenIndicators : MonoBehaviour
                     if(x> 0)
                     {
                         //then it is offscreen to the right, not below
-                        float theX = 0.5f;
-                        float theY = m*0.5f;
-                        theX += 0.5f;
-                        theY += 0.5f;
-                        print("right below");
-                        RT.position = theCanvas.GetComponent<RectTransform>().sizeDelta*new Vector2(theX,theY);
+                        theX = 0.5f;
+                        theY = m*0.5f;
+                        rotation = 270;
                     }
                     else
                     {
-                        float theX = -0.5f;
-                    float theY = m*(-0.5f);
-                    theX += 0.5f;
-                    theY += 0.5f;
-                    print("below "+ theX + ", " + theY);
-                    RT.position = theCanvas.GetComponent<RectTransform>().sizeDelta*new Vector2(theX,theY);
-                    //then it is offscreen to the left, not below
+                        theX = -0.5f;
+                        theY = m*(-0.5f);
+                        rotation = 90;
                     }
                 }
                 else
                 {
-                    float theY = -0.5f;
-                    float theX = testX;
-                    theX += 0.5f;
-                    theY += 0.5f;
-                    RT.position = theCanvas.GetComponent<RectTransform>().sizeDelta*new Vector2(theX,theY);
+                    theY = -0.5f;
+                    theX = testX;
+                    rotation  = 180;
                 }
             }
+            //reset offset
+            theX += 0.5f;
+            theY += 0.5f;
+            //set pos
+            print(RT.position);
+            print(theCanvas.GetComponent<RectTransform>().sizeDelta);
+            RT.rotation = Quaternion.Euler(new Vector3(0,0,rotation));
+            RT.anchoredPosition = theCanvas.GetComponent<RectTransform>().sizeDelta*new Vector2(theX,theY);
         }
         
 
