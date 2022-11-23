@@ -77,7 +77,7 @@ public class EdgeOfScreenIndicators : MonoBehaviour
     void setIndicatorPositionAndTransparency(EOSIndicator indicator)
     {
         float dist = Vector3.Distance(indicator.correspondingPointOfInterest.transform.position, thePlayer.transform.position);
-        
+        indicator.GetComponent<Image>().color = Color.yellow;
         if(dist> maxDistanceToSeeIndicators)
         {
             indicator.GetComponent<Image>().color = new Color(indicator.GetComponent<Image>().color.r,indicator.GetComponent<Image>().color.g,indicator.GetComponent<Image>().color.b, 0);
@@ -89,7 +89,6 @@ public class EdgeOfScreenIndicators : MonoBehaviour
             Vector3 POIPos = calculateWorldPosition(indicator.correspondingPointOfInterest.transform.position, theCamera);
             Vector2 projectedPos = Camera.main.WorldToViewportPoint(POIPos);
             float rotation = 0.0f;
-            print(projectedPos);
             float y = projectedPos.y - 0.5f;
             float x = projectedPos.x - 0.5f;
             float theX = 0.0f;
@@ -152,8 +151,6 @@ public class EdgeOfScreenIndicators : MonoBehaviour
             theX += 0.5f;
             theY += 0.5f;
             //set pos
-            print(RT.position);
-            print(theCanvas.GetComponent<RectTransform>().sizeDelta);
             RT.rotation = Quaternion.Euler(new Vector3(0,0,rotation));
             RT.anchoredPosition = theCanvas.GetComponent<RectTransform>().sizeDelta*new Vector2(theX,theY);
         }
