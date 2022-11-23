@@ -1,21 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Pathfinding;
+using UnityEngine;
 
 [RequireComponent(typeof(AIDestinationSetter))]
 [RequireComponent(typeof(AIPath))]
+
+// MagneticEntity get tethers (active tethers), if more than 0 start a timer.
+
 public class DroneEnemy : MonoBehaviour
 {
-	//MagneticEntity get tethers (active tethers), if more than 0 start a timer.
 	[SerializeField] float timeNeeded;
-	float timer;
-	private MagneticEntity magneticEntity;
-	private HealthEntity healthEntity;
-    [Expandable]
+
+	[Expandable]
 	public PathfindingBehaviorConfig pathfindingBehaviorConfig;
 
+	float timer;
+
 	Transform player;
+	MagneticEntity magneticEntity;
+	HealthEntity healthEntity;
 	AIDestinationSetter aIDestinationSetter;
 	AIPath aIPath;
 
@@ -43,26 +45,27 @@ public class DroneEnemy : MonoBehaviour
 		timer = timeNeeded;
 	}
 
-	void Update() 
-	{	
+	void Update()
+	{
 		//Check every frame is a tether is still attached (if so keep falling)
-		foreach (Anchor anchor in magneticEntity.RetrieveActiveAnchors()) {
-  			if (anchor.GetTethers().Count > 0) 
+		foreach (Anchor anchor in magneticEntity.RetrieveActiveAnchors())
+		{
+			if (anchor.GetTethers().Count > 0)
 			{
-    			timer -= Time.deltaTime;
-				Debug.Log(timer);
+				timer -= Time.deltaTime;
+				//Debug.Log(timer);
 				if (timer <= 0f)
 				{
-					Debug.Log("Falling!");
+					//Debug.Log("Falling!");
 					Falling();
 				}
-  			}
+			}
 			else
 			{
 				timer = timeNeeded;
 			}
 		}
-		
+
 	}
 
 	void Falling()
