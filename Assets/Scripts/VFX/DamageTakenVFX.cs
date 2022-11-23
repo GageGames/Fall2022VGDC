@@ -18,7 +18,10 @@ public class DamageTakenVFX : MonoBehaviour
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
         foreach (Renderer renderer in renderers)
         {
-            damageSequenceGroup.Join(renderer.material.DOColor(Color.red, damageEffectDuration).SetEase(Ease.InOutSine).SetLoops(2,LoopType.Yoyo));
+            if(renderer != null && renderer.material.HasProperty("_Color"))
+            {
+                damageSequenceGroup.Join(renderer.material.DOColor(Color.red, damageEffectDuration).SetEase(Ease.InOutSine).SetLoops(2,LoopType.Yoyo));
+            }
         }
         damageSequenceGroup.Pause();
     }
