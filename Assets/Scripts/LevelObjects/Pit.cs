@@ -13,7 +13,7 @@ public class Pit : MonoBehaviour
 	[SerializeField] AudioClip DamageSFX;
 	[SerializeField] float TriggerTime = 1f;
 
-	HashSet<HealthEntity> stuffInPit = new HashSet<HealthEntity>();
+	List<HealthEntity> stuffInPit = new List<HealthEntity>();
 
 	HealthEffectSourceType pitDamageSourceType = new HealthEffectSourceType(HealthEffectSourceTag.Pit);
 
@@ -24,6 +24,8 @@ public class Pit : MonoBehaviour
 		int itr = 0;
 		foreach (HealthEntity he in stuffInPit)
 		{
+			if (!he) continue;
+
 			he.ApplyDamage(pitConfig.DamagePerSecond * Time.deltaTime, pitDamageSourceType);
 
 			timers[itr] += Time.deltaTime;
@@ -39,7 +41,7 @@ public class Pit : MonoBehaviour
 	void OnTriggerEnter(Collider other)
 	{
 		// TODO: More reliable way of finding HealthEntity
-		if (other.GetComponentInParent<HealthEntity>())
+		if (other.GetComponentInParent<HealthEntity>() && !stuffInPit.Contains(other.GetComponentInParent<HealthEntity>()))
 		{
 			stuffInPit.Add(other.GetComponentInParent<HealthEntity>());
 			timers.Add(0);
@@ -49,7 +51,7 @@ public class Pit : MonoBehaviour
 	void OnTriggerExit(Collider other)
 	{
 		// TODO: More reliable way of finding HealthEntity
-		if (other.GetComponentInParent<HealthEntity>())
+		if (other.GetComponentInParent<HealthEntity>() && stuffInPit.Contains(other.GetComponentInParent<HealthEntity>()))
 		{
 			int index = stuffInPit.IndexOfItem(other.GetComponentInParent<HealthEntity>());
 			stuffInPit.Remove(other.GetComponentInParent<HealthEntity>());
