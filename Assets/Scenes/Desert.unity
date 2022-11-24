@@ -19080,7 +19080,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh31984
+  m_Name: pb_Mesh2042186
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -78212,23 +78212,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7288425384518022540, guid: 7846c2734dcbcf84399168d569076915, type: 3}
       propertyPath: baseFOV
-      value: 70
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 7288425384518022540, guid: 7846c2734dcbcf84399168d569076915, type: 3}
       propertyPath: baseYPos
-      value: 60
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7288425384518022540, guid: 7846c2734dcbcf84399168d569076915, type: 3}
       propertyPath: maxYOffset
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7288425384518022540, guid: 7846c2734dcbcf84399168d569076915, type: 3}
       propertyPath: maxFOVOffset
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7288425384518022540, guid: 7846c2734dcbcf84399168d569076915, type: 3}
       propertyPath: zoomCapSpeed
-      value: 25
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7288425384518022540, guid: 7846c2734dcbcf84399168d569076915, type: 3}
       propertyPath: positionOffset.y

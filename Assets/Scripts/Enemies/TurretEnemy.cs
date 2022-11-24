@@ -3,7 +3,7 @@ using UnityEngine;
 public class TurretEnemy : MonoBehaviour
 {
 	Transform player;
-
+	[SerializeField] GameObject turretHead;
 	void Start()
 	{
 		player = FindObjectOfType<Player>().transform;
@@ -11,6 +11,6 @@ public class TurretEnemy : MonoBehaviour
 
 	void Update()
 	{
-		transform.LookAt(player.position);
+		turretHead.transform.LookAt(player.position);
 	}
 }
