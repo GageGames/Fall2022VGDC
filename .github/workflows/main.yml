@@ -58,7 +58,7 @@ jobs:
         with:
           projectPath: 
           buildsPath: Build
-          targetPlatform: Windows
+          targetPlatform: StandaloneWindows64
       - name: Zip Windows Build
         uses: vimtor/action-zip@v1
         with:
