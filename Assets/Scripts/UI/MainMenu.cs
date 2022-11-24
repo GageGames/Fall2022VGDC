@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         #if UNITY_WEBGL
-            quitButton.setActive(false);
+            quitButton.SetActive(false);
         #endif
     }
 
