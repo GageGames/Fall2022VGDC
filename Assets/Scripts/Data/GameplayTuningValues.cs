@@ -55,4 +55,10 @@ public class GameplayTuningValues : ScriptableObject
 	[Space]
 
 	[Expandable] public ContactImpactorConfig HazardPropImpactorConfig;
+
+	[Header("Scene Transition")]
+
+	public float SceneTransitionFadeInTime = 4;
+	public float SceneTransitionIdleTime = 2;
+	public float SceneTransitionFadeOutTime = 4;
 }
