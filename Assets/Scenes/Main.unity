@@ -7579,7 +7579,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh2879902
+  m_Name: pb_Mesh1973908
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -23813,7 +23813,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh2879522
+  m_Name: pb_Mesh1973528
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -39510,7 +39510,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh2880310
+  m_Name: pb_Mesh1974316
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -49497,6 +49497,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1901513821}
   - component: {fileID: 1901513820}
+  - component: {fileID: 1901513822}
   m_Layer: 0
   m_Name: Gage_Game_w.o_intro
   m_TagString: Untagged
@@ -49615,6 +49616,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901513822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901513819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a1975e620c3604fb0b2c748889bcc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1906320412
 PrefabInstance:
   m_ObjectHideFlags: 0

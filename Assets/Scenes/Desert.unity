@@ -15192,6 +15192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 317143085}
   - component: {fileID: 317143084}
+  - component: {fileID: 317143086}
   m_Layer: 0
   m_Name: Gage_Game_w.o_intro
   m_TagString: Untagged
@@ -15310,6 +15311,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &317143086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317143083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5a1975e620c3604fb0b2c748889bcc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &318020725
 PrefabInstance:
   m_ObjectHideFlags: 0
