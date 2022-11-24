@@ -9,6 +9,8 @@ public class Door : MonoBehaviour
 	[ConditionalField("RequireAllSubscribedKeys", true)]
 	[SerializeField] int KeysRequired = 0;
 
+	[SerializeField] GameObject visuals;
+
 	private int keysLeft = 0;
 
 	[HideInInspector]
@@ -47,6 +49,7 @@ public class Door : MonoBehaviour
 	// Currently destroys door object, can be changed to more complex behavior later
 	private void OpenDoor()
 	{
-		Destroy(gameObject);
+		visuals.SetActive(false);
+		GetComponent<Collider>().enabled = false;
 	}
 }
