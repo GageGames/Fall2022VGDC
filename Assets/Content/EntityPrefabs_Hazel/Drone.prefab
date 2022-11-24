@@ -319,7 +319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeNeeded: 0.7
   droneVisualObject: {fileID: 622487482613197486}
-  droneParticlesPrefab: {fileID: 219782687726452311, guid: dda8ad6ce652e4cff8b84a9f2d56eadb, type: 3}
+  droneParticlesPrefabDesert: {fileID: 219782687726452311, guid: dda8ad6ce652e4cff8b84a9f2d56eadb, type: 3}
+  droneParticlesPrefabLab: {fileID: 6169287783606018323, guid: 2af44cc3c891a4e27b5a753ea1aef5af, type: 3}
+  thisDronesParticles: {fileID: 0}
   pathfindingBehaviorConfig: {fileID: 11400000, guid: 7c48e04b0dc6b10429c8138966a9034a, type: 2}
 --- !u!114 &2890292843169518678
 MonoBehaviour:
