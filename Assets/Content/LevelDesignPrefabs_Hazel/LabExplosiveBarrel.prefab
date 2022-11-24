@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LabExplosiveBarrel
       objectReference: {fileID: 0}
+    - target: {fileID: 5645288964666774695, guid: 6cbcceed83b7a9242b954df92b30ee4b, type: 3}
+      propertyPath: explosiveConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 57e8f1d5d1379ea489362dfff60bd51f, type: 2}
     - target: {fileID: 5645288964666774746, guid: 6cbcceed83b7a9242b954df92b30ee4b, type: 3}
       propertyPath: m_RootOrder
       value: 0
