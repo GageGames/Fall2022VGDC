@@ -40,7 +40,7 @@ public class EdgeOfScreenIndicators : MonoBehaviour
         }
         else
         {
-            indicatorObj.GetComponent<Image>().color = new Color(1,140.0f/255.0f,0,1);
+            indicatorObj.GetComponent<Image>().color = new Color(.46f,.86f,.46f,1);
         }
         allIndicators.Add(indicatorObj.GetComponent<EOSIndicator>());
     }
