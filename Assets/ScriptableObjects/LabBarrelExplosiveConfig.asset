@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4522c651f6ab92c4887f49535be56399, type: 3}
-  m_Name: BarrelExplosiveConfig
+  m_Name: LabBarrelExplosiveConfig
   m_EditorClassIdentifier: 
-  ExplosionRadius: 4
-  ExplosionStrength: 8
-  ExplosionDamage: 25
+  ExplosionRadius: 12
+  ExplosionStrength: -10
+  ExplosionDamage: 5
   ExplosionFalloff:
     serializedVersion: 2
     m_Curve:
