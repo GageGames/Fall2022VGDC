@@ -49,6 +49,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pitConfig: {fileID: 11400000, guid: a4eb8c3d5813197418b851c8d5c84a79, type: 2}
+  DamageSFXVolume: 1
+  DamageSFX: {fileID: 8300000, guid: 31861f6bad4ad2c48aae83e2d244c209, type: 3}
+  TriggerTime: 0.4
 --- !u!65 &1705257636646554505
 BoxCollider:
   m_ObjectHideFlags: 0

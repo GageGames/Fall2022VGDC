@@ -13,7 +13,7 @@ public class Forcefield : MonoBehaviour
 
 	private void Awake()
 	{
-		SFXManager.PlayLoopedSound(SoundEffect, () => false, transform.position, transform);
+		SFXManager.PlayLoopedSound(SoundEffect, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, () => false, transform.position, transform);
 	}
 
 	private void OnTriggerStay(Collider other)

@@ -8,8 +8,19 @@ public class GunVFX : MonoBehaviour
 	[SerializeField] GameObject tetherHitPullEffectPrefab;
 	[SerializeField] GameObject tetherHitPushEffectPrefab;
 
+	[SerializeField] Transform pullTetherOriginTransform;
+	[SerializeField] Transform pushTetherOriginTransform;
+
+	[SerializeField] float AttachVolume;
+	[SerializeField] AudioClip AttachSFX;
+	[SerializeField] float DetachVolume;
+	[SerializeField] AudioClip DetachSFX;
+
 	Gun gun;
 	LineRenderer ActiveTetherBeamEffect;
+
+	bool active = false;
+	bool pulling = false;
 
 	private void Start()
 	{
@@ -21,7 +32,7 @@ public class GunVFX : MonoBehaviour
 
 	void LateUpdate()
 	{
-		if (gun.ActiveTether != null)
+		if (active)
 		{
 			UpdateTetherEffectPoints();
 		}
@@ -29,7 +40,7 @@ public class GunVFX : MonoBehaviour
 
 	void UpdateTetherEffectPoints()
 	{
-		ActiveTetherBeamEffect.SetPosition(0, gun.ActiveTether.Sender.Position);
+		ActiveTetherBeamEffect.SetPosition(0, pulling ? pullTetherOriginTransform.position : pushTetherOriginTransform.position);
 		ActiveTetherBeamEffect.SetPosition(1, gun.ActiveTether.Recipient.Position);
 	}
 
@@ -39,16 +50,23 @@ public class GunVFX : MonoBehaviour
 		diff.y = 0;
 		Quaternion dir = Quaternion.LookRotation(diff);
 		Debug.DrawRay(result.SelectedTarget.Position, dir * Vector3.forward * 5f, Color.yellow, 5);
-		if (gun.ActiveTether.Strength >= 0)
+
+		pulling = gun.ActiveTether.Strength >= 0;
+
+		if (pulling)
 		{
 			Instantiate(tetherHitPullEffectPrefab, result.SelectedTarget.Position, dir);
-			ActiveTetherBeamEffect = Instantiate(tetherBeamPullEffectPrefab, Vector3.zero, Quaternion.identity).GetComponentInChildren<LineRenderer>();
+			ActiveTetherBeamEffect = Instantiate(tetherBeamPullEffectPrefab, Vector3.zero, Quaternion.identity).GetComponent<LineRenderer>();
 		}
 		else
 		{
 			Instantiate(tetherHitPushEffectPrefab, result.SelectedTarget.Position, dir);
-			ActiveTetherBeamEffect = Instantiate(tetherBeamPushEffectPrefab, Vector3.zero, Quaternion.identity).GetComponentInChildren<LineRenderer>();
+			ActiveTetherBeamEffect = Instantiate(tetherBeamPushEffectPrefab, Vector3.zero, Quaternion.identity).GetComponent<LineRenderer>();
 		}
+
+		SFXManager.PlaySound(AttachSFX, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, AttachVolume, Random.Range(0.9f, 1.1f));
+
+		active = true;
 	}
 
 	void DestroyTetherEffect()
@@ -58,5 +76,9 @@ public class GunVFX : MonoBehaviour
 			// TODO: Transform.root is dangerous, use something more stable
 			Destroy(ActiveTetherBeamEffect.transform.root.gameObject);
 		}
+
+		SFXManager.PlaySound(DetachSFX, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, DetachVolume, Random.Range(0.9f, 1.1f));
+
+		active = false;
 	}
 }
