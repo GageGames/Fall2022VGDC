@@ -1,6 +1,7 @@
 using Pathfinding;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AIDestinationSetter))]
 [RequireComponent(typeof(AIPath))]
@@ -11,7 +12,9 @@ public class DroneEnemy : MonoBehaviour
 {
 	[SerializeField] float timeNeeded;
 	[SerializeField] GameObject droneVisualObject;
-	[SerializeField] GameObject droneParticlesPrefab;
+	[SerializeField] GameObject droneParticlesPrefabDesert;
+	[SerializeField] GameObject droneParticlesPrefabLab;
+
 	public GameObject thisDronesParticles;
 
 	[Expandable]
@@ -43,7 +46,15 @@ public class DroneEnemy : MonoBehaviour
 			Debug.LogError("Failed to assign player!");
 			return;
 		}
-		GameObject particles = Instantiate(droneParticlesPrefab, transform.position + Vector3.down*0.6f, Quaternion.identity) as GameObject;
+
+		
+		GameObject particlePrefab = droneParticlesPrefabLab;
+		if(SceneManager.GetActiveScene().name == "Desert")
+		{
+			 particlePrefab = droneParticlesPrefabDesert;
+		}
+		
+		GameObject particles = Instantiate(particlePrefab, transform.position + Vector3.down*0.6f, Quaternion.identity) as GameObject;
 		thisDronesParticles = particles;
 		thisDronesParticles.transform.rotation = Quaternion.Euler(-90,0,0);
 		aIDestinationSetter.target = player;
