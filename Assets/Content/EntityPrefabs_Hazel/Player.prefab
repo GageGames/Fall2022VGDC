@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: -73851396717222182}
   - component: {fileID: 8666555112397841679}
   - component: {fileID: 1223864364}
+  - component: {fileID: 1611170157}
   m_Layer: 26
   m_Name: Player
   m_TagString: Untagged
@@ -307,6 +308,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healDelay: 2
   healPerSecond: 20
+--- !u!114 &1611170157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194671024525158180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48c8b50330b1ea54bb77df4f813cfa56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualModel: {fileID: 321244816326369302}
 --- !u!1 &6521604788855841124
 GameObject:
   m_ObjectHideFlags: 0
