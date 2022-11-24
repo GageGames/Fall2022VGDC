@@ -12,6 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9bd038c70294347afb98445e6472fe, type: 3}
   m_Name: GameplayTuningValues
   m_EditorClassIdentifier: 
-  PlayerGunStrength: 80
-  PlayerGunDetectionRadius: 5
+  PlayerGunPullStrength: 20
+  PlayerGunPushStrength: 15
+  PlayerGunDetectionRadius: 15
+  PlayerGunDetectionMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
   PlayerPhysicsDataConfig: {fileID: 11400000, guid: dd88e5402ac62d945af817f48c929c1c, type: 2}
+  PlayerHealthDataConfig: {fileID: 11400000, guid: 69846ec9cdfe861439c17e56e03e486a, type: 2}
+  ZombiePhysicsDataConfig: {fileID: 11400000, guid: ca39a50f793c5fe4f9136f136388ffbb, type: 2}
+  ZombieHealthDataConfig: {fileID: 11400000, guid: a163735388b27cd4aaaae6076dffe055, type: 2}
+  ZombieImpactorConfig: {fileID: 11400000, guid: 62db7c00cdad8ed41b3eecfd76b17acc, type: 2}
+  ZombiePathfindingBehaviorConfig: {fileID: 11400000, guid: b2046131af544dc40bab00422ceeafae, type: 2}
+  BarrelHealthDataConfig: {fileID: 11400000, guid: 1fb7573b525edc74b988cc8cf737c6f1, type: 2}
+  BarrelExplosiveConfig: {fileID: 11400000, guid: 134d61734362a704db6700ed61aa0696, type: 2}
+  PitConfig: {fileID: 11400000, guid: a4eb8c3d5813197418b851c8d5c84a79, type: 2}
+  LightPropPhysicsDataConfig: {fileID: 11400000, guid: 5e1a49df50662f14fab70c4cebde89dd, type: 2}
+  LightPropHealthDataConfig: {fileID: 11400000, guid: 15061f02c23c1f94ea3f9637200020a6, type: 2}
+  MediumPropPhysicsDataConfig: {fileID: 11400000, guid: 657d29897a8a5a142ba94b7e8fc792d7, type: 2}
+  MediumPropHealthDataConfig: {fileID: 11400000, guid: 4017a08cf24153f46a3ff4803f6ac56a, type: 2}
+  HeavyPropPhysicsDataConfig: {fileID: 11400000, guid: b410327de482fcc4ba669b10fd5db25e, type: 2}
+  HeavyPropHealthDataConfig: {fileID: 11400000, guid: 97e5b3009084f5b4ea6c09f111eed286, type: 2}
+  StaticPropPhysicsDataConfig: {fileID: 11400000, guid: a16354024d256274d9201090dce67730, type: 2}
+  StaticPropHealthDataConfig: {fileID: 11400000, guid: 03439124efee504458839c54ae5315ee, type: 2}
+  HazardPropImpactorConfig: {fileID: 11400000, guid: acb9df509eada2b4e8ef04067ddd8541, type: 2}
+  SceneTransitionFadeInTime: 1
+  SceneTransitionIdleTime: 1
+  SceneTransitionFadeOutTime: 1

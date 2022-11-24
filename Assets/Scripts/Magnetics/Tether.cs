@@ -5,9 +5,6 @@ using UnityEngine.Events;
 
 public class Tether : MonoBehaviour
 {
-	// TODO: Move this to a separate script and actually spawn it
-	protected static GameObject TetherEffectsPrefab;
-
 	public Anchor Sender { get; private set; }
 	public Anchor Recipient { get; private set; }
 
@@ -55,6 +52,8 @@ public class Tether : MonoBehaviour
 
 		source.AddTether(this);
 		destination.AddTether(this);
+
+		OnAttach.Invoke();
 	}
 
 	public void Pause()
@@ -69,11 +68,13 @@ public class Tether : MonoBehaviour
 
 	public void Detach()
 	{
-		Sender.RemoveTether(this);
-		Recipient.RemoveTether(this);
+		Sender?.RemoveTether(this);
+		Recipient?.RemoveTether(this);
 
 		Sender = null;
 		Recipient = null;
+
+		OnDetach?.Invoke();
 
 		// TODO: Recycle with object pooling
 		Destroy(gameObject);

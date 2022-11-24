@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7687715738630093582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7687715738630093580}
+  - component: {fileID: 7687715738630093583}
+  - component: {fileID: 8550260673949777075}
+  m_Layer: 0
+  m_Name: IntervalSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7687715738630093580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7687715738630093582}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.279, y: 0, z: -2.393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7687715738630093583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7687715738630093582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873097eb908f8415fa3437589ef8f3ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxSpawnRadius: 8.420611
+  MinSpawnRadius: 2.63
+  MaxSpawnQuantity: 4
+  MinSpawnQuantity: 2
+  SpawnPrefab: {fileID: 0}
+  spawnType: 0
+  editorPreviewData: {fileID: 11400000, guid: 2224c49450730c24f80de7b4d26c6cac, type: 2}
+  customDiscColor: {r: 1, g: 0, b: 0, a: 1}
+  customDiscThickness: 5.98
+--- !u!114 &8550260673949777075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7687715738630093582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 426dfe718d1b6b74484e035319ecff5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnInterval: 8

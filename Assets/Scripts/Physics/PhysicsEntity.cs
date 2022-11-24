@@ -5,17 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(PhysicsData))]
 public class PhysicsEntity : MonoBehaviour, IImpulseReceiver
 {
-
+	
 	private PhysicsData data;
 
 	private void Awake()
 	{
 		data = GetComponent<PhysicsData>();
 	}
-
+	
 	public Vector3 GetPosition()
 	{
 		return data.Position;
+	}
+
+	public void ApplyImpulse(Vector3 direction, float strength)
+	{
+		ApplyImpulse(direction, strength, ImpulseSourceType.defaultType);
 	}
 
 	public void ApplyImpulse(Vector3 direction, float strength, ImpulseSourceType type)

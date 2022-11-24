@@ -20,16 +20,33 @@ public class SurfaceMagneticEntity : MagneticEntity
 		physEntity = GetComponent<PhysicsEntity>();
 	}
 
+	// Create and store new anchor
 	public override Anchor GetAnchor(Vector3 targetPosition)
 	{
-		// Create and store new anchor
-		Anchor output = new Anchor(col.ClosestPoint(targetPosition));
+		Vector3 pos = col.ClosestPoint(targetPosition);
+		if (col.GetType() == typeof(MeshCollider) && !((MeshCollider)col).convex)
+		{
+			pos = targetPosition;
+			Debug.LogError("Does not work with non-convex colliders! Stoppppp");
+		}
+
+		Anchor output = new Anchor(pos);
 		curAnchors.Add(output);
 
 		// Prep anchor to be recycled when detached from
 		output.OnDetachTether.AddListener(RemoveTetheredAnchor);
 
 		return output;
+	}
+
+	public override bool ContainsAnchor(Anchor anchor)
+	{
+		return curAnchors.Contains(anchor);
+	}
+
+	public override Anchor[] RetrieveActiveAnchors()
+	{
+		return curAnchors.ToArray();
 	}
 
 	void RemoveTetheredAnchor(Tether tether)
@@ -50,21 +67,11 @@ public class SurfaceMagneticEntity : MagneticEntity
 
 	protected override void UpdateAnchorage() { }
 
-	protected override void RefreshTethers()
-	{
-		tethers.Clear();
-
-		foreach (Anchor anchor in curAnchors)
-		{
-			tethers.AddRange(anchor.GetTethers());
-		}
-	}
-
-	protected override void ReadTethers()
+	protected override void ApplyImpulses()
 	{
 		foreach (Anchor anchor in curAnchors)
 		{
-			foreach (Tether tether in tethers)
+			foreach (Tether tether in anchor.GetTethers())
 			{
 				Vector3 pos = tether.GetOpposite(anchor).Position;
 				float strength = tether.Strength * Time.deltaTime;
@@ -72,6 +79,15 @@ public class SurfaceMagneticEntity : MagneticEntity
 				dir.y = 0;
 				physEntity.ApplyImpulse(dir, strength, impulseSourceType);
 			}
+		}
+	}
+
+	protected override void DetachAnchorage()
+	{
+		Anchor[] anchorCache = curAnchors.ToArray();
+		foreach (Anchor anchor in anchorCache)
+		{
+			anchor.DetachAllTethers();
 		}
 	}
 }

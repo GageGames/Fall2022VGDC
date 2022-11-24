@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// An object that can be tethered onto
+// A point that can be tethered onto
 
 public class Anchor
 {
@@ -28,6 +28,7 @@ public class Anchor
 	{
 		attachedTethers.Remove(tether);
 		OnDetachTether?.Invoke(tether);
+		//Debug.Log("Detached a tether");
 	}
 
 	public List<Tether> GetTethers()
@@ -38,5 +39,15 @@ public class Anchor
 	public void SetPosition(Vector3 pos)
 	{
 		Position = pos;
+	}
+
+	public void DetachAllTethers()
+	{
+		//Debug.Log("Disabled, detaching all tethers");
+		Tether[] tetherCache = attachedTethers.ToArray();
+		foreach (Tether tether in tetherCache)
+		{
+			tether.Detach();
+		}
 	}
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GlobalData : MonoBehaviour
 {
-	public static GlobalConfig GlobalConfigInstance;
+	public GlobalConfig GlobalConfigInstance;
 
 	private void Awake()
 	{

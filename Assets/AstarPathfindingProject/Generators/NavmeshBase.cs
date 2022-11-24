@@ -951,6 +951,8 @@ namespace Pathfinding {
 
 			for (int i = 0; i < verts.Length; i++) {
 				verts[i] += offset;
+				//verts[i].x += (int) (x * TileWorldSizeX);
+				//verts[i].z += (int) (z * TileWorldSizeZ);
 			}
 			tile.vertsInGraphSpace = verts;
 			tile.verts = (Int3[])verts.Clone();
