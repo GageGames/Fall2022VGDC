@@ -318,7 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeNeeded: 0.7
-  droneVisualObject: {fileID: 0}
+  droneVisualObject: {fileID: 622487482613197486}
   pathfindingBehaviorConfig: {fileID: 11400000, guid: 7c48e04b0dc6b10429c8138966a9034a, type: 2}
 --- !u!114 &2890292843169518678
 MonoBehaviour:
@@ -505,6 +505,11 @@ PrefabInstance:
 --- !u!4 &281569249715630100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b8de2902633cd2843aff5f7fda9b3c96, type: 3}
+  m_PrefabInstance: {fileID: 316075236909144063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &622487482613197486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b8de2902633cd2843aff5f7fda9b3c96, type: 3}
   m_PrefabInstance: {fileID: 316075236909144063}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2508656438135860152 stripped

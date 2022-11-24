@@ -1,5 +1,6 @@
 using Pathfinding;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(AIDestinationSetter))]
 [RequireComponent(typeof(AIPath))]
@@ -15,6 +16,7 @@ public class DroneEnemy : MonoBehaviour
 	public PathfindingBehaviorConfig pathfindingBehaviorConfig;
 
 	float timer;
+	float baseDroneHeight = 0.43f;
 
 	Transform player;
 	MagneticEntity magneticEntity;
@@ -53,7 +55,10 @@ public class DroneEnemy : MonoBehaviour
 		{
 			if (anchor.GetTethers().Count > 0)
 			{
+				droneVisualObject.transform.DOKill();
 				timer -= Time.deltaTime;
+				float proportion = 1-(timer/timeNeeded);
+				droneVisualObject.transform.localPosition = new Vector3(droneVisualObject.transform.localPosition.x, baseDroneHeight - proportion, droneVisualObject.transform.localPosition.z);
 				//Debug.Log(timer);
 				if (timer <= 0f)
 				{
@@ -63,6 +68,10 @@ public class DroneEnemy : MonoBehaviour
 			}
 			else
 			{
+				if(DOTween.IsTweening(droneVisualObject.transform) == false && timer != timeNeeded)
+				{
+					droneVisualObject.transform.DOLocalMoveY(baseDroneHeight, 0.5f).SetEase(Ease.InOutSine);
+				}
 				timer = timeNeeded;
 			}
 		}
