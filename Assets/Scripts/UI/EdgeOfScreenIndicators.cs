@@ -33,6 +33,15 @@ public class EdgeOfScreenIndicators : MonoBehaviour
         indicatorObj.transform.SetParent(theCanvas.transform);
         indicatorObj.transform.localScale = Vector3.one;
         indicatorObj.GetComponent<EOSIndicator>().correspondingPointOfInterest = POI;
+        print(POI.Type);
+        if(POI.Type == POIType.Key)
+        {
+            indicatorObj.GetComponent<Image>().color = Color.yellow;
+        }
+        else
+        {
+            indicatorObj.GetComponent<Image>().color = new Color(1,140.0f/255.0f,0,1);
+        }
         allIndicators.Add(indicatorObj.GetComponent<EOSIndicator>());
     }
     void UpdateIndicators()
@@ -78,14 +87,8 @@ public class EdgeOfScreenIndicators : MonoBehaviour
     void setIndicatorPositionAndTransparency(EOSIndicator indicator)
     {
         float dist = Vector3.Distance(indicator.correspondingPointOfInterest.transform.position, thePlayer.transform.position);
-        if(indicator.correspondingPointOfInterest.Type == POIType.Key)
-        {
-            indicator.GetComponent<Image>().color = Color.yellow;
-        }
-        else
-        {
-            indicator.GetComponent<Image>().color = new Color(255,165,0,1);
-        }
+        
+
         if(dist> maxDistanceToSeeIndicators)
         {
             indicator.GetComponent<Image>().color = new Color(indicator.GetComponent<Image>().color.r,indicator.GetComponent<Image>().color.g,indicator.GetComponent<Image>().color.b, 0);

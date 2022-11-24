@@ -1,5 +1,7 @@
 using Pathfinding;
 using UnityEngine;
+using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(AIDestinationSetter))]
 [RequireComponent(typeof(AIPath))]
@@ -9,11 +11,17 @@ using UnityEngine;
 public class DroneEnemy : MonoBehaviour
 {
 	[SerializeField] float timeNeeded;
+	[SerializeField] GameObject droneVisualObject;
+	[SerializeField] GameObject droneParticlesPrefabDesert;
+	[SerializeField] GameObject droneParticlesPrefabLab;
+
+	public GameObject thisDronesParticles;
 
 	[Expandable]
 	public PathfindingBehaviorConfig pathfindingBehaviorConfig;
 
 	float timer;
+	float baseDroneHeight = 0.6f;
 
 	Transform player;
 	MagneticEntity magneticEntity;
@@ -39,6 +47,16 @@ public class DroneEnemy : MonoBehaviour
 			return;
 		}
 
+		
+		GameObject particlePrefab = droneParticlesPrefabLab;
+		if(SceneManager.GetActiveScene().name == "Desert")
+		{
+			 particlePrefab = droneParticlesPrefabDesert;
+		}
+		
+		GameObject particles = Instantiate(particlePrefab, transform.position + Vector3.down*0.6f, Quaternion.identity) as GameObject;
+		thisDronesParticles = particles;
+		thisDronesParticles.transform.rotation = Quaternion.Euler(-90,0,0);
 		aIDestinationSetter.target = player;
 		aIPath.maxSpeed = pathfindingBehaviorConfig.MovementSpeed;
 
@@ -47,12 +65,16 @@ public class DroneEnemy : MonoBehaviour
 
 	void Update()
 	{
+		thisDronesParticles.transform.position = transform.position + Vector3.down * 0.6f;
 		//Check every frame is a tether is still attached (if so keep falling)
 		foreach (Anchor anchor in magneticEntity.RetrieveActiveAnchors())
 		{
 			if (anchor.GetTethers().Count > 0)
 			{
+				droneVisualObject.transform.DOKill();
 				timer -= Time.deltaTime;
+				float proportion = 1-(timer/timeNeeded);
+				droneVisualObject.transform.localPosition = new Vector3(droneVisualObject.transform.localPosition.x, baseDroneHeight - proportion, droneVisualObject.transform.localPosition.z);
 				//Debug.Log(timer);
 				if (timer <= 0f)
 				{
@@ -62,10 +84,20 @@ public class DroneEnemy : MonoBehaviour
 			}
 			else
 			{
+				if(DOTween.IsTweening(droneVisualObject.transform) == false && timer != timeNeeded)
+				{
+					droneVisualObject.transform.DOLocalMoveY(baseDroneHeight, 0.5f).SetEase(Ease.InOutSine);
+				}
 				timer = timeNeeded;
 			}
 		}
 
+	}
+	void OnDestroy()
+	{
+		var em = thisDronesParticles.GetComponent<ParticleSystem>().emission;
+		em.enabled = false;
+		Destroy(thisDronesParticles,2.0f);
 	}
 
 	void Falling()

@@ -318,6 +318,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeNeeded: 0.7
+  droneVisualObject: {fileID: 622487482613197486}
+  droneParticlesPrefabDesert: {fileID: 219782687726452311, guid: dda8ad6ce652e4cff8b84a9f2d56eadb, type: 3}
+  droneParticlesPrefabLab: {fileID: 6169287783606018323, guid: 2af44cc3c891a4e27b5a753ea1aef5af, type: 3}
+  thisDronesParticles: {fileID: 0}
   pathfindingBehaviorConfig: {fileID: 11400000, guid: 7c48e04b0dc6b10429c8138966a9034a, type: 2}
 --- !u!114 &2890292843169518678
 MonoBehaviour:
@@ -461,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8de2902633cd2843aff5f7fda9b3c96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.43
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b8de2902633cd2843aff5f7fda9b3c96, type: 3}
       propertyPath: m_LocalPosition.z
@@ -600,6 +604,11 @@ PrefabInstance:
 --- !u!4 &281569249715630100 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b8de2902633cd2843aff5f7fda9b3c96, type: 3}
+  m_PrefabInstance: {fileID: 316075236909144063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &622487482613197486 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b8de2902633cd2843aff5f7fda9b3c96, type: 3}
   m_PrefabInstance: {fileID: 316075236909144063}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2508656438135860152 stripped
