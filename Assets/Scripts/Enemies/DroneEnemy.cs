@@ -39,6 +39,7 @@ public class DroneEnemy : MonoBehaviour
 
 	void Start()
 	{
+
 		player = FindObjectOfType<Player>()?.transform;
 
 		if (!player)
@@ -47,7 +48,7 @@ public class DroneEnemy : MonoBehaviour
 			return;
 		}
 
-		
+
 		GameObject particlePrefab = droneParticlesPrefabLab;
 		if(SceneManager.GetActiveScene().name == "Desert")
 		{
@@ -65,13 +66,17 @@ public class DroneEnemy : MonoBehaviour
 
 	void Update()
 	{
-		thisDronesParticles.transform.position = transform.position + Vector3.down * 0.6f;
+		if(thisDronesParticles != null){
+			thisDronesParticles.transform.position = transform.position + Vector3.down * 0.6f;
+		}
 		//Check every frame is a tether is still attached (if so keep falling)
 		foreach (Anchor anchor in magneticEntity.RetrieveActiveAnchors())
 		{
 			if (anchor.GetTethers().Count > 0)
 			{
-				droneVisualObject.transform.DOKill();
+				if(DOTween.IsTweening(droneVisualObject.transform) == true){
+					droneVisualObject.transform.DOKill();
+				}
 				timer -= Time.deltaTime;
 				float proportion = 1-(timer/timeNeeded);
 				droneVisualObject.transform.localPosition = new Vector3(droneVisualObject.transform.localPosition.x, baseDroneHeight - proportion, droneVisualObject.transform.localPosition.z);
@@ -93,7 +98,16 @@ public class DroneEnemy : MonoBehaviour
 		}
 
 	}
-	void OnDestroy()
+	private void OnEnable()
+    {
+        healthEntity.OnDeath.AddListener(DeathEffects);
+    }
+
+    private void OnDisable()
+    {
+        healthEntity.OnDeath.RemoveListener(DeathEffects);
+    }
+	void DeathEffects(HealthEntity HE)
 	{
 		var em = thisDronesParticles.GetComponent<ParticleSystem>().emission;
 		em.enabled = false;
