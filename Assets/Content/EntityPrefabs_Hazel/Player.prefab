@@ -253,6 +253,10 @@ MonoBehaviour:
   tetherHitPushEffectPrefab: {fileID: 9031106044636243179, guid: 55f497169ad80434aa8822c31c14d9d6, type: 3}
   pullTetherOriginTransform: {fileID: 1039755859120492048}
   pushTetherOriginTransform: {fileID: 7948716212797694378}
+  AttachVolume: 1
+  AttachSFX: {fileID: 8300000, guid: 229fb254bd6afb24ab56028e97e0016a, type: 3}
+  DetachVolume: 0.5
+  DetachSFX: {fileID: 8300000, guid: fa5b53fe28ad2af49947dcdae606fb61, type: 3}
 --- !u!114 &4711371192519688255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +298,8 @@ MonoBehaviour:
   playerCollider: {fileID: 3215214615559918114}
   playerModel: {fileID: 321244816326369302}
   deathVFXPrefab: {fileID: 1964830879676357270, guid: 459bb2c3b458b0446b9fd74fcb87d7c0, type: 3}
+  DieSFXVolume: 1
+  DieSFX: {fileID: 8300000, guid: 1096e7121d973e348b8802ee4852e033, type: 3}
 --- !u!114 &1223864364
 MonoBehaviour:
   m_ObjectHideFlags: 0

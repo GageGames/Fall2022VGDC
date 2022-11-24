@@ -298,3 +298,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VFXPrefab: {fileID: 2341300969483093280, guid: 700bf4b90f98a554abcb66b4ce014f38, type: 3}
   destroyTime: 2
+  DieSFXVolume: 1
+  DieSFX: {fileID: 8300000, guid: a7590353af08ba143b7bb6f524f17991, type: 3}

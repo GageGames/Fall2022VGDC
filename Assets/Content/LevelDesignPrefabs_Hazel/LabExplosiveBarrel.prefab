@@ -67,5 +67,13 @@ PrefabInstance:
       propertyPath: VFXPrefab
       value: 
       objectReference: {fileID: 2233359203291296493, guid: 873338d4ac0d7104282102ffa4c2f65a, type: 3}
+    - target: {fileID: 5654964080568793845, guid: 6cbcceed83b7a9242b954df92b30ee4b, type: 3}
+      propertyPath: ExplodeSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 8825fdda491564041ba51f71ebfbf79a, type: 3}
+    - target: {fileID: 5654964080568793845, guid: 6cbcceed83b7a9242b954df92b30ee4b, type: 3}
+      propertyPath: ExplodeVolume
+      value: 0.65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cbcceed83b7a9242b954df92b30ee4b, type: 3}
