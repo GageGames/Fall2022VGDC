@@ -39,6 +39,7 @@ public class DroneEnemy : MonoBehaviour
 
 	void Start()
 	{
+
 		player = FindObjectOfType<Player>()?.transform;
 
 		if (!player)
@@ -47,7 +48,7 @@ public class DroneEnemy : MonoBehaviour
 			return;
 		}
 
-		
+
 		GameObject particlePrefab = droneParticlesPrefabLab;
 		if(SceneManager.GetActiveScene().name == "Desert")
 		{
@@ -93,7 +94,16 @@ public class DroneEnemy : MonoBehaviour
 		}
 
 	}
-	void OnDestroy()
+	private void OnEnable()
+    {
+        healthEntity.OnDeath.AddListener(DeathEffects);
+    }
+
+    private void OnDisable()
+    {
+        healthEntity.OnDeath.RemoveListener(DeathEffects);
+    }
+	void DeathEffects(HealthEntity HE)
 	{
 		var em = thisDronesParticles.GetComponent<ParticleSystem>().emission;
 		em.enabled = false;
