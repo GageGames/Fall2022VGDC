@@ -27,13 +27,14 @@ public class ProximityFader : MonoBehaviour
 
 	void Update()
 	{
-		float fade = DistToFadeCurve.Evaluate(Vector3.Distance(transform.position, player.position));
-
-		int itr = 0;
-		foreach (Image target in FadeTargets)
-		{
-			target.SetAlpha(fade * fadeMaxima[itr]);
-			itr++;
+		if(player != null){
+			float fade = DistToFadeCurve.Evaluate(Vector3.Distance(transform.position, player.position));
+			int itr = 0;
+			foreach (Image target in FadeTargets)
+			{
+				target.SetAlpha(fade * fadeMaxima[itr]);
+				itr++;
+			}
 		}
 	}
 }
