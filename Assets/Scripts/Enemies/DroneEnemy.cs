@@ -9,6 +9,7 @@ using UnityEngine;
 public class DroneEnemy : MonoBehaviour
 {
 	[SerializeField] float timeNeeded;
+	[SerializeField] GameObject droneVisualObject;
 
 	[Expandable]
 	public PathfindingBehaviorConfig pathfindingBehaviorConfig;
