@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletPrefab: {fileID: 917249800604407047, guid: 9a05239f41e9cb9418812751443b53d9, type: 3}
-  Interval: 0.1
+  Interval: 0.2
 --- !u!1001 &920624866439333141
 PrefabInstance:
   m_ObjectHideFlags: 0
