@@ -283,6 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51393c381484dc4aab270a69c7459c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDamageSparksEffect: {fileID: 0}
 --- !u!114 &6444970904946981100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,4 +296,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f742da4b4c2e584cb77a8784e46502b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VFXSmokePrefab: {fileID: 2341300969483093280, guid: 700bf4b90f98a554abcb66b4ce014f38, type: 3}
+  VFXPrefab: {fileID: 2341300969483093280, guid: 700bf4b90f98a554abcb66b4ce014f38, type: 3}
+  destroyTime: 2
