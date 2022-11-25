@@ -31,8 +31,8 @@ Material:
     m_Ints: []
     m_Floats:
     - _ColorMask: 15
-    - _Fade: 0.9412608
-    - _Flip: 0
+    - _Fade: 1
+    - _Flip: 1
     - _FlipXY: 0
     - _Stencil: 0
     - _StencilComp: 8

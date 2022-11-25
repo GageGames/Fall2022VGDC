@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 4711371192519688255}
   - component: {fileID: -73851396717222182}
   - component: {fileID: 8666555112397841679}
+  - component: {fileID: 1223864364}
   m_Layer: 26
   m_Name: Player
   m_TagString: Untagged
@@ -249,6 +250,8 @@ MonoBehaviour:
   tetherBeamPushEffectPrefab: {fileID: 1824584983990579323, guid: cec33863a61a43a459c6a2e42d01744b, type: 3}
   tetherHitPullEffectPrefab: {fileID: 6793004075583213379, guid: 4f65933cf9e098b4098380536de5ee5c, type: 3}
   tetherHitPushEffectPrefab: {fileID: 9031106044636243179, guid: 55f497169ad80434aa8822c31c14d9d6, type: 3}
+  pullTetherOriginTransform: {fileID: 1039755859120492048}
+  pushTetherOriginTransform: {fileID: 7948716212797694378}
 --- !u!114 &4711371192519688255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,6 +293,20 @@ MonoBehaviour:
   playerCollider: {fileID: 3215214615559918114}
   playerModel: {fileID: 321244816326369302}
   deathVFXPrefab: {fileID: 1964830879676357270, guid: 459bb2c3b458b0446b9fd74fcb87d7c0, type: 3}
+--- !u!114 &1223864364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6194671024525158180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ece7e6de0fc6842bb05400460ccebd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healDelay: 2
+  healPerSecond: 20
 --- !u!1 &6521604788855841124
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,9 +414,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3486916735100292082, guid: 06af351604f95bc419ce957a4b035fa1, type: 3}
   m_PrefabInstance: {fileID: 3751865995289242596}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1039755859120492048 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4214448201825461748, guid: 06af351604f95bc419ce957a4b035fa1, type: 3}
+  m_PrefabInstance: {fileID: 3751865995289242596}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1098485619172178604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4264861462217150792, guid: 06af351604f95bc419ce957a4b035fa1, type: 3}
+  m_PrefabInstance: {fileID: 3751865995289242596}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7948716212797694378 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6511868020500253262, guid: 06af351604f95bc419ce957a4b035fa1, type: 3}
   m_PrefabInstance: {fileID: 3751865995289242596}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7560725855914454027

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4522c651f6ab92c4887f49535be56399, type: 3}
   m_Name: BarrelExplosiveConfig
   m_EditorClassIdentifier: 
-  ExplosionRadius: 5
-  ExplosionStrength: 5
-  ExplosionDamage: 25
+  ExplosionRadius: 4
+  ExplosionStrength: 8
+  ExplosionDamage: 15
   ExplosionFalloff:
     serializedVersion: 2
     m_Curve:

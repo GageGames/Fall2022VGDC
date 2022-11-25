@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Generic;
 
 public class Key : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class Key : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
-
 		door.RegisterKey();
 	}
 

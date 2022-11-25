@@ -9,7 +9,6 @@ TagManager:
   - tag
   - key
   - SpeedPillar
-  - speed pillar
   layers:
   - Default
   - TransparentFX
@@ -18,7 +17,7 @@ TagManager:
   - Water
   - UI
   - TetherOnly
-  - 
+  - PostProcess
   - Enemy
   - 
   - 

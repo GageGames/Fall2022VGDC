@@ -51,18 +51,18 @@ public class Player : MonoBehaviour
 			case State.Idle:
 				gun.DetectionRadius = val.PlayerGunDetectionRadius;
 				gun.DetectionMask = val.PlayerGunDetectionMask;
-				if (Input.GetMouseButtonDown(0))
+				if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Q))
 				{
 					FireGun(val.PlayerGunPullStrength, true);
 					StateMachine = State.TetherPulling;
-				} else if (Input.GetMouseButtonDown(1))
+				} else if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.E))
 				{
 					FireGun(val.PlayerGunPushStrength, false);
 					StateMachine = State.TetherPushing;
 				}
 				break;
 			case State.TetherPulling:
-				if (Input.GetMouseButtonUp(0))
+				if (!Input.GetMouseButton(0) && !Input.GetKey(KeyCode.Space) && !Input.GetKey(KeyCode.Q))
 				{
 					gun.Detach();
 					StateMachine = State.Idle;
@@ -70,7 +70,7 @@ public class Player : MonoBehaviour
 				DetachIfOutsideView();
 				break;
 			case State.TetherPushing:
-				if (Input.GetMouseButtonUp(1))
+				if (!Input.GetMouseButton(1) && !Input.GetKey(KeyCode.LeftShift) && !Input.GetKey(KeyCode.E))
 				{
 					gun.Detach();
 					StateMachine = State.Idle;

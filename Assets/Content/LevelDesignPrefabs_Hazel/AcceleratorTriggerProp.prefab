@@ -67,5 +67,53 @@ PrefabInstance:
       propertyPath: m_Name
       value: AcceleratorTriggerProp
       objectReference: {fileID: 0}
+    - target: {fileID: 5489902935327754055, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
+      propertyPath: m_TagString
+      value: SpeedPillar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
+--- !u!1 &2545513571144121192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5489902935327754055, guid: 323307f8b410faf45ba044f91d0df7c1, type: 3}
+  m_PrefabInstance: {fileID: 8026389498741849135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4888142058122904624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2545513571144121192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc8799c7bdd52844a100d4272c6dba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpeedBoostCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0.02700906
+      outSlope: 0.02700906
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.10578261
+    - serializedVersion: 3
+      time: 1
+      value: -0.00000013038516
+      inSlope: -3.0385442
+      outSlope: -3.0385442
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.042313397
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxSpeed: 30
+  accelerationStrength: 5
+  SoundEffect: {fileID: 0}
