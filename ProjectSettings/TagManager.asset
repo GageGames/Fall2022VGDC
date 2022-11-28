@@ -6,9 +6,6 @@ TagManager:
   tags:
   - wall
   - floor
-  - tag
-  - key
-  - SpeedPillar
   layers:
   - Default
   - TransparentFX
@@ -16,9 +13,9 @@ TagManager:
   - 
   - Water
   - UI
-  - TetherOnly
-  - PostProcess
-  - Enemy
+  - Post Processing
+  - 
+  - 
   - 
   - 
   - 
