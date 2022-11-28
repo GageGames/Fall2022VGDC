@@ -20,7 +20,9 @@ public class PauseMenu : MonoBehaviour
 
 	public void ToMainMenu()
 	{
+		print("clicked please");
 		PlayButtonSound();
+		Singleton<GameManager>.Instance.Unpause();
 		Singleton<GameManager>.Instance.InitiateSceneLoad("MainMenu");
 	}
 
