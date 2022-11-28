@@ -11,6 +11,11 @@ public class GunVFX : MonoBehaviour
 	[SerializeField] Transform pullTetherOriginTransform;
 	[SerializeField] Transform pushTetherOriginTransform;
 
+	[SerializeField] float AttachVolume;
+	[SerializeField] AudioClip AttachSFX;
+	[SerializeField] float DetachVolume;
+	[SerializeField] AudioClip DetachSFX;
+
 	Gun gun;
 	LineRenderer ActiveTetherBeamEffect;
 
@@ -59,6 +64,8 @@ public class GunVFX : MonoBehaviour
 			ActiveTetherBeamEffect = Instantiate(tetherBeamPushEffectPrefab, Vector3.zero, Quaternion.identity).GetComponent<LineRenderer>();
 		}
 
+		SFXManager.PlaySound(AttachSFX, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, AttachVolume, Random.Range(0.9f, 1.1f));
+
 		active = true;
 	}
 
@@ -69,6 +76,9 @@ public class GunVFX : MonoBehaviour
 			// TODO: Transform.root is dangerous, use something more stable
 			Destroy(ActiveTetherBeamEffect.transform.root.gameObject);
 		}
+
+		SFXManager.PlaySound(DetachSFX, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, DetachVolume, Random.Range(0.9f, 1.1f));
+
 		active = false;
 	}
 }

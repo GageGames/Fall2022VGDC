@@ -802,7 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 7155003281717498884}
-  buttonSound: {fileID: 8300000, guid: 1ce38825da0099f49abf01df251a3759, type: 3}
+  buttonSound: {fileID: 8300000, guid: c18eafe451031fd4e8bf0de1a8692cfc, type: 3}
   soundVolume: 1
 --- !u!114 &8133224436010143432
 MonoBehaviour:
