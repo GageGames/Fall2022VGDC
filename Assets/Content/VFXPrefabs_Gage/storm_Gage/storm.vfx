@@ -20,7 +20,7 @@ MonoBehaviour:
     x: 381
     y: -262
     width: 1482
-    height: 2814
+    height: 2967
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -829,7 +829,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614684}
   - {fileID: 8926484042661614593}
   - {fileID: 8926484042661615027}
-  m_UIPosition: {x: 941, y: 1844}
+  m_UIPosition: {x: 941, y: 1997}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -1078,7 +1078,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":536.7899780273438},"size":{"x":700.0,"y":2.0,"z":4.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":522.9149780273438},"size":{"x":700.0,"y":2.0,"z":4.0}}'
     m_Space: 0
   m_Property:
     name: Box
@@ -7562,7 +7562,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":-42.26654052734375},"size":{"x":712.010009765625,"y":30.06999969482422,"z":2.9600000381469728}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":6.774078369140625},"size":{"x":712.010009765625,"y":30.06999969482422,"z":2.9600000381469728}}'
     m_Space: 0
   m_Property:
     name: box
@@ -7891,7 +7891,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":-65.35797119140625},"size":{"x":712.010009765625,"y":30.06999969482422,"z":80.0}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":-32.3040771484375},"size":{"x":712.010009765625,"y":30.06999969482422,"z":80.0}}'
     m_Space: 0
   m_Property:
     name: box
