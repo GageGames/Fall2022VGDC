@@ -425,6 +425,7 @@ GameObject:
   - component: {fileID: 6010424457426589836}
   - component: {fileID: 3549639074684808485}
   - component: {fileID: 5498668382181408198}
+  - component: {fileID: 7086499899409465386}
   m_Layer: 5
   m_Name: mainmenu
   m_TagString: Untagged
@@ -547,6 +548,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7086499899409465386}
+        m_TargetAssemblyTypeName: RemoveMusicPlayer, Assembly-CSharp
+        m_MethodName: Remove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7086499899409465386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6170706875091076072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e7678f4f27e7bb4ea3e14e1b31cbe07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 2
 --- !u!1 &7062521414968898086
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class Impactable : MonoBehaviour
 		}
 		else if (other.GetComponentInParent<Rigidbody>())
 		{
-			Debug.LogWarning("All Rigidbodies that can be impacted should have PhysicsData somewhere on them!");
+			Debug.LogWarning("All Rigidbodies that can be impacted should have PhysicsData somewhere on them!", other);
 			velocityDifferential -= other.GetComponentInParent<Rigidbody>().velocity;
 			otherMass = other.GetComponentInParent<Rigidbody>().mass;
 		}
