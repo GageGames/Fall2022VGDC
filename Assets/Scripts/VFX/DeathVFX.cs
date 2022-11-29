@@ -17,7 +17,10 @@ public class DeathVFX : MonoBehaviour
 	void SpawnDeathParticles(HealthEntity healthEntity)
 	{
 		GameObject vfx = Instantiate(VFXPrefab, transform.position, transform.rotation);
-		SFXManager.PlaySound(DieSFX, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, DieSFXVolume, Random.Range(0.95f, 1.05f));
+		if (DieSFX)
+		{
+			SFXManager.PlaySound(DieSFX, Singleton<GlobalData>.Instance.GlobalConfigInstance.SFXMixerGroup, DieSFXVolume, Random.Range(0.95f, 1.05f));
+		}
 
 		if (destroyTime > 0)
 		{
