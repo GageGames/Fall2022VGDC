@@ -8808,7 +8808,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614880}
   m_ExposedName: bottomPlaneYBound
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 1
   m_Category: 
   m_Min:
     m_Type:
@@ -8888,7 +8888,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614882}
   m_ExposedName: spawnRate
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:
@@ -8968,7 +8968,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614884}
   m_ExposedName: New Gradient
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 3
   m_Category: 
   m_Min:
     m_Type:
