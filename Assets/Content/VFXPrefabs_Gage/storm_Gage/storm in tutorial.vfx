@@ -3196,7 +3196,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.AABox, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":-42.26654052734375},"size":{"x":712.010009765625,"y":30.06999969482422,"z":2.9600000381469728}}'
+      m_SerializableObject: '{"center":{"x":0.0,"y":0.0,"z":-42.26654052734375},"size":{"x":712.010009765625,"y":30.06999969482422,"z":24.600000381469728}}'
     m_Space: 0
   m_Property:
     name: box
@@ -8808,7 +8808,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614880}
   m_ExposedName: bottomPlaneYBound
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 1
   m_Category: 
   m_Min:
     m_Type:
@@ -8888,7 +8888,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614882}
   m_ExposedName: spawnRate
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 2
   m_Category: 
   m_Min:
     m_Type:
@@ -8968,7 +8968,7 @@ MonoBehaviour:
   - {fileID: 8926484042661614884}
   m_ExposedName: New Gradient
   m_Exposed: 1
-  m_Order: 0
+  m_Order: 3
   m_Category: 
   m_Min:
     m_Type:
