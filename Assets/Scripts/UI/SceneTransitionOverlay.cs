@@ -23,7 +23,7 @@ public class SceneTransitionOverlay : MonoBehaviour
 
 		Material mat = overlay.GetComponentInChildren<Image>().material;
 
-		//Debug.Log("Transitioning");
+		Debug.Log("Transitioning");
 
 		mat.SetFloat("_Flip", 1);
 
@@ -36,19 +36,19 @@ public class SceneTransitionOverlay : MonoBehaviour
 		}
 		mat.SetFloat("_Fade", 1);
 
-		//Debug.Log("Transitioned, idling");
+		Debug.Log("Transitioned, idling");
 
 		yield return new WaitForSeconds(Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionIdleTime / 2f);
 
-		//Debug.Log("Loading");
+		Debug.Log("Loading");
 
 		sceneLoadCallback(sceneName);
 
-		//Debug.Log("Loaded, idling");
+		Debug.Log("Loaded, idling");
 
 		yield return new WaitForSeconds(Singleton<GlobalData>.Instance.GlobalConfigInstance.PrimaryGameplayTuningValues.SceneTransitionIdleTime / 2f);
 
-		//Debug.Log("Stopping transition");
+		Debug.Log("Stopping transition");
 
 		mat.SetFloat("_Flip", 0);
 
