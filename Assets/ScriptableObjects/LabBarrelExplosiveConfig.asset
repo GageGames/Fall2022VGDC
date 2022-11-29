@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LabBarrelExplosiveConfig
   m_EditorClassIdentifier: 
   ExplosionRadius: 12
-  ExplosionStrength: -10
+  ExplosionStrength: -15
   ExplosionDamage: 5
   ExplosionFalloff:
     serializedVersion: 2
